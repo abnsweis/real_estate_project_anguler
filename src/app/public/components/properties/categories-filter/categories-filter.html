@@ -1,0 +1,7 @@
+<button type="button" class="{{extraClass}}" (click)="categotySelected('categoryName 9')">مستودعات</button>
+<button type="button" class="{{extraClass}}" (click)="categotySelected('')">الكل</button>
+@for (cat of (categories$ | async)?.items; track $index) {
+<button type="button" class="{{extraClass}}" (click)="categotySelected(cat.categoryId)">
+    {{cat.categoryName}}
+</button>
+}

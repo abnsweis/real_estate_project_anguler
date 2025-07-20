@@ -1,0 +1,220 @@
+{
+    "properties": [
+        {
+            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+            "title": "فيلا فاخرة في اسطنبول",
+            "ownerId": "u101",
+            "id": "c1",
+            "propertyNumber": 101,
+            "price": 350000,
+            "location": "اسطنبول",
+            "address": "بشكتاش، شارع الفاتح",
+            "propertyStatus": "Available",
+            "area": 250,
+            "rating": 4.8,
+            "videoUrl": "https://example.com/video1",
+            "description": "فيلا 3 طوابق بإطلالة بحرية ومسبح خاص.",
+            "categoryName": "فيلا",
+            "ownerFullName": "محمد العلي",
+            "images": [
+                "https://example.com/images/villa1-1.jpg",
+                "https://example.com/images/villa1-2.jpg"
+            ]
+        },
+        {
+            "id": "9c858901-8a57-4791-81fe-4c455b099bc9",
+            "title": "شقة مفروشة في انطاليا",
+            "ownerId": "u102",
+            "id": "c2",
+            "propertyNumber": 102,
+            "price": 80000,
+            "location": "انطاليا",
+            "address": "لارا، خلف المول الكبير",
+            "propertyStatus": "Rented",
+            "area": 90,
+            "rating": 4.3,
+            "videoUrl": null,
+            "description": "شقة مفروشة غرفتين وصالة مع تكييف وانترنت.",
+            "categoryName": "شقة",
+            "ownerFullName": "ليلى الكردي",
+            "images": [
+                "https://example.com/images/apt1-1.jpg",
+                "https://example.com/images/apt1-2.jpg"
+            ]
+        },
+        {
+            "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "title": "أرض للاستثمار في بورصة",
+            "ownerId": "u103",
+            "id": "c3",
+            "propertyNumber": 103,
+            "price": 150000,
+            "location": "بورصة",
+            "address": "منطقة يلدريم",
+            "propertyStatus": "Available",
+            "area": 1000,
+            "rating": 3.9,
+            "videoUrl": null,
+            "description": "أرض صالحة للبناء على شارعين.",
+            "categoryName": "أرض",
+            "ownerFullName": "خالد الشامي",
+            "images": []
+        },
+        {
+            "id": "f2c9f6a4-d1a6-4a9b-8f09-59a5240e3b7d",
+            "title": "شقة دوبلكس في طرابزون",
+            "ownerId": "u104",
+            "id": "c2",
+            "propertyNumber": 104,
+            "price": 120000,
+            "location": "طرابزون",
+            "address": "أورتاحصار، شارع البحر",
+            "propertyStatus": "Sold",
+            "area": 180,
+            "rating": 4.5,
+            "videoUrl": "https://example.com/video2",
+            "description": "شقة دوبلكس بإطلالة على البحر، 4 غرف وصالة.",
+            "categoryName": "شقة",
+            "ownerFullName": "رنا السعدي",
+            "images": [
+                "https://example.com/images/duplex1-1.jpg"
+            ]
+        },
+        {
+            "id": "4c9d8f4e-1a8f-4d91-a7df-8c51234c8bf6",
+            "title": "محل تجاري للإيجار في أنقرة",
+            "ownerId": "u105",
+            "id": "c4",
+            "propertyNumber": 105,
+            "price": 2500,
+            "location": "أنقرة",
+            "address": "كيزيلاي، مقابل محطة المترو",
+            "propertyStatus": "Available",
+            "area": 60,
+            "rating": 4.1,
+            "videoUrl": null,
+            "description": "محل تجاري على الشارع العام مناسب لكل الأعمال.",
+            "categoryName": "محل تجاري",
+            "ownerFullName": "سليم نورالدين",
+            "images": [
+                "https://example.com/images/shop1.jpg"
+            ]
+        },
+        {
+            "id": "a9b8c7d6-e5f4-4321-9876-1234abcd5678",
+            "title": "أرض زراعية في كونيا",
+            "ownerId": "u106",
+            "id": "c3",
+            "propertyNumber": 106,
+            "price": 90000,
+            "location": "كونيا",
+            "address": "قريبة من الطريق السريع",
+            "propertyStatus": "Available",
+            "area": 3000,
+            "rating": 4.0,
+            "videoUrl": null,
+            "description": "أرض زراعية خصبة، مناسبة للاستثمار الزراعي.",
+            "categoryName": "أرض",
+            "ownerFullName": "أحمد جنيد",
+            "images": []
+        },
+        {
+            "id": "de4f8a76-9b1c-40f2-9e4a-8b675d9c1234",
+            "title": "شقة صغيرة للبيع في إزمير",
+            "ownerId": "u107",
+            "id": "c2",
+            "propertyNumber": 107,
+            "price": 60000,
+            "location": "إزمير",
+            "address": "كارشياكا، قرب المارينا",
+            "propertyStatus": "Available",
+            "area": 70,
+            "rating": 3.8,
+            "videoUrl": null,
+            "description": "شقة بغرفة وصالة مناسبة للعائلات الصغيرة أو الطلاب.",
+            "categoryName": "شقة",
+            "ownerFullName": "هبة إبراهيم",
+            "images": []
+        },
+        {
+            "id": "ef123456-7890-4abc-def0-123456789abc",
+            "title": "فيلا ريفية في سكاريا",
+            "ownerId": "u108",
+            "id": "c1",
+            "propertyNumber": 108,
+            "price": 220000,
+            "location": "سكاريا",
+            "address": "محافظة سابانجا",
+            "propertyStatus": "Available",
+            "area": 200,
+            "rating": 4.6,
+            "videoUrl": "https://example.com/video3",
+            "description": "فيلا ريفية بإطلالة جبلية وجو هادئ.",
+            "categoryName": "فيلا",
+            "ownerFullName": "سامر درويش",
+            "images": [
+                "https://example.com/images/villa2.jpg"
+            ]
+        },
+        {
+            "id": "a1b2c3d4-e5f6-7890-ab12-cd34ef567890",
+            "title": "مكتب للإيجار في اسطنبول",
+            "ownerId": "u109",
+            "id": "c4",
+            "propertyNumber": 109,
+            "price": 5000,
+            "location": "اسطنبول",
+            "address": "مجيدي كوي، الطابق الرابع",
+            "propertyStatus": "Rented",
+            "area": 100,
+            "rating": 4.4,
+            "videoUrl": null,
+            "description": "مكتب مجهز بالكامل للإيجار الشهري، 3 غرف واجتماعات.",
+            "categoryName": "مكتب",
+            "ownerFullName": "زياد عبدالنور",
+            "images": []
+        },
+        {
+            "id": "abcd1234-ef56-7890-abcd-ef1234567890",
+            "title": "شقة فاخرة بإطلالة في بودروم",
+            "ownerId": "u110",
+            "id": "c2",
+            "propertyNumber": 110,
+            "price": 160000,
+            "location": "بودروم",
+            "address": "قرب الشاطئ الرئيسي",
+            "propertyStatus": "Available",
+            "area": 110,
+            "rating": 4.9,
+            "videoUrl": "https://example.com/video4",
+            "description": "شقة مفروشة بالكامل مع إطلالة بانورامية على البحر.",
+            "categoryName": "شقة",
+            "ownerFullName": "رائد الزين",
+            "images": [
+                "https://example.com/images/bodrum1.jpg"
+            ]
+        }
+    ],
+    "categories": [
+        {
+            "id": "a1b2c3d4-e5f6-7890-ab12-cd34ef567890",
+            "categoryName": "فيلا"
+        },
+        {
+            "id": "b2c3d4e5-f678-9012-abcd-ef34567890ab",
+            "categoryName": "شقة"
+        },
+        {
+            "id": "c3d4e5f6-7890-12ab-cdef-4567890abcde",
+            "categoryName": "أرض"
+        },
+        {
+            "id": "d4e5f678-9012-abcd-ef34-567890abcdef",
+            "categoryName": "محل تجاري"
+        },
+        {
+            "id": "e5f67890-12ab-cdef-4567-890abcdef123",
+            "categoryName": "مكتب"
+        }
+    ]
+}

@@ -1,0 +1,117 @@
+<section class="testimonials py-5 mt-6">
+    <div class="container">
+        <div *ngIf="property">
+            <div class=" flex justify-center">
+
+                <p-dialog header="Header" [modal]="true" [(visible)]="visibleImagesDialog" [style]="{ width: '50rem' }"
+                    [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" [maximizable]="true">
+                    <div class="galleria">
+
+                        <p-galleria [value]="property.images" [responsiveOptions]="responsiveOptions" [numVisible]="3"
+                            [showThumbnails]="false" [containerStyle]="{ 'max-width': '100%' }"
+                            [style]="{ 'width': '100%' }" [circular]="true" [showItemNavigators]="false"
+                            [showIndicators]="true" [thumbnailsPosition]="'bottom'">
+
+                            <ng-template pTemplate="item" let-image>
+                                <div class="gallery-item-wrapper">
+                                    <!-- <img [src]="image" alt="صورة العقار" class="gallery-image" /> -->
+                                    <p-image [src]="image" alt="Image" width="100%" [preview]="true" />
+                                </div>
+                            </ng-template>
+
+                        </p-galleria>
+
+
+                    </div>
+                </p-dialog>
+
+                <p-dialog [className]="'video-dialog'" header="فيديو" [modal]="true" [(visible)]="visibleImagesVideos"
+                    [style]="{ width: '70rem',height:'500px' }" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+                    [maximizable]="true">
+                    <div class="embed-responsive embed-responsive-16by9 w-100 h-100">
+                        <iframe class="embed-responsive-item w-100  h-100" style="height: 100%;"
+                            src=" ../../../../../assets/video.mp4" allowfullscreen></iframe>
+                    </div>
+                </p-dialog>
+            </div>
+            <div class="card-item text-center bg-white rounded-4 shadow py-4 px-5 animate-up">
+                <div class="row">
+                    <div class="col-12 col-md-8 p-0 text-end">
+                        <h3 class="text-end">{{property.title}}</h3>
+
+                        <div class="text-end d-flex  justify-content-start align-items-center gap-2 mt-3">
+                            <h6 class="fs-1 mb-0">المالك :</h6>
+                            <p class="fs-1 mb-0">{{property.ownerFullName}}</p>
+                        </div>
+
+                        <div class="text-end d-flex  justify-content-start align-items-start gap-2 mt-3">
+                            <h6 class="fs-1 mb-0">الرقم العقاري :</h6>
+                            <p class="fs-1 mb-0 lh-1  ">{{property.propertyNumber}}</p>
+                        </div>
+
+                        <div class="text-end d-flex  justify-content-start align-items-start gap-2 mt-3">
+                            <h6 class="fs-1 mb-0">السعر :</h6>
+                            <p class="fs-1 mb-0 lh-1 text-currency fw-bold">{{property.price | currency}}</p>
+                        </div>
+
+                        <div
+                            class="text-end d-flex flex-column flex-md-row justify-content-start align-items-start gap-2 mt-3">
+                            <h6 class="fs-1 mb-0">الموقع :</h6>
+                            <p class="fs-1 mb-0 lh-1 ">{{property.location }} / {{property.address}}
+                            </p>
+                        </div>
+
+                        <div class="text-end d-flex   justify-content-start align-items-start gap-2 mt-3">
+                            <h6 class="fs-1 mb-0">المساحة :</h6>
+                            <p class="fs-1 mb-0 lh-1 ">{{property.area }}م
+                            </p>
+                        </div>
+
+                        <div class="text-end d-flex  justify-content-start align-items-start gap-2 mt-3">
+                            <h6 class="fs-1 mb-0">الصنف :</h6>
+                            <p class="fs-1 mb-0 lh-1 ">{{property.categoryName }}
+                            </p>
+                        </div>
+
+                        <div
+                            class="text-end d-flex flex-column flex-md-row justify-content-start align-items-start gap-2 mt-3">
+                            <h6 class="fs-1 mb-0">الوصف :</h6>
+                            <p class="fs-1 mb-0 lh-lg">{{property.description }}
+                            </p>
+                        </div>
+
+                        <div class="text-end d-flex   justify-content-start align-items-start gap-2 my-3">
+                            <h6 class="fs-1 mb-0">التقييم :</h6>
+                            @if(property.rating <= 0) { <p>
+                                <p class="fs-1 mb-0 lh-1 text-warning">لا يوجد تقييمات بعد</p>
+                                } @else {
+                                <app-star [rating]="property.rating"></app-star>
+                                }
+                        </div>
+                    </div>
+
+                    <div class=" col-12 col-md-4 p-0 rounded-4">
+                        <div class="img-box rounded-4 overflow-hidden">
+                            <img [src]="property.mainImage" alt="" height="200" class="img-fluid" />
+                        </div>
+                        @if (property.images.length > 0) {
+                        <p-button (click)=" showImages()" pButton
+                            class="btn btn-primary rounded-3 mt-3 w-100 text-center py-1">
+                            <i class="fa-solid fs-1 fa-image px-1"></i>
+                            <span>عرض الصور</span>
+                        </p-button>
+                        }
+                        @if (!property.videoUrl?.length) {
+                        <p-button (click)=" showVideo()" pButton
+                            class="btn btn-primary  rounded-3 mt-3 w-100 text-center py-1">
+                            <i class="fa-solid fa-video"></i>
+                            <span>عرض الفيديو</span>
+                        </p-button>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

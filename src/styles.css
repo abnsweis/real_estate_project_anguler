@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+
+.text-primary {
+  color: var(--bs-primary);
+}
+
+* {
+  direction: rtl;
+}
+
+.navbar a.active {
+  color: var(--bs-primary) !important;
+  font-weight: 500;
+}
+
+.text-currency {
+  color: rgb(10, 209, 10);
+}
+
+.p-paginator {
+  background-color: white !important;
+}
+.p-paginator-page.p-paginator-page-selected {
+  background-color: var(--bs-primary) !important;
+  color: white !important ;
+}
+
+.p-paginator-page:not(.p-disabled):not(.p-paginator-page-selected):hover,
+.p-paginator-first:not(.p-disabled):hover,
+.p-paginator-prev:not(.p-disabled):hover,
+.p-paginator-next:not(.p-disabled):hover,
+.p-paginator-last:not(.p-disabled):hover {
+  background-color: var(--bs-primary) !important;
+  color: white !important;
+}
+.p-paginator button {
+  background-color: #f8f8f8 !important;
+}

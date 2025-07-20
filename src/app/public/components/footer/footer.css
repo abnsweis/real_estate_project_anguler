@@ -1,0 +1,9 @@
+.footer ul {
+  padding-right: 0;
+}
+
+.footer a:hover {
+  color: var(--bs-primary) !important;
+  font-weight: 600;
+  transition: 100ms;
+}

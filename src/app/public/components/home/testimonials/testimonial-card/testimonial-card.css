@@ -1,0 +1,11 @@
+.testimonial-card {
+  width: 100%;
+}
+
+.testimonial-card .rating-text p {
+  line-height: 1.8;
+}
+
+.testimonial-card .user-img img {
+  object-fit: scale-down;
+}
