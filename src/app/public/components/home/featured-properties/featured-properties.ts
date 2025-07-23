@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PropertiesService } from '../../../../core/services/propertys.service';
-import { IProperty } from '../../../../core/models/property.interface';
+import { IProperty } from '../../../../core/models/Interfaces/Iproperty.interface';
 import { Observable } from 'rxjs';
 
 @Component({

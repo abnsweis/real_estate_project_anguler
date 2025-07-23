@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { finalize, Observable } from 'rxjs';
-import { PaginationResponse } from '../../../core/models/paginationResponse.interface';
-import { IProperty } from '../../../core/models/property.interface';
+import { PaginationResponse } from '../../../core/models/Interfaces/IpaginationResponse.interface';
+import { IProperty } from '../../../core/models/Interfaces/Iproperty.interface';
 import { PropertiesService } from '../../../core/services/propertys.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -12,7 +12,6 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './properties.css'
 })
 export class Properties {
-  isLoading: boolean = false;
   properties$!: Observable<PaginationResponse<IProperty>>;
   constructor(
     private propertiesService: PropertiesService,
@@ -20,12 +19,8 @@ export class Properties {
   ) { }
 
   loadProperties() {
-    this.isLoading = true;
-    this.properties$ = this.propertiesService.getPropertiesPage(1, 10).pipe(
-      finalize(() => {
-        this.isLoading = false;
-      })
-    );
+    this.properties$ = this.propertiesService.getPropertiesPage(1, 10);
+
   }
   ngOnInit(): void {
     this.loadProperties();

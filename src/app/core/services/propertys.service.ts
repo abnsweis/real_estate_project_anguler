@@ -2,8 +2,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { catchError, filter, map, Observable, throwError } from 'rxjs';
-import { IProperty } from '../models/property.interface';
-import { PaginationResponse } from '../models/paginationResponse.interface';
+import { IProperty } from '../models/Interfaces/Iproperty.interface';
+import { PaginationResponse } from '../models/Interfaces/IpaginationResponse.interface';
 import { ErrorHandlerService } from './error-handler.service';
 
 @Injectable({

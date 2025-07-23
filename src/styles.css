@@ -37,3 +37,21 @@
 .p-paginator button {
   background-color: #f8f8f8 !important;
 }
+
+.p-button {
+  background-color: var(--bs-primary) !important;
+}
+
+.p-inputtext:enabled:focus {
+  border-color: var(--bs-primary) !important;
+  box-shadow: var(--bs-primary) !important;
+  outline: var(--p-inputtext-focus-ring-width) var(--bs-primary) !important;
+  outline-offset: var(--bs-primary) !important;
+}
+.p-inputtext:enabled:focus + label {
+  margin: 0;
+  color: var(--bs-primary);
+}
+.p-ripple {
+  border: none !important;
+}

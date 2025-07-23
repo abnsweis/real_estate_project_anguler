@@ -36,6 +36,7 @@
             </div>
             <div class="card-item text-center bg-white rounded-4 shadow py-4 px-5 animate-up">
                 <div class="row">
+
                     <div class="col-12 col-md-8 p-0 text-end">
                         <h3 class="text-end">{{property.title}}</h3>
 
@@ -109,7 +110,17 @@
                         </p-button>
                         }
                     </div>
+                    <div class="col-12   p-0 text-end">
+                        <div class="text-end d-flex   justify-content-end align-items-center gap-2 mt-3">
+                            <p-button icon="pi pi-heart" aria-label="" />
+                            <p-button icon="pi pi-share-alt" aria-label="" />
+                        </div>
+                    </div>
 
+                    <div class="col-12  p-0 text-end mt-3">
+                        <app-comments-section [comments]="comments.items"
+                            (commentToParent)="AddComment($event)"></app-comments-section>
+                    </div>
                 </div>
             </div>
         </div>

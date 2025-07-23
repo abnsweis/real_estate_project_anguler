@@ -1,0 +1,14 @@
+<div class="row justify-content-center align-items-center">
+    <div class="col-12 col-sm-8">
+        <p-floatlabel variant="on">
+            <input pInputText id="on_label" [ngStyle]="{ width: '100%' }" [(ngModel)]="commentText"
+                autocomplete="off" />
+            <label for="on_label" class="me-3">اضافة تعليق</label>
+        </p-floatlabel>
+    </div>
+    <div class="col-12 col-sm-4 mt-3 mt-sm-0"> <p-button pButton class="btn btn-primary  rounded-3  text-center py-1"
+            [ngStyle]="{ width: '100%' }" (click)="sendComment()">
+            <i class="fa-solid fa-plus"></i>
+            <span>اضافة</span>
+        </p-button></div>
+</div>

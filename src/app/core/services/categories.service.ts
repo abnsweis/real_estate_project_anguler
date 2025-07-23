@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PaginationResponse } from '../models/paginationResponse.interface';
-import { ICategory } from '../models/category.inteface';
+import { PaginationResponse } from '../models/Interfaces/IpaginationResponse.interface';
+import { ICategory } from '../models/Interfaces/Icategory.inteface';
 import { environment } from '../../../environments/environment.development';
 
 @Injectable({

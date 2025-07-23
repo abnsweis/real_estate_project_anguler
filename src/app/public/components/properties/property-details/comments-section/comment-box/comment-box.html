@@ -1,0 +1,17 @@
+<div class="box row shadow mt-3 rounded-3">
+    <div class="col-1">
+        <img [src]="comment.imageURL" width="40px" alt="صورة المستخدم">
+    </div>
+
+    <div class="col-10 mt-2 me-3 me-md-2">
+        <div class="d-flex   ">
+            <div>
+                <h6 class="lh-1 mx-1 mb-0 fw-bold">{{comment.fullName}}</h6>
+                <small>&#64;{{comment.username}}</small>
+            </div>
+            <small class="lh-1 mb-0  mx-1 text-primary fw-bold">{{comment.createdDate}}</small>
+        </div>
+
+        <p class="mt-1">{{comment.commentText}}</p>
+    </div>
+</div>

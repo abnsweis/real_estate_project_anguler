@@ -24,6 +24,12 @@ import { Image } from 'primeng/image';
 import { NotFound404 } from './components/not-found-404/not-found-404';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConvertSpaceToDashPipe } from "../core/pipes/convert-space-to-dash-pipe";
+import { FormsModule } from '@angular/forms';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { InputTextModule } from 'primeng/inputtext';
+import { CommentsSection } from './components/properties/property-details/comments-section/comments-section';
+import { CommentBox } from './components/properties/property-details/comments-section/comment-box/comment-box';
+import { AddComment } from './components/properties/property-details/comments-section/add-comment/add-comment';
 
 @NgModule({
   declarations: [
@@ -42,7 +48,10 @@ import { ConvertSpaceToDashPipe } from "../core/pipes/convert-space-to-dash-pipe
     Card,
     CategoriesFilter,
     PropertyDetails,
-    NotFound404
+    NotFound404,
+    CommentsSection,
+    CommentBox,
+    AddComment,
   ],
   imports: [
     CommonModule,
@@ -51,7 +60,9 @@ import { ConvertSpaceToDashPipe } from "../core/pipes/convert-space-to-dash-pipe
     Dialog,
     GalleriaModule,
     Image,
-    ConvertSpaceToDashPipe
-]
+    ConvertSpaceToDashPipe,
+    FloatLabelModule, InputTextModule, FormsModule,
+
+  ]
 })
 export class PublicModule { }

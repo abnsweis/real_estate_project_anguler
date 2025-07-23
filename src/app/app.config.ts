@@ -8,13 +8,17 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import Lara from '@primeuix/themes/lara';
 import { provideToastr } from 'ngx-toastr';
 import { loadingInterceptor } from './core/interceptors/loading-interceptor';
+import { errorInterceptor } from './core/interceptors/errorInterceptor';
+import { authInterceptor } from './core/interceptors/auth-interceptor';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideHttpClient(
       withInterceptors([
-        loadingInterceptor
+        loadingInterceptor,
+        errorInterceptor,
+        authInterceptor
       ]),
     ),
     provideAnimationsAsync(),

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CategoriesService } from '../../../../core/services/categories.service';
-import { ICategory } from '../../../../core/models/category.inteface';
-import { PaginationResponse } from '../../../../core/models/paginationResponse.interface';
+import { ICategory } from '../../../../core/models/Interfaces/Icategory.inteface';
+import { PaginationResponse } from '../../../../core/models/Interfaces/IpaginationResponse.interface';
 import { Observable } from 'rxjs';
 
 @Component({

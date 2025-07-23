@@ -5,6 +5,7 @@ import { Home } from './components/home/home';
 import { Properties } from './components/properties/properties';
 import { PropertyDetails } from './components/properties/property-details/property-details';
 import { NotFound404 } from './components/not-found-404/not-found-404';
+import { authGuard } from '../core/guards/auth-guard-guard';
 
 const routes: Routes = [
 
@@ -18,7 +19,7 @@ const routes: Routes = [
     children: [
       { path: '', component: Home },
       { path: 'home', component: Home },
-      { path: 'properties', component: Properties },
+      { path: 'properties', component: Properties, canActivate: [authGuard] },
       { path: 'properties/:propertyId', component: PropertyDetails },
       { path: 'not-found', component: NotFound404 },
       { path: '**', component: NotFound404 }

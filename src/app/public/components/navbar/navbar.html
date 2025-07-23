@@ -11,14 +11,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto border-bottom border-lg-bottom-0 pt-2 pt-lg-0">
+                @if(isLoggedIn){
+
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/']">الرئيسية</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['properties']">العقارات</a>
-                </li>
-                <li class="nav-item">
-
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">عقارات للإيجار</a>
@@ -32,9 +31,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">اتصل بنا</a>
                 </li>
+                }
             </ul>
 
             <div class="m-sm-2">
+                @if(!isLoggedIn){
                 <a [routerLink]="['/auth/login']" class="btn btn-link text-1000 fw-medium order-1 order-lg-0"
                     type="button">
                     تسجيل الدخول
@@ -42,6 +43,12 @@
                 <a [routerLink]="['/auth/register']" class="btn btn-primary rounded-pill order-0" type="submit">
                     إنشاء حساب
                 </a>
+                }
+                @else{
+                <button (click)="Logout()" class="btn btn-primary rounded-pill order-0" type="submit">
+                    تسجيل الخروج
+                </button>
+                }
             </div>
         </div>
     </div>

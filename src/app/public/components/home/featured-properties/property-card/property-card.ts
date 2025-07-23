@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IProperty } from '../../../../../core/models/property.interface';
+import { IProperty } from '../../../../../core/models/Interfaces/Iproperty.interface';
 
 @Component({
   selector: 'app-property-card',
