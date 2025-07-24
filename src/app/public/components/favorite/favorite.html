@@ -1,0 +1,25 @@
+<section class="pb-6">
+    <div class="container">
+        <div class="row flex-center gap-4">
+
+            <ng-container *ngIf="favorites$| async as data;">
+                @if (data.items && data.items.length > 0) {
+                @for (favorite of data.items; track favorite.propertyId) {
+                <div class="col-12 col-sm-5 col-md-3">
+
+                    <app-favorite-card [favorite]="favorite"></app-favorite-card>
+
+                </div>
+                }
+                }
+                @else {
+                <div class="col-12 mt-4">
+                    <h4> لا يتوفر عقارات في المفضلة</h4>
+                </div>
+                }
+            </ng-container>
+
+        </div>
+
+    </div>
+</section>

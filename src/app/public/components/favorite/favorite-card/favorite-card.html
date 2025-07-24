@@ -1,0 +1,32 @@
+<div class="card-item text-center bg-white rounded-4 shadow p-3 py-4 animate-up">
+
+    <img [src]="favorite?.mainImage" alt="صورة عقار" class="img-fluid rounded-3 mb-3"
+        style="height: 200px; object-fit: cover; width: 100%; max-width: 100%;" />
+
+    <div class="boady text-end px-2">
+
+
+        <p class="fw-bold fixed-text-2lines mt-1 fs-1 text-dark">
+            {{favorite?.title}}
+        </p>
+
+        <h5 class="fw-bold fixed-text-2lines mt-1 text-currency"> {{favorite?.price}}</h5>
+
+        <!-- الموقع -->
+        <p class="fw-bold fixed-text-2lines mt-1 text-dark">
+            {{favorite?.location}}
+        </p>
+
+        <!-- رقم العقار -->
+        <p class="fw-bold fixed-text-2lines mt-1 text-dark">{{favorite?.propertyNumber}}</p>
+
+        <div class="d-flex justify-content-between align-items-center gap-2 mt-3">
+            <a [routerLink]="['/properties',favorite?.propertyId]" routerLinkActive="router-link-active"
+                class="btn btn-primary btn-sm rounded-3 w-100 py-2">
+                عرض التفاصيل
+            </a>
+
+            <p-button icon="fas fa-trash-alt text-danger" aria-label="" (click)="RemoveFromFavorite()" />
+        </div>
+    </div>
+</div>

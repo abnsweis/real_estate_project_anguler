@@ -30,6 +30,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CommentsSection } from './components/properties/property-details/comments-section/comments-section';
 import { CommentBox } from './components/properties/property-details/comments-section/comment-box/comment-box';
 import { AddComment } from './components/properties/property-details/comments-section/add-comment/add-comment';
+import { FavoriteCard } from './components/favorite/favorite-card/favorite-card';
+import { Favorite } from './components/favorite/favorite';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { AddComment } from './components/properties/property-details/comments-se
     CommentsSection,
     CommentBox,
     AddComment,
+    Favorite,
+    FavoriteCard,
   ],
   imports: [
     CommonModule,

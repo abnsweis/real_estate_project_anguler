@@ -9,6 +9,7 @@ import { PropertiesService } from '../../../../core/services/propertys.service';
 import { CommentsService } from '../../../../core/services/comments.service';
 import { ToastrService } from 'ngx-toastr';
 import { errorContext } from 'rxjs/internal/util/errorContext';
+// import { FavoritesService } from '../../../../core/services/favorites.service';
 
 @Component({
   selector: 'app-property-details',
@@ -20,10 +21,11 @@ export class PropertyDetails implements OnInit {
   propertyId: string = '';
   property!: IProperty;
   comments!: PaginationResponse<IComment>;
-  value2: string | undefined;
+
   visibleImagesDialog: boolean = false;
   visibleImagesVideos: boolean = false;
 
+  inFavorite: boolean = false;
   // خيارات الصور إللي عندك
   responsiveOptions = [
     { breakpoint: '1024px', numVisible: 5 },
@@ -35,6 +37,7 @@ export class PropertyDetails implements OnInit {
     private route: ActivatedRoute,
     private propertiesService: PropertiesService,
     private commentsService: CommentsService,
+    // private favoritesService: FavoritesService,
     private router: Router,
     private toastr: ToastrService
   ) { }
@@ -48,7 +51,6 @@ export class PropertyDetails implements OnInit {
         }
       }),
       switchMap(() => {
-        // استعمل forkJoin لتجميع العقار والتعليقات
         return forkJoin({
           property: this.propertiesService.getPropertyById(this.propertyId),
           comments: this.commentsService.getProprtyComments(this.propertyId)
@@ -60,18 +62,38 @@ export class PropertyDetails implements OnInit {
         this.comments = comments;
       },
       error: err => {
-        console.error(err);
         if (err.status === 404) {
           this.router.navigate(['/not-found']);
         }
       }
     });
+
+    // this.IsInFavorite();
   }
 
   imageClick(index: number) {
     // كود عرض الصورة
   }
 
+  // private IsInFavorite() {
+  //   this.favoritesService.IsInFavorite(this.propertyId).subscribe({
+  //     next: (res: any) => {
+  //       this.inFavorite = res.isInFavorite;
+  //     },
+  //   });
+  // }
+  RemoveFromFavorite() {
+    // this.favoritesService.removeFromFavorite(this.propertyId).subscribe({
+    //   next: (value) => {
+    //     this.toastr.success('تم ازالته من المفضلة');
+    //     this.inFavorite = false;
+    //   },
+    //   error: (error) => {
+    //     this.toastr.error('فشلة عملية ازالة العقار من المفضلة الرجاء المحاولة مرة اخرى');
+
+    //   }
+    // });
+  }
   showImages() {
     this.visibleImagesDialog = true;
   }
@@ -89,24 +111,74 @@ export class PropertyDetails implements OnInit {
     })) || [];
   }
 
+
+  loadComments() {
+    this.commentsService.getProprtyComments(this.propertyId).subscribe({
+      next: (comments) => {
+        this.comments = comments;
+      },
+      error: (err) => {
+        this.toastr.error('حدث خطأ أثناء تحديث التعليقات.');
+      }
+    });
+  }
   AddComment(commentText: string) {
 
     if (!commentText.trim()) {
       this.toastr.warning('التعليق فارغ، يرجى كتابته أولاً.');
+
       return;
     }
     this.toastr.info(this.propertyId);
     this.commentsService.addNewComment(this.propertyId, commentText).subscribe({
       next: () => {
         this.toastr.success('تم اضافة التعليق بنجاح ✅');
+        this.loadComments();
       },
       error: (error) => {
-
-        console.log(error.error)
 
         this.toastr.error('فشل اضافة التعليق الرجاء المحاولة مرة اخرى.');
       }
     });
 
+  }
+
+
+  AddTofavorite() {
+    // this.favoritesService.AddTofavorite(this.propertyId).subscribe({
+    //   next: (value) => {
+    //     this.toastr.success('تم اضافته الى المفضلة');
+    //     this.inFavorite = true;
+    //   },
+    //   error: (error) => {
+    //     this.toastr.error('فشلة عملية اضافة العقار الى المفضلة الرجاء المحاولة مرة اخرى');
+    //   }
+    // });
+  }
+
+
+
+
+  commentText: string = '';
+  commentId: string = '';
+  visibleUpdateCommentPopp: boolean = false;
+  showVisibleUpdateCommentPoppDialog(commentInfo: { commentText: string; commentId: string }) {
+    this.visibleUpdateCommentPopp = true;
+
+    this.commentText = commentInfo.commentText
+    this.commentId = commentInfo.commentId
+  }
+  saveComment() {
+    // this.commentsService.updateComment(this.commentId, this.commentText).subscribe({
+    //   next: (value) => {
+    //     this.toastr.success('تم تحديث التعليق بنجاح');
+    //     this.visibleUpdateCommentPopp = false;
+    //     this.loadComments();
+    //   },
+    //   error: (error) => {
+    //     console.log(error.error)
+    //     this.toastr.error('فشلة عملية تحديث التعليق الرجاء المحاولة مرة اخرى');
+    //   }
+    // });
   }
 }

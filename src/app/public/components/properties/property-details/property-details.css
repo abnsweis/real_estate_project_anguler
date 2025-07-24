@@ -98,3 +98,11 @@
 iframe {
   height: 400px !important;
 }
+
+.p-button-label {
+  padding: 10px;
+}
+
+p-dialog {
+  z-index: 1 !important;
+}

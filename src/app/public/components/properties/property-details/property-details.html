@@ -1,4 +1,4 @@
-<section class="testimonials py-5 mt-6">
+<section class="property-details py-5 mt-6">
     <div class="container">
         <div *ngIf="property">
             <div class=" flex justify-center">
@@ -112,17 +112,48 @@
                     </div>
                     <div class="col-12   p-0 text-end">
                         <div class="text-end d-flex   justify-content-end align-items-center gap-2 mt-3">
-                            <p-button icon="pi pi-heart" aria-label="" />
+                            @if(!inFavorite){
+
+                            <p-button icon="fa-regular fa-heart" aria-label="" (click)="AddTofavorite()" />
+
+                            }
+                            @else{
+                            <p-button icon="fa-solid fa-user text-danger" aria-label=""
+                                (click)="RemoveFromFavorite()" />
+                            }
                             <p-button icon="pi pi-share-alt" aria-label="" />
                         </div>
                     </div>
 
                     <div class="col-12  p-0 text-end mt-3">
-                        <app-comments-section [comments]="comments.items"
-                            (commentToParent)="AddComment($event)"></app-comments-section>
+                        <app-comments-section [comments]="comments.items" (commentToParent)="AddComment($event)"
+                            (onUpdateComment)="showVisibleUpdateCommentPoppDialog($event)"></app-comments-section>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+
+<p-dialog [ngClass]="{'dialog': true}" header="تعديل التعليق" [modal]="false" [(visible)]="visibleUpdateCommentPopp"
+    [style]="{ width: '25rem' }" dir="rtl">
+    <span class="p-text-secondary block mb-8">قم بتحديث تعليقك.</span>
+
+    <p-floatlabel variant="on" [ngClass]="{'my-3': true}">
+        <input pInputText id="on_label" [ngStyle]="{ width: '100%' }" [(ngModel)]="commentText" autocomplete="off" />
+        <label for="on_label" class="me-3"> تعليق</label>
+    </p-floatlabel>
+
+    <div class="flex justify-end gap-2 w-100">
+        <p-button label="تحديث" (click)="saveComment()" [ngClass]="{'p-3': true}" />
+        <p-button label="إلغاء" (click)="visibleUpdateCommentPopp = false" severity="secondary"
+            [ngClass]="{'p-3 btn-close': true}" />
+    </div>
+</p-dialog>
+
+
+
+
+
+<!-- SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS -->

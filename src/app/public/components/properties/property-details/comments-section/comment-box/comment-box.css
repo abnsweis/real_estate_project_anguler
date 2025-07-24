@@ -1,0 +1,26 @@
+.img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+img {
+  object-fit: cover;
+}
+
+.icon-btn-outline {
+  background-color: transparent !important;
+}
+
+::ng-deep .dialog .p-button {
+  width: 100px !important;
+  padding: 6px 10px !important;
+}
+::ng-deep .dialog .p-dialog-close-button {
+  padding: 15px !important;
+  width: fit-content !important;
+  background-color: transparent !important;
+}
+::ng-deep .dialog .btn-close * {
+  color: white;
+}

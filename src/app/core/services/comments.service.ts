@@ -20,15 +20,24 @@ export class CommentsService {
   }
 
   addNewComment(propertyId: string, commentText: string): Observable<any> {
-    console.log(`
-        propertyId : ${propertyId}
-        commentText : ${commentText}
-      
-      `);
+
     return this.httpClient.post(`${this.baseUrl}/api/Comments`, {
       propertyId: propertyId,
       text: commentText
     });
 
+  }
+
+  updateComment(commentId: string, commentText: string): Observable<any> {
+
+    return this.httpClient.put(`${this.baseUrl}/api/Comments`, {
+      commentId: commentId,
+      text: commentText
+    });
+
+  }
+
+  deleteComment(commentId: string) {
+    return this.httpClient.delete(`${this.baseUrl}/api/Comments/${commentId}`);
   }
 }

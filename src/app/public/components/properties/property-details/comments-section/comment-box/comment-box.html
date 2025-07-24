@@ -1,17 +1,44 @@
-<div class="box row shadow mt-3 rounded-3">
-    <div class="col-1">
-        <img [src]="comment.imageURL" width="40px" alt="صورة المستخدم">
+<div class="box row shadow-sm mt-3 rounded-3 p-3 align-items-start bg-white">
+    <!-- صورة المستخدم -->
+    <div class="col-auto pe-0">
+        <img [src]="comment.imageURL" width="45" height="45" class="rounded-circle object-fit-cover"
+            alt="صورة المستخدم">
     </div>
 
-    <div class="col-10 mt-2 me-3 me-md-2">
-        <div class="d-flex   ">
+    <!-- بيانات المستخدم والنص -->
+    <div class="col ps-3">
+        <div class="d-flex justify-content-between align-items-start flex-wrap">
             <div>
-                <h6 class="lh-1 mx-1 mb-0 fw-bold">{{comment.fullName}}</h6>
-                <small>&#64;{{comment.username}}</small>
+                <h6 class="mb-0 fw-bold">{{ comment.fullName }}</h6>
+                <small class="text-muted">&#64;{{ comment.username }}</small>
             </div>
-            <small class="lh-1 mb-0  mx-1 text-primary fw-bold">{{comment.createdDate}}</small>
+            <small class="text-primary fw-semibold mt-1 mt-sm-0">{{ comment.createdDate }}</small>
         </div>
 
-        <p class="mt-1">{{comment.commentText}}</p>
+        <p class="mt-2 mb-1 text-break">{{ comment.commentText }}</p>
+    </div>
+
+    <!-- زر الخيارات -->
+    <div class="col-auto ps-0">
+        <div class="dropdown">
+            <button class="btn p-1 rounded-circle border-0" type="button" id="dropdownMenuButton"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-ellipsis-vertical text-secondary"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="dropdownMenuButton">
+                <li>
+                    <button class="dropdown-item" (click)="onEdit()">
+                        <i class="fa-solid fa-pen me-2 text-primary"></i>تعديل
+                    </button>
+                </li>
+                <li>
+                    <button (click)="onDelete()" class="dropdown-item text-danger">
+                        <i class="fa-solid fa-trash me-2"></i>حذف
+                    </button>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
+
+<!-- (click)="onEdit()" (click)="onDelete()"  (click)="onReport()" -->
