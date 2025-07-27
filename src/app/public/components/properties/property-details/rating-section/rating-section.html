@@ -1,0 +1,16 @@
+@for(rat of ratings;track rat.ratingId){
+<div class="review-card">
+    <div class="review-header">
+        <img [src]="rat.imageURL" alt="صورة المستخدم" class="user-avatar">
+        <div class="user-info">
+            <h3 class="user-name">{{rat.fullName}}</h3>
+            <div class="rating-stars">
+                <app-star [rating]='rat.ratingNumber'></app-star>
+            </div>
+        </div>
+    </div>
+    <div class="review-text">
+        <p>{{rat.ratingText}}</p>
+    </div>
+</div>
+}

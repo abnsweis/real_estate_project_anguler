@@ -36,6 +36,8 @@ import { Favorite } from './components/favorite/favorite';
 import { Profile } from './components/profile/profile';
 import { Select } from 'primeng/select';
 import { Edite } from './components/profile/edite/edite';
+import { RatingSection } from './components/properties/property-details/rating-section/rating-section';
+import { Rating } from 'primeng/rating';
 
 
 @NgModule({
@@ -63,6 +65,7 @@ import { Edite } from './components/profile/edite/edite';
     FavoriteCard,
     Profile,
     Edite,
+    RatingSection,
   ],
   imports: [
     CommonModule,
@@ -76,7 +79,7 @@ import { Edite } from './components/profile/edite/edite';
     Select,
     ConvertSpaceToDashPipe,
     FloatLabelModule, InputTextModule, FormsModule,
-
+    Rating
   ]
 })
 export class PublicModule { }

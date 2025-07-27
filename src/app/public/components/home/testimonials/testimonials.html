@@ -3,15 +3,12 @@
         <h1 class="section-title animate-on-load text-center ">شهادات العملاء</h1>
 
         <div class="row justify-content-center py-4">
+            <h4>{{testimonials.length}}</h4>
+            @for(testimonial of testimonials ;track testimonial.testimonialId ){
             <div class="col-md-6 col-sm-12 mt-4">
-                <app-testimonial-card></app-testimonial-card>
+                <app-testimonial-card [testimonial]="testimonial"></app-testimonial-card>
             </div>
-            <div class="col-md-6 col-sm-12 mt-4">
-                <app-testimonial-card></app-testimonial-card>
-            </div>
-            <div class="col-md-6 col-sm-12 mt-4">
-                <app-testimonial-card></app-testimonial-card>
-            </div>
+            }
 
         </div>
         <div class="row justify-content-center">

@@ -69,3 +69,9 @@
 .p-button-text.p-button-secondary {
   padding: 0;
 }
+.p-button-label {
+  color: white !important;
+}
+.text-warning-2 {
+  color: rgb(250, 173, 6) !important;
+}

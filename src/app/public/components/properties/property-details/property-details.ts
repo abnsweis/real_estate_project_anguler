@@ -10,6 +10,8 @@ import { CommentsService } from '../../../../core/services/comments.service';
 import { ToastrService } from 'ngx-toastr';
 import { errorContext } from 'rxjs/internal/util/errorContext';
 import { FavoritesService } from '../../../../core/services/favorites.service';
+import { RatingsService } from '../../../../core/services/ratings.service';
+import { IRating } from '../../../../core/models/Interfaces/Irating.inteface';
 
 @Component({
   selector: 'app-property-details',
@@ -21,9 +23,13 @@ export class PropertyDetails implements OnInit {
   propertyId: string = '';
   property!: IProperty;
   comments!: PaginationResponse<IComment>;
+  ratings: IRating[] = [];
 
   visibleImagesDialog: boolean = false;
   visibleImagesVideos: boolean = false;
+  visibleRatingDialog: boolean = false;
+  ratingValue!: number;
+  ratingText: string = '';
 
   inFavorite: boolean = false;
   // خيارات الصور إللي عندك
@@ -38,6 +44,7 @@ export class PropertyDetails implements OnInit {
     private propertiesService: PropertiesService,
     private commentsService: CommentsService,
     private favoritesService: FavoritesService,
+    private ratingsService: RatingsService,
     private router: Router,
     private toastr: ToastrService
   ) { }
@@ -69,15 +76,38 @@ export class PropertyDetails implements OnInit {
         console.log(err)
       }
     });
-    console.log(this.propertyId + 'hhh');
 
     this.IsInFavorite();
+    this.loadRatings();
   }
 
-  imageClick(index: number) {
-
+  AddNewRating() {
+    this.ratingsService.addRating(this.propertyId, this.ratingText, this.ratingValue).subscribe({
+      next: (value) => {
+        this.toastr.success('تم اضافة التقييم بنجاح')
+        this.visibleRatingDialog = false;
+        this.loadRatings();
+      },
+      error: (err) => {
+        console.log(err);
+        this.toastr.error('فشل اضافة التقييم الرجاء المحاولة مرة اخرى في وقف لاحق')
+      },
+    })
   }
 
+  loadRatings() {
+    this.ratingsService.getPropertyRatings(this.propertyId).subscribe({
+      next: (res) => {
+
+        this.ratings = res.items;
+
+      },
+    });
+  }
+
+  ratingDialog() {
+    this.visibleRatingDialog = true;
+  }
   private IsInFavorite() {
     this.favoritesService.IsInFavorite(this.propertyId).subscribe({
       next: (res: any) => {

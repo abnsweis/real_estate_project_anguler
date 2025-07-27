@@ -1,13 +1,8 @@
-<div class="row comments-section">
-    <div class="col-12 col-md-7 d-flex flex-column gap-3">
-        <h4>التعليقات {{comments.length}}</h4>
+<h4>التعليقات {{comments.length}}</h4>
 
-        <app-add-comment (commentAdded)="onCommentFromChild($event)"></app-add-comment>
-        @for (com of comments; track com.commentID) {
+<app-add-comment (commentAdded)="onCommentFromChild($event)"></app-add-comment>
+@for (com of comments; track com.commentID) {
 
-        <app-comment-box [comment]="com" (onDeleteComment)="deletecomment($event)"
-            (onButtonShowDialog)="updateCommentEvent($event)"></app-comment-box>
-        }
-    </div>
-    <div class="col-12 col-md-5">ss</div>
-</div>
+<app-comment-box [comment]="com" (onDeleteComment)="deletecomment($event)"
+    (onButtonShowDialog)="updateCommentEvent($event)"></app-comment-box>
+}

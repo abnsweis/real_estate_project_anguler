@@ -97,19 +97,23 @@
                             <img [src]="property.mainImage" alt="" height="200" class="img-fluid" />
                         </div>
                         @if (property.images.length > 0) {
-                        <p-button (click)=" showImages()" pButton
+                        <p-button (click)=" showImages()" label="عرض الصور" pButton
                             class="btn btn-primary rounded-3 mt-3 w-100 text-center py-1">
                             <i class="fa-solid fs-1 fa-image px-1"></i>
-                            <span>عرض الصور</span>
                         </p-button>
                         }
                         @if (!property.videoUrl?.length) {
-                        <p-button (click)=" showVideo()" pButton
+                        <p-button (click)=" showVideo()" label="عرض الفيديو" pButton
                             class="btn btn-primary  rounded-3 mt-3 w-100 text-center py-1">
                             <i class="fa-solid fa-video"></i>
-                            <span>عرض الفيديو</span>
                         </p-button>
+
                         }
+
+                        <p-button (click)="ratingDialog()" label="اضافة تقييم" pButton
+                            class="btn btn-primary  rounded-3 mt-3 w-100 text-center py-1">
+                            <i class="fa-solid fa-star text-warning-2"></i>
+                        </p-button>
                     </div>
                     <div class="col-12   p-0 text-end">
                         <div class="text-end d-flex   justify-content-end align-items-center gap-2 mt-3">
@@ -127,8 +131,19 @@
                     </div>
 
                     <div class="col-12  p-0 text-end mt-3">
-                        <app-comments-section [comments]="comments.items" (commentToParent)="AddComment($event)"
-                            (onUpdateComment)="showVisibleUpdateCommentPoppDialog($event)"></app-comments-section>
+                        <div class="row d-flex">
+
+                            <div class=" comments-section   col-sm-7 d-flex flex-column gap-3">
+
+                                <app-comments-section [comments]="comments.items" (commentToParent)="AddComment($event)"
+                                    (onUpdateComment)="showVisibleUpdateCommentPoppDialog($event)"></app-comments-section>
+
+                            </div>
+                            <div class="rating-section col-md-5 d-flex flex-column  ">
+
+                                <app-rating-section [ratings]="ratings"></app-rating-section>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -154,8 +169,35 @@
     </div>
 </p-dialog>
 
-<h2></h2>
 
+<p-dialog header="إضافة تقييم" [modal]="true" [(visible)]="visibleRatingDialog" [style]="{ width: '25rem' }">
+
+    <div class="flex items-center gap-4 my-4 ">
+        <p-floatlabel variant="on">
+            <input pInputText id="on_label" [ngStyle]="{ width: '100%' }" [(ngModel)]="ratingText" autocomplete="off" />
+            <label for="on_label" class="me-3">نص من ابداعك</label>
+        </p-floatlabel>
+    </div>
+    <div class="flex flex-col gap-2 mb-6">
+        <label class="font-semibold text-gray-700 text-base">التقييم</label>
+        <div class="flex items-center gap-2">
+            <p-rating [(ngModel)]="ratingValue" class="text-3xl fs-3">
+                <ng-template pTemplate="onicon">
+                    😍
+                </ng-template>
+                <ng-template pTemplate="officon">
+                    😑
+                </ng-template>
+            </p-rating>
+        </div>
+    </div>
+
+    <div class="flex justify-end gap-2">
+        <p-button [ngClass]="{'btn btn-primary mx-3': true}" label="حفظ" (click)="AddNewRating()" />
+        <p-button [ngClass]="{'btn btn-primary text-light': true}" label="إلغاء" severity="secondary"
+            (click)="visibleRatingDialog = false" />
+    </div>
+</p-dialog>
 
 
 <!-- SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS -->

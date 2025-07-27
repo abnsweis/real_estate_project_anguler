@@ -12,9 +12,7 @@ import { ErrorHandlerService } from './error-handler.service';
 export class PropertiesService {
 
   private baseUrl = environment.apiBaseUrl;
-  constructor(private _httpclient: HttpClient,
-    private errorHandler: ErrorHandlerService
-  ) { }
+  constructor(private _httpclient: HttpClient) { }
 
 
   getPropertiesPage(pageNumber: number, pageSize: number): Observable<PaginationResponse<IProperty>> {

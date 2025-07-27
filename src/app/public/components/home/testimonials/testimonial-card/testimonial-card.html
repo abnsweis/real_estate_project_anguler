@@ -1,28 +1,27 @@
 <div class="testimonial-card card-item text-center bg-white rounded-4 shadow p-3">
-    <div class="row align-items-center">
-        <div class="user-img col-sm-2 col-3   ">
-            <div style="width: 60px; height: 60px; overflow: hidden;" class="rounded-circle">
-                <img src="../../../../../../assets/img/img-2.jpg" alt="Testimonial Image" class="img-fluid w-100 h-100"
-                    style="object-fit: cover;">
-            </div>
+    <div class="d-flex flex-wrap align-items-center">
+        <!-- صورة المستخدم -->
+        <div class="user-img me-3 mb-2" style="width: 60px; height: 60px;">
+            <img [src]="testimonial?.imageURL" alt="Testimonial Image" class="rounded-circle img-fluid w-100 h-100"
+                style="object-fit: cover;">
         </div>
 
-        <div class="col-md-10 col-9 text-end lh-sm px-0">
-            <h5 class="testimonial-name fw-bold text-primary">د. سامي الحلاق</h5>
-            <small class="fs-1">أستاذ جامعي - جامعة دمشق</small>
+        <!-- الاسم و اليوزر -->
+        <div class="flex-grow-1 text-end mb-2">
+            <h5 class="testimonial-name fw-bold text-primary mb-1">{{testimonial?.fullName}}</h5>
+            <small class="fs-1">{{testimonial?.username}}</small>
         </div>
 
-        <div class="rating-text col-12 text-end lh-sm">
-            <p class="text-muted mb-2 pe-2   ">
-                سكنت في هذا العقار خلال زيارتي للمدينة، وكان مريحًا جدًا، نظيف، وموقعه مثالي لقضاء الوقت في الراحة أو
-                الدراسة. أنصح به وبشدة لكل من يبحث عن الاستقرار المؤقت.
-            </p>
+        <!-- نص التقييم -->
+        <div class="w-100 text-end lh-sm mb-2">
+            <p class="text-muted mb-0 pe-2">{{testimonial?.ratingText}}</p>
         </div>
 
-        <div class="col-12 text-end">
+        <!-- التقييم بالنجوم -->
+        <div class="w-100 text-end">
             <p class="mb-1 text-secondary fw-semibold pe-2 fs-1">التقييم:</p>
-            <div class="testimonial-rating pe-2">
-                <ng-container *ngFor="let star of [].constructor(5); let i = index">
+            <div class="testimonial-rating pe-2 d-inline-flex">
+                <ng-container *ngFor="let star of rating">
                     <i class="fas fa-star fs-2 me-1 text-warning"></i>
                 </ng-container>
             </div>
