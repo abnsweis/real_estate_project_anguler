@@ -1,0 +1,151 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+<div class="min-vh-100 d-flex align-items-center justify-content-center bg-light py-6 mt-5" dir="rtl">
+    <div class="bg-white rounded-4 shadow p-4" style="width: 100%; max-width: 900px">
+        <h3 class="text-center fw-semibold mb-4">تعديل الحساب</h3>
+        @if(editeUserForm){
+        <form (ngSubmit)="onSubmit()" [formGroup]="editeUserForm">
+            <div class="row align-items-center">
+                <!-- الحقول -->
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label">الاسم الكامل</label>
+                            <input type="text" id="fullName" formControlName="fullName" class="form-control py-1 fs-6"
+                                [class.is-invalid]="editeUserForm.get('fullName')?.invalid && editeUserForm.get('fullName')?.touched"
+                                placeholder="الاسم الكامل" />
+
+                            <small class="text-danger"
+                                *ngIf="editeUserForm.get('fullName')?.invalid && editeUserForm.get('fullName')?.touched">
+                                الاسم الكامل مطلوب
+                            </small>
+
+
+
+                        </div>
+                        <!-- اسم المستخدم -->
+                        <div class="col-12 col-sm-6 mb-3">
+                            <label for="username" class="form-label">اسم المستخدم</label>
+                            <input type="text" id="username" formControlName="username" class="form-control py-1 fs-6"
+                                [class.is-invalid]="editeUserForm.get('username')?.invalid && editeUserForm.get('username')?.touched"
+                                placeholder="اسم المستخدم" />
+                            @if (editeUserForm.get('username')?.errors?.['required'] &&
+                            editeUserForm.get('username')?.touched) {
+                            <small class="text-danger">
+                                اسم المستخدم مطلوب
+                            </small>
+                            } @else if (editeUserForm.get('username')?.errors?.['existsUsername'] &&
+                            editeUserForm.get('username')?.touched) {
+                            <small class="text-danger">
+                                اسم المستخدم مستخدم بالفعل
+                            </small>
+                            }
+
+                        </div>
+
+                        <!-- البريد الإلكتروني -->
+                        <div class="col-12 col-sm-6 mb-3">
+                            <label for="email" class="form-label">البريد الإلكتروني</label>
+                            <input type="email" id="email" formControlName="email"
+                                [class.is-invalid]="editeUserForm.get('email')?.invalid && editeUserForm.get('email')?.touched"
+                                class="form-control py-1 fs-6" placeholder="البريد الألكتروني" name="email" />
+
+                            <!-- البريد غير صالح (Format غلط) -->
+                            <small class="text-danger"
+                                *ngIf="editeUserForm.get('email')?.errors?.['email'] && editeUserForm.get('email')?.touched">
+                                البريد الإلكتروني غير صالح
+                            </small>
+
+                            <!-- البريد مستخدم بالفعل (AsyncValidator) -->
+                            @if(editeUserForm.get('email')?.errors?.['emailExists'] &&
+                            editeUserForm.get('email')?.touched){
+
+                            <small class="text-danger">
+                                البريد الإلكتروني مستخدم بالفعل
+                            </small>
+                            }
+
+                        </div>
+
+                        <!-- رقم الهاتف -->
+                        <div class="col-12 col-sm-6 mb-3">
+                            <label for="phoneNumber" class="form-label">رقم الهاتف</label>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" formControlName="phoneNumber"
+                                class="form-control py-1 fs-6"
+                                [class.is-invalid]="editeUserForm.get('phoneNumber')?.invalid && editeUserForm.get('phoneNumber')?.touched"
+                                placeholder="رقم الهاتف" />
+
+                            @if (editeUserForm.get('phoneNumber')?.touched) {
+                            @if (editeUserForm.get('phoneNumber')?.errors?.['required']) {
+                            <small class="text-danger">رقم الهاتف مطلوب</small>
+                            } @else if (editeUserForm.get('phoneNumber')?.errors?.['phoneNumberExists']) {
+                            <small class="text-danger">رقم الهاتف مستخدم بالفعل</small>
+                            }
+                            }
+                        </div>
+
+
+                        <!-- الجنس -->
+                        <div class="col-12 col-sm-6 mb-3">
+                            <label for="gender" class="form-label">الجنس</label>
+                            <select class="form-select py-1 fs-6" formControlName="gender"
+                                [class.is-invalid]="editeUserForm.get('gender')?.invalid && editeUserForm.get('gender')?.touched"
+                                id="gender">
+                                <option selected value="0">ذكر</option>
+                                <option value="1">أنثى</option>
+                            </select>
+                            <small class="text-danger"
+                                *ngIf="editeUserForm.get('gender')?.invalid && editeUserForm.get('gender')?.touched">
+                                الرجاء اختيار الجنس
+                            </small>
+                        </div>
+
+                        <!-- تاريخ الميلاد -->
+                        <div class="col-12 col-sm-6 mb-3">
+                            <label for="dateOfBirth" class="form-label">تاريخ الميلاد</label>
+                            <input type="date" id="dateOfBirth" formControlName="dateOfBirth"
+                                class="form-control py-1 fs-6"
+                                [class.is-invalid]="editeUserForm.get('dateOfBirth')?.invalid && editeUserForm.get('dateOfBirth')?.touched" />
+                            <small class="text-danger"
+                                *ngIf="editeUserForm.get('dateOfBirth')?.invalid && editeUserForm.get('dateOfBirth')?.touched">
+                                تاريخ الميلاد غير صالح
+                            </small>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- الصورة -->
+                <div class="col-md-4 mb-4 mb-md-0 text-center">
+                    <label for="imageURL" class="d-inline-block cursor-pointer">
+                        <img id="imagePreview" [src]="imagePreviewUrl" class="rounded-circle border"
+                            style="width: 120px; height: 120px; object-fit: cover;" />
+                    </label>
+                    <div>
+                        <label for="imageURL"
+                            class="btn btn-outline-primary d-inline-flex align-items-center gap-2 mt-3 cursor-pointer">
+                            <i class="bi bi-image"></i> تغيير الصورة
+                        </label>
+                    </div>
+                    <input type="file" id="imageURL" name="imageURL" (change)="onFileSelected($event)" accept="image/*"
+                        class="d-none" />
+                </div>
+
+
+
+            </div>
+
+            <!-- زر الحفظ -->
+            <div class="d-grid mt-4">
+                <button type="submit" class="btn btn-success btn-lg fw-bold shadow-sm">حفظ التعديلات</button>
+            </div>
+        </form>
+        }
+
+
+        <!-- رابط الرجوع -->
+        <p class="mt-4 text-center text-primary">
+            <a href="#" class="fw-bold text-dark">الرجوع إلى الصفحة الرئيسية</a>
+        </p>
+    </div>
+</div>

@@ -7,6 +7,8 @@ import { PropertyDetails } from './components/properties/property-details/proper
 import { NotFound404 } from './components/not-found-404/not-found-404';
 import { authGuard } from '../core/guards/auth-guard-guard';
 import { Favorite } from './components/favorite/favorite';
+import { Profile } from './components/profile/profile';
+import { Edite } from './components/profile/edite/edite';
 
 const routes: Routes = [
 
@@ -23,6 +25,8 @@ const routes: Routes = [
       { path: 'properties', component: Properties, canActivate: [authGuard] },
       { path: 'properties/:propertyId', component: PropertyDetails },
       { path: 'favorite', component: Favorite },
+      { path: 'my', component: Profile },
+      { path: 'my/edite', component: Edite },
       { path: 'not-found', component: NotFound404 },
       { path: '**', component: NotFound404 }
     ]

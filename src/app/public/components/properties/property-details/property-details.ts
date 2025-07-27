@@ -9,7 +9,7 @@ import { PropertiesService } from '../../../../core/services/propertys.service';
 import { CommentsService } from '../../../../core/services/comments.service';
 import { ToastrService } from 'ngx-toastr';
 import { errorContext } from 'rxjs/internal/util/errorContext';
-// import { FavoritesService } from '../../../../core/services/favorites.service';
+import { FavoritesService } from '../../../../core/services/favorites.service';
 
 @Component({
   selector: 'app-property-details',
@@ -37,7 +37,7 @@ export class PropertyDetails implements OnInit {
     private route: ActivatedRoute,
     private propertiesService: PropertiesService,
     private commentsService: CommentsService,
-    // private favoritesService: FavoritesService,
+    private favoritesService: FavoritesService,
     private router: Router,
     private toastr: ToastrService
   ) { }
@@ -59,40 +59,43 @@ export class PropertyDetails implements OnInit {
     ).subscribe({
       next: ({ property, comments }) => {
         this.property = property;
+
         this.comments = comments;
       },
-      error: err => {
+      error: (err) => {
         if (err.status === 404) {
           this.router.navigate(['/not-found']);
         }
+        console.log(err)
       }
     });
+    console.log(this.propertyId + 'hhh');
 
-    // this.IsInFavorite();
+    this.IsInFavorite();
   }
 
   imageClick(index: number) {
-    // كود عرض الصورة
+
   }
 
-  // private IsInFavorite() {
-  //   this.favoritesService.IsInFavorite(this.propertyId).subscribe({
-  //     next: (res: any) => {
-  //       this.inFavorite = res.isInFavorite;
-  //     },
-  //   });
-  // }
+  private IsInFavorite() {
+    this.favoritesService.IsInFavorite(this.propertyId).subscribe({
+      next: (res: any) => {
+        this.inFavorite = res.isInFavorite;
+      },
+    });
+  }
   RemoveFromFavorite() {
-    // this.favoritesService.removeFromFavorite(this.propertyId).subscribe({
-    //   next: (value) => {
-    //     this.toastr.success('تم ازالته من المفضلة');
-    //     this.inFavorite = false;
-    //   },
-    //   error: (error) => {
-    //     this.toastr.error('فشلة عملية ازالة العقار من المفضلة الرجاء المحاولة مرة اخرى');
+    this.favoritesService.removeFromFavorite(this.propertyId).subscribe({
+      next: (value) => {
+        this.toastr.success('تم ازالته من المفضلة');
+        this.inFavorite = false;
+      },
+      error: (error) => {
+        this.toastr.error('فشلة عملية ازالة العقار من المفضلة الرجاء المحاولة مرة اخرى');
 
-    //   }
-    // });
+      }
+    });
   }
   showImages() {
     this.visibleImagesDialog = true;
@@ -145,15 +148,15 @@ export class PropertyDetails implements OnInit {
 
 
   AddTofavorite() {
-    // this.favoritesService.AddTofavorite(this.propertyId).subscribe({
-    //   next: (value) => {
-    //     this.toastr.success('تم اضافته الى المفضلة');
-    //     this.inFavorite = true;
-    //   },
-    //   error: (error) => {
-    //     this.toastr.error('فشلة عملية اضافة العقار الى المفضلة الرجاء المحاولة مرة اخرى');
-    //   }
-    // });
+    this.favoritesService.AddTofavorite(this.propertyId).subscribe({
+      next: (value) => {
+        this.toastr.success('تم اضافته الى المفضلة');
+        this.inFavorite = true;
+      },
+      error: (error) => {
+        this.toastr.error('فشلة عملية اضافة العقار الى المفضلة الرجاء المحاولة مرة اخرى');
+      }
+    });
   }
 
 
@@ -169,16 +172,16 @@ export class PropertyDetails implements OnInit {
     this.commentId = commentInfo.commentId
   }
   saveComment() {
-    // this.commentsService.updateComment(this.commentId, this.commentText).subscribe({
-    //   next: (value) => {
-    //     this.toastr.success('تم تحديث التعليق بنجاح');
-    //     this.visibleUpdateCommentPopp = false;
-    //     this.loadComments();
-    //   },
-    //   error: (error) => {
-    //     console.log(error.error)
-    //     this.toastr.error('فشلة عملية تحديث التعليق الرجاء المحاولة مرة اخرى');
-    //   }
-    // });
+    this.commentsService.updateComment(this.commentId, this.commentText).subscribe({
+      next: (value) => {
+        this.toastr.success('تم تحديث التعليق بنجاح');
+        this.visibleUpdateCommentPopp = false;
+        this.loadComments();
+      },
+      error: (error) => {
+        console.log(error.error)
+        this.toastr.error('فشلة عملية تحديث التعليق الرجاء المحاولة مرة اخرى');
+      }
+    });
   }
 }

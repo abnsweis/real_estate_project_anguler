@@ -4,7 +4,7 @@
         <div class="row align-items-center mt-4 justify-content-center align-items-center">
             <div class="row g-4 justify-content-center align-items-center">
 
-                @for (prop of featuredProperties$ | async; track prop) {
+                @for (prop of featuredProperties; track prop.propertyId) {
                 <div class="col-md-4 col-lg-4">
                     <app-property-card [property]="prop"></app-property-card>
                 </div>
@@ -14,7 +14,8 @@
             </div>
             <div class="row justify-content-center ">
                 <div class="col-12 col-md-4 mt-4">
-                    <a href="#" class=" btn btn-primary btn-sm rounded-3 fs-2 w-100 mt-2 py-2">
+                    <a [routerLink]="['/properties']" routerLinkActive="router-link-active"
+                        class=" btn btn-primary btn-sm rounded-3 fs-2 w-100 mt-2 py-2">
                         عرض كل العقارات
                     </a>
                 </div>

@@ -55,3 +55,17 @@
 .p-ripple {
   border: none !important;
 }
+.p-datepicker-day-cell,
+.p-datepicker-header {
+  padding: 0 !important;
+}
+.p-datepicker .p-datepicker-panel {
+  top: -300px;
+}
+
+.p-datepicker-header {
+  height: 30px;
+}
+.p-button-text.p-button-secondary {
+  padding: 0;
+}

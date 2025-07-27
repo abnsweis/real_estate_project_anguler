@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PropertiesService } from '../../../../core/services/propertys.service';
 import { IProperty } from '../../../../core/models/Interfaces/Iproperty.interface';
 import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-featured-properties',
@@ -10,11 +11,27 @@ import { Observable } from 'rxjs';
   styleUrl: './featured-properties.css'
 })
 export class FeaturedProperties {
-  featuredProperties$!: Observable<IProperty[]>;
+  featuredProperties: IProperty[] = [];
 
-  constructor(private _service: PropertiesService) { }
+  constructor(
+    private propertiesService: PropertiesService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    // this.featuredProperties$ = this._service.getPropertiesPage(1, 10);
+    this.loadFeaturedProperties();
   }
+
+  loadFeaturedProperties() {
+    this.propertiesService.getFeaturedProperties().subscribe({
+      next: (res) => {
+        this.featuredProperties = res;
+        this.toastr.success('تم تحميل العقارات المميزة بنجاح ✅', 'نجاح');
+      },
+      error: (error) => {
+        console.error('خطأ أثناء تحميل العقارات:', error);
+        this.toastr.error('حدث خطأ أثناء تحميل العقارات المميزة ❌', 'خطأ');
+      }
+    });
+  }
+
 }

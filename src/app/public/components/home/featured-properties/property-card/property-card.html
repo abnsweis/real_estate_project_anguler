@@ -1,5 +1,5 @@
 <div class="card-item text-center bg-white rounded-4 shadow p-4">
-    <img src="assets/img/img-2.jpg" alt="صورة عقار" class="img-fluid rounded-3 mb-3"
+    <img [src]="property?.mainImage" alt="صورة عقار" class="img-fluid rounded-3 mb-3"
         style="height: 180px; object-fit: cover; width: 100%; max-width: 100%;">
 
     <div class="boady text-end px-2">
@@ -11,7 +11,8 @@
 
         <app-star [rating]="property?.rating ?? 0"></app-star>
 
-        <a href="#" class="btn btn-primary btn-sm rounded-3 fs-1 w-100 mt-2 py-2">
+        <a [routerLink]="['properties',property?.propertyId]" routerLinkActive="router-link-active"
+            class="btn btn-primary btn-sm rounded-3 fs-1 w-100 mt-2 py-2">
             عرض التفاصيل
         </a>
     </div>

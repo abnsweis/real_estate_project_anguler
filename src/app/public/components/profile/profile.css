@@ -1,0 +1,27 @@
+.user-profile {
+  background: #fff;
+  border-radius: 8px;
+}
+
+.user-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 2px solid #007bff;
+}
+
+.detail-item label {
+  display: block;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.btn-change-image {
+  bottom: 10px;
+  right: 11px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
