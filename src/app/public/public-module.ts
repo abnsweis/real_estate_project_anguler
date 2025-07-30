@@ -38,7 +38,9 @@ import { Select } from 'primeng/select';
 import { Edite } from './components/profile/edite/edite';
 import { RatingSection } from './components/properties/property-details/rating-section/rating-section';
 import { Rating } from 'primeng/rating';
-
+import { ServicesPage } from './components/services-page/services-page';
+import { CardModule } from 'primeng/card';
+import { AboutUs } from './components/about-us/about-us';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import { Rating } from 'primeng/rating';
     Profile,
     Edite,
     RatingSection,
+    ServicesPage,
+    AboutUs
   ],
   imports: [
     CommonModule,
@@ -79,7 +83,8 @@ import { Rating } from 'primeng/rating';
     Select,
     ConvertSpaceToDashPipe,
     FloatLabelModule, InputTextModule, FormsModule,
-    Rating
+    Rating,
+    CardModule
   ]
 })
 export class PublicModule { }

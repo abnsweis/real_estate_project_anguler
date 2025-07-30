@@ -24,11 +24,12 @@ export class PropertyDetails implements OnInit {
   property!: IProperty;
   comments!: PaginationResponse<IComment>;
   ratings: IRating[] = [];
+  isRating: boolean = false;
 
   visibleImagesDialog: boolean = false;
   visibleImagesVideos: boolean = false;
   visibleRatingDialog: boolean = false;
-  ratingValue!: number;
+  ratingValue: number = 1;
   ratingText: string = '';
 
   inFavorite: boolean = false;
@@ -79,14 +80,27 @@ export class PropertyDetails implements OnInit {
 
     this.IsInFavorite();
     this.loadRatings();
+    this.isRatingProperty();
   }
 
   AddNewRating() {
+
+    if (this.ratingText.length <= 0) {
+      this.toastr.error("نص التقييم يجب ان لا يكون فارغاً");
+      return;
+    }
+    if (this.ratingValue <= 0) {
+      this.toastr.error("يرجى اختيار تقييم قبل إرسال المراجعة");
+      return;
+    }
+
+    alert('00');
     this.ratingsService.addRating(this.propertyId, this.ratingText, this.ratingValue).subscribe({
       next: (value) => {
         this.toastr.success('تم اضافة التقييم بنجاح')
         this.visibleRatingDialog = false;
         this.loadRatings();
+        this.isRating = true;
       },
       error: (err) => {
         console.log(err);
@@ -94,6 +108,24 @@ export class PropertyDetails implements OnInit {
       },
     })
   }
+
+
+  isRatingProperty() {
+    this.ratingsService.isPropertyRated(this.propertyId).subscribe({
+      next: (value) => {
+        console.log(value);
+        if (value) {
+          this.isRating = true;
+        }
+        else {
+          this.isRating = false;
+
+        }
+
+      }
+    });
+  }
+
 
   loadRatings() {
     this.ratingsService.getPropertyRatings(this.propertyId).subscribe({

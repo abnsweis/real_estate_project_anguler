@@ -1,0 +1,59 @@
+.hero-section {
+  position: relative;
+  height: 100vh;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../../../../assets/img/hero-realestate.jpg") center center / cover
+      no-repeat;
+}
+
+.hero-section .highlight {
+  color: #387bf5; /* Luxury Gold */
+}
+
+.animate-fade-in {
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 1.5s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.animate-zoom-in {
+  animation: zoomIn 1.5s ease forwards;
+  animation-delay: 1s;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

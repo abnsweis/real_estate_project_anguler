@@ -31,7 +31,7 @@
                     [maximizable]="true">
                     <div class="embed-responsive embed-responsive-16by9 w-100 h-100">
                         <iframe class="embed-responsive-item w-100  h-100" style="height: 100%;"
-                            src=" ../../../../../assets/video.mp4" allowfullscreen></iframe>
+                            src=" ../../../../../assets/video12.mp4" allowfullscreen></iframe>
                     </div>
                 </p-dialog>
             </div>
@@ -110,10 +110,12 @@
 
                         }
 
+                        @if(!isRating){
                         <p-button (click)="ratingDialog()" label="اضافة تقييم" pButton
                             class="btn btn-primary  rounded-3 mt-3 w-100 text-center py-1">
                             <i class="fa-solid fa-star text-warning-2"></i>
                         </p-button>
+                        }
                     </div>
                     <div class="col-12   p-0 text-end">
                         <div class="text-end d-flex   justify-content-end align-items-center gap-2 mt-3">

@@ -25,4 +25,9 @@ export class RatingsService {
     });
 
   }
+
+  isPropertyRated(propertyId: string): Observable<boolean> {
+    return this._httpclient.get<boolean>(`${this.baseUrl}/api/Ratings/is-rating?propertyId=${propertyId}`);
+  }
+
 }

@@ -21,13 +21,19 @@ export class AuthService {
 
     return this.httpClient.post<string>(`${this.baseUrl}/api/Account/login`, loginInfo);
   }
+  logout(): Observable<void> {
+    localStorage.removeItem('token');
+    return this.httpClient.post<void>(`${this.baseUrl}/api/Account/logout`, null);
+  }
+  register(formData: FormData): Observable<any> {
+
+    return this.httpClient.post<any>(`${this.baseUrl}/api/Account/register`, formData);
+  }
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
 
-  Logout(): void {
-    localStorage.removeItem('token');
-  }
+
   getToken(): string {
     return localStorage.getItem('token') ?? '';
   }
@@ -36,7 +42,7 @@ export class AuthService {
     return this.httpClient.get<IUser>(`${this.baseUrl}/api/Account/my`);
   }
   updateMyProfile(data: any): Observable<any> {
-    console.log(data)
+    console.log(data + "'''''''''''''''''")
     return this.httpClient.put<any>(`${this.baseUrl}/api/Account/my/edite`, data);
   }
   checkEmailExists(email: string): Observable<boolean> {

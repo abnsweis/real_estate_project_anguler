@@ -50,15 +50,11 @@
                             <input type="email" id="email" formControlName="email"
                                 [class.is-invalid]="editeUserForm.get('email')?.invalid && editeUserForm.get('email')?.touched"
                                 class="form-control py-1 fs-6" placeholder="البريد الألكتروني" name="email" />
-
-                            <!-- البريد غير صالح (Format غلط) -->
-                            <small class="text-danger"
-                                *ngIf="editeUserForm.get('email')?.errors?.['email'] && editeUserForm.get('email')?.touched">
+                            @if(editeUserForm.get('email')?.errors?.['email'] && editeUserForm.get('email')?.touched){
+                            <small class="text-danger">
                                 البريد الإلكتروني غير صالح
                             </small>
-
-                            <!-- البريد مستخدم بالفعل (AsyncValidator) -->
-                            @if(editeUserForm.get('email')?.errors?.['emailExists'] &&
+                            }@else if(editeUserForm.get('email')?.errors?.['emailExists'] &&
                             editeUserForm.get('email')?.touched){
 
                             <small class="text-danger">

@@ -18,7 +18,7 @@ export class Navbar {
 
 
   Logout(): void {
-    this._authService.Logout();
+    this._authService.logout().subscribe();
     this.router.navigateByUrl('auth/login');
   }
 }

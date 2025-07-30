@@ -1,0 +1,45 @@
+<div class="container py-5 mt-7">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">خدماتنا العقارية الفاخرة</h1>
+        <p class="lead text-muted mt-3">
+            نقدم لك حلولاً عقارية متكاملة بخبرة واحترافية لضمان أفضل تجربة لك في عالم العقارات.
+        </p>
+    </div>
+
+    <div class="row ">
+        @for(service of services ;track service.title){
+        <div class="col-12 col-md-4 mt-5">
+            <p-card [header]="service.title" [subheader]="service.subheader" class="h-100">
+                <ng-template pTemplate="content">
+                    <div class="text-center mb-3">
+                        <img [src]="service.imgUrl" class="rounded img-fluid" [alt]="service.title"
+                            style="width: 140px; height: 140px;" />
+                    </div>
+                    <p class="text-center">{{ service.description }}</p>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <button pButton type="button" [label]="service.btnLabel" [icon]="service.btnIcon" class="w-100"
+                        [ngClass]="service.btnClass" (click)="openServiceDetails(service)"></button>
+                </ng-template>
+            </p-card>
+        </div>
+        }
+    </div>
+</div>
+
+
+<p-dialog header="{{ selectedService?.title }}" [(visible)]="display" modal="true" [style.width]="'50vw'"
+    [style.minWidth]="'300px'">
+    <p>{{ selectedService?.description }}</p>
+</p-dialog>
+
+<style>
+    .p-card {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+    }
+
+    .p-card:hover {
+        transform: translateY(-5px);
+    }
+</style>

@@ -1,114 +1,187 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
 <div class="min-vh-100 d-flex align-items-center justify-content-center bg-light py-6" dir="rtl">
     <div class="bg-white rounded-4 shadow p-4" style="width: 100%; max-width: 700px">
         <h3 class="text-center fw-semibold mb-4">إنشاء حساب</h3>
-        <form enctype="multipart/form-data">
+        <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
             <div class="row">
 
                 <div class="row mb-4 justify-content-center">
                     <div class="col-md-6 text-center">
-
-                        <!-- صورة المعاينة -->
-                        <!-- <label for="imageURL" class="d-inline-block cursor-pointer">
-                            <img id="imagePreview" src="../../../../assets/img/img--user.png"
-                                class="rounded-circle border" style="width: 160px; height: 160px; object-fit: cover;" />
-                        </label> -->
                         <label for="imageURL" class="d-inline-block cursor-pointer">
-                            <img id="imagePreview" [src]="previewUrl" class="rounded-circle border"
-                                style="width: 160px; height: 160px; object-fit: cover;" />
+                            <img id="imagePreview" [src]="imagePreviewUrl || '../../../../assets/img/img--user.png'"
+                                class="rounded-circle border" style="width: 160px; height: 160px; object-fit: cover;" />
                         </label>
-                        <!-- زر اختيار صورة -->
-                        <div> <label for="imageURL"
+                        <div>
+                            <label for="imageURL"
                                 class="btn btn-primary d-inline-flex align-items-center gap-2 mt-3 cursor-pointer">
                                 <i class="fa-solid fa-image"></i> اختر صورة
-                            </label></div>
-
-                        <!-- input مخفي -->
+                            </label>
+                        </div>
                         <input type="file" (change)="onFileSelected($event)" id="imageURL" name="imageURL"
-                            accept="image/*" class="d-none" />
-
+                            accept="image/*" class="d-none" formControlName="imageURL" />
+                        @if (registerForm.get('imageURL')?.errors?.['required'] &&
+                        registerForm.get('imageURL')?.touched) {
+                        <small class="text-danger d-block mt-2">
+                            صورة المستخدم مطلوبة
+                        </small>
+                        }
                     </div>
                 </div>
-
-
 
                 <!-- الاسم الكامل -->
                 <div class="col-md-6 mb-3">
                     <label for="fullName" class="form-label">الاسم الكامل</label>
-                    <input type="text" id="fullName" class="form-control py-2 fs-5" placeholder="الاسم الكامل"
-                        name="fullName" />
+                    <input type="text" id="fullName" formControlName="fullName" class="form-control py-2 fs-5"
+                        placeholder="الاسم الكامل" name="fullName"
+                        [class.is-invalid]="registerForm.get('fullName')?.invalid && registerForm.get('fullName')?.touched" />
+                    @if (registerForm.get('fullName')?.errors?.['required'] && registerForm.get('fullName')?.touched) {
+                    <small class="text-danger">
+                        الاسم الكامل مطلوب
+                    </small>
+                    }
                 </div>
 
                 <!-- اسم المستخدم -->
                 <div class="col-md-6 mb-3">
                     <label for="username" class="form-label">اسم المستخدم</label>
-                    <input type="text" id="username" class="form-control py-2 fs-5" placeholder="اسم المستخدم"
-                        name="username" />
+                    <input type="text" id="username" formControlName="username" class="form-control py-2 fs-5"
+                        placeholder="اسم المستخدم" name="username"
+                        [class.is-invalid]="registerForm.get('username')?.invalid && registerForm.get('username')?.touched" />
+                    @if (registerForm.get('username')?.errors?.['required'] && registerForm.get('username')?.touched) {
+                    <small class="text-danger">
+                        اسم المستخدم مطلوب
+                    </small>
+                    } @else if (registerForm.get('username')?.errors?.['existsUsername'] &&
+                    registerForm.get('username')?.touched) {
+                    <small class="text-danger">
+                        اسم المستخدم مستخدم بالفعل
+                    </small>
+                    }
                 </div>
 
                 <!-- البريد الإلكتروني -->
                 <div class="col-md-6 mb-3">
                     <label for="email" class="form-label">البريد الإلكتروني</label>
-                    <input type="email" id="email" class="form-control py-2 fs-5" placeholder="البريد الألكتروني"
-                        name="email" />
+                    <input type="email" id="email" formControlName="email" class="form-control py-2 fs-5"
+                        placeholder="البريد الإلكتروني" name="email"
+                        [class.is-invalid]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" />
+                    @if (registerForm.get('email')?.errors?.['required'] && registerForm.get('email')?.touched) {
+                    <small class="text-danger">
+                        البريد الإلكتروني مطلوب
+                    </small>
+                    } @else if (registerForm.get('email')?.errors?.['email'] && registerForm.get('email')?.touched) {
+                    <small class="text-danger">
+                        البريد الإلكتروني غير صالح
+                    </small>
+                    } @else if (registerForm.get('email')?.errors?.['emailExists'] &&
+                    registerForm.get('email')?.touched) {
+                    <small class="text-danger">
+                        البريد الإلكتروني مستخدم بالفعل
+                    </small>
+                    }
                 </div>
 
                 <!-- رقم الهاتف -->
                 <div class="col-md-6 mb-3">
                     <label for="phoneNumber" class="form-label">رقم الهاتف</label>
-                    <input type="tel" id="phoneNumber" class="form-control py-2 fs-5" placeholder="رقم الهاتف"
-                        name="phoneNumber" />
+                    <input type="tel" id="phoneNumber" formControlName="phoneNumber" class="form-control py-2 fs-5"
+                        placeholder="رقم الهاتف" name="phoneNumber"
+                        [class.is-invalid]="registerForm.get('phoneNumber')?.invalid && registerForm.get('phoneNumber')?.touched" />
+                    @if (registerForm.get('phoneNumber')?.errors?.['required'] &&
+                    registerForm.get('phoneNumber')?.touched) {
+                    <small class="text-danger">
+                        رقم الهاتف مطلوب
+                    </small>
+                    } @else if (registerForm.get('phoneNumber')?.errors?.['phoneNumberExists'] &&
+                    registerForm.get('phoneNumber')?.touched) {
+                    <small class="text-danger">
+                        رقم الهاتف مستخدم بالفعل
+                    </small>
+                    }
                 </div>
 
                 <!-- كلمة المرور -->
                 <div class="col-md-6 mb-3">
                     <label for="password" class="form-label">كلمة المرور</label>
-                    <input type="password" id="password" class="form-control py-2 fs-5" placeholder="كلمة المرور"
-                        name="password" />
+                    <input type="password" id="password" formControlName="password" class="form-control py-2 fs-5"
+                        placeholder="كلمة المرور" name="password"
+                        [class.is-invalid]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" />
+                    @if (registerForm.get('password')?.errors?.['required'] && registerForm.get('password')?.touched) {
+                    <small class="text-danger">
+                        كلمة المرور مطلوبة
+                    </small>
+                    }
                 </div>
 
                 <!-- تأكيد كلمة المرور -->
                 <div class="col-md-6 mb-3">
                     <label for="confirmPassword" class="form-label">تأكيد كلمة المرور</label>
-                    <input type="password" id="confirmPassword" class="form-control py-2 fs-5" placeholder="كلمة المرور"
-                        name="confirmPassword" />
+                    <input type="password" id="confirmPassword" formControlName="confirmPassword"
+                        class="form-control py-2 fs-5" placeholder="تأكيد كلمة المرور" name="confirmPassword"
+                        [class.is-invalid]="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched || registerForm.errors?.['passwordMismatch']" />
+                    @if (registerForm.get('confirmPassword')?.errors?.['required'] &&
+                    registerForm.get('confirmPassword')?.touched) {
+                    <small class="text-danger">
+                        تأكيد كلمة المرور مطلوب
+                    </small>
+                    } @else if (registerForm.errors?.['passwordMismatch']) {
+                    <small class="text-danger">
+                        كلمتا المرور غير متطابقتين
+                    </small>
+                    }
                 </div>
 
                 <!-- الجنس -->
                 <div class="col-md-6 mb-3">
                     <label for="gender" class="form-label">الجنس</label>
-                    <select class="form-select py-2 fs-5" name="gender" id="gender">
-                        <option selected value="0">ذكر</option>
-                        <option value="1">أنثى</option>
+                    <select class="form-select py-2 fs-5" name="gender" id="gender" formControlName="gender"
+                        [class.is-invalid]="registerForm.get('gender')?.invalid && registerForm.get('gender')?.touched">
+                        <option [value]="0">ذكر</option>
+                        <option [value]="1">أنثى</option>
                     </select>
+                    @if (registerForm.get('gender')?.errors?.['required'] && registerForm.get('gender')?.touched) {
+                    <small class="text-danger">
+                        الجنس مطلوب
+                    </small>
+                    }
                 </div>
 
                 <!-- تاريخ الميلاد -->
                 <div class="col-md-6 mb-3">
                     <label for="dateOfBirth" class="form-label">تاريخ الميلاد</label>
-                    <input type="date" [value]="dateOfBirth | date:'yyyy-MM-dd'" id="dateOfBirth"
-                        class="form-control py-2 fs-5" name="dateOfBirth" />
+                    <input type="date" id="dateOfBirth" formControlName="dateOfBirth" class="form-control py-2 fs-5"
+                        name="dateOfBirth"
+                        [class.is-invalid]="registerForm.get('dateOfBirth')?.invalid && registerForm.get('dateOfBirth')?.touched" />
+                    @if (registerForm.get('dateOfBirth')?.errors?.['required'] &&
+                    registerForm.get('dateOfBirth')?.touched) {
+                    <small class="text-danger">
+                        تاريخ الميلاد مطلوب
+                    </small>
+                    } @else if (registerForm.get('dateOfBirth')?.errors?.['underage']) {
+                    <small class="text-danger">
+                        يجب أن يكون عمرك 18 سنة على الأقل
+                    </small>
+                    }
                 </div>
-
-
             </div>
 
             <!-- زر الإنشاء -->
             <div class="d-grid mt-4">
-                <button type="submit" class="btn btn-primary btn-lg fw-bold shadow-sm">إنشاء حساب</button>
+                <button type="submit" class="btn btn-primary btn-lg fw-bold shadow-sm"
+                    [disabled]="registerForm.invalid">
+                    إنشاء حساب
+                </button>
             </div>
         </form>
 
-
-        <!-- رابط تسجيل الدخول -->
         <p class="mt-4 text-center text-primary">
             هل لديك حساب بالفعل؟
             <a [routerLink]="['/auth/login']" class="fw-bold text-dark">تسجيل الدخول</a>
         </p>
 
-        <!-- تسجيل عبر شبكات التواصل -->
         <div class="d-flex justify-content-center gap-2 mt-4">
             <button class="btn border px-3 py-2 rounded-4">
                 <i class="fa-brands fa-facebook fs-4 text-primary"></i>

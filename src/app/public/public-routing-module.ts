@@ -9,6 +9,8 @@ import { authGuard } from '../core/guards/auth-guard-guard';
 import { Favorite } from './components/favorite/favorite';
 import { Profile } from './components/profile/profile';
 import { Edite } from './components/profile/edite/edite';
+import { ServicesPage } from './components/services-page/services-page';
+import { AboutUs } from './components/about-us/about-us';
 
 const routes: Routes = [
 
@@ -20,13 +22,15 @@ const routes: Routes = [
     path: '',
     component: PublicLayout,
     children: [
-      { path: '', component: Home },
-      { path: 'home', component: Home },
+      { path: '', component: Home, canActivate: [authGuard] },
+      { path: 'home', component: Home, canActivate: [authGuard] },
+      { path: 'services', component: ServicesPage, canActivate: [authGuard] },
+      { path: 'about-us', component: AboutUs, canActivate: [authGuard] },
       { path: 'properties', component: Properties, canActivate: [authGuard] },
       { path: 'properties/:propertyId', component: PropertyDetails },
-      { path: 'favorite', component: Favorite },
-      { path: 'my', component: Profile },
-      { path: 'my/edite', component: Edite },
+      { path: 'favorite', component: Favorite, canActivate: [authGuard] },
+      { path: 'my', component: Profile, canActivate: [authGuard] },
+      { path: 'my/edite', component: Edite, canActivate: [authGuard] },
       { path: 'not-found', component: NotFound404 },
       { path: '**', component: NotFound404 }
     ]
