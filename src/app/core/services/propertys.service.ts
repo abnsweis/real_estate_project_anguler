@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { catchError, filter, map, Observable, throwError } from 'rxjs';
@@ -34,5 +34,11 @@ export class PropertiesService {
           return throwError(() => err);
         })
       );
+  }
+
+  deleteProperty(propertyId: string): Observable<HttpResponse<any>> {
+    return this._httpclient.delete<any>(`${this.baseUrl}/api/Properties/Delete/Id/${propertyId}`, {
+      observe: 'response'
+    });
   }
 }

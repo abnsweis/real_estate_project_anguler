@@ -1,0 +1,63 @@
+<p-confirmdialog />
+
+<p-table [value]="properties" [paginator]="true" [rows]="pageSize" [totalRecords]="totalRecords" [lazy]="true"
+    (onLazyLoad)="loadProperties($event)" [loading]="loading" [responsiveLayout]="'scroll'" [rowHover]="true"
+    [tableStyle]="{ 'min-width': '60rem' }" styleClass="p-datatable-striped" class="properties">
+
+    <ng-template pTemplate="caption">
+        <div class="flex justify-between items-center">
+            <h5 class="m-0">قائمة العقارات</h5>
+
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+        <tr>
+            @for (col of PROPERTY_HEADERS; track col) {
+            <th>{{col.header}}</th>
+            }
+            <th style="width: 180px; text-align: center;">العمليات</th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-property>
+        <tr>
+            <td>{{ property.propertyNumber }}</td>
+            <td>{{ property.address }}</td>
+            <td>
+                <!-- <span class="badge" [ngClass]="{
+                    'bg-green-100 text-green-800': property.propertyStatus == 'متاح',
+                    'bg-red-100 text-red-800': property.propertyStatus == 'مباع',
+                    'bg-yellow-100 text-yellow-800': property.propertyStatus == 'موأجر'
+                }">
+                </span> -->
+                @if(property.propertyStatus == 'Available'){
+                <span class="badge rounded-3 " [ngClass]="{'bg-success': true}">متاح</span>
+                }
+                @else if(property.propertyStatus == 'Sold'){
+                <span class="badge rounded-3 " [ngClass]="{'bg-danger': true}">مباع</span>
+
+                }
+                @else{
+                <span class="badge rounded-3 " [ngClass]="{'bg-warning': true}">مؤجر</span>
+
+                }
+            </td>
+            <td>{{ property.area }} م²</td>
+            <td>{{ property.price | number:'1.0-0' }} $</td>
+            <td>{{ property.ownerFullName }}</td>
+            <td>{{ property.ownerNationalId }}</td>
+            <p-button icon=" pi pi-trash" (click)="confirmDelete($event,property.propertyId)" severity="danger"
+                [rounded]="true" [text]="true" />
+            <p-button icon="pi pi-pencil" severity="success" [rounded]="true" [text]="true" />
+            <p-button icon="pi pi-info-circle" severity="info" [rounded]="true" [text]="true" />
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="8" class="text-center">لا يوجد بيانات لعرضها</td>
+        </tr>
+    </ng-template>
+
+</p-table>

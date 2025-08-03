@@ -1,0 +1,6 @@
+* {
+  direction: rtl;
+}
+.p-button {
+  background-color: var(--bs-primary) !important;
+}

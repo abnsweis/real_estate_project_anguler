@@ -1,12 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
-/* You can add global styles to this file, and also import other style files */
-
+@import "tailwindcss";
 .text-primary {
   color: var(--bs-primary);
-}
-
-* {
-  direction: rtl;
 }
 
 .navbar a.active {
@@ -36,10 +30,6 @@
 }
 .p-paginator button {
   background-color: #f8f8f8 !important;
-}
-
-.p-button {
-  background-color: var(--bs-primary) !important;
 }
 
 .p-inputtext:enabled:focus {
@@ -74,4 +64,11 @@
 }
 .text-warning-2 {
   color: rgb(250, 173, 6) !important;
+}
+.p-confirmdialog-message {
+  font-size: 20px !important;
+}
+
+button.p-confirmdialog-reject-button span {
+  color: black !important;
 }

@@ -14,6 +14,7 @@ export interface IProperty {
     description: string;
     categoryName: string;
     ownerFullName: string;
+    ownerNationalId: string;
     mainImage: string;
     images: string[];
 }

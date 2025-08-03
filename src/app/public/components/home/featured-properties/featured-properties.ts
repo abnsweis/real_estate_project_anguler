@@ -24,6 +24,7 @@ export class FeaturedProperties {
   loadFeaturedProperties() {
     this.propertiesService.getFeaturedProperties().subscribe({
       next: (res) => {
+        console.log(res)
         this.featuredProperties = res;
         this.toastr.success('تم تحميل العقارات المميزة بنجاح ✅', 'نجاح');
       },

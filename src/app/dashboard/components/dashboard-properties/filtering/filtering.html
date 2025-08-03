@@ -1,0 +1,16 @@
+<div class="row my-3 gap-4">
+    <div class="col-12 ">
+        <h5>العقارات {{searchValue}}</h5>
+    </div>
+    <div class="col-12 d-flex gap-3 align-items-center ">
+        <p-iconfield>
+            <p-inputicon class="pi pi-search" />
+            <input type="text" class="py-2" [(ngModel)]="searchValue" (input)="Changed()" pInputText
+                placeholder="بحث" />
+        </p-iconfield>
+        <p-select [options]="dropdownOptions" selecteditem="0" [(ngModel)]="selectedFilter" placeholder="بحث عن طريق"
+            class="w-full md:w-56" />
+    </div>
+
+
+</div>

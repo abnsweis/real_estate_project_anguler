@@ -1,0 +1,70 @@
+<div class="row mt-5">
+    <!-- Timeline Section -->
+    <div class="col-lg-4 d-flex align-items-stretch">
+        <div class="card w-100">
+            <div class="card-body p-4">
+                <div class="mb-4">
+                    <h5 class="card-title fw-semibold fs-4">أحدث العملاء</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    @for ( customer of latestCustomersList; track customer.customerId) {
+                    <li class="list-group-item d-flex align-items-center">
+                        <div style="width: 55px; height: 55px; overflow: hidden; border-radius: 50%;">
+                            <img src="{{customer.imageURL}}" alt="avatar" class="w-100 h-100 object-fit-cover">
+                        </div>
+                        <div class="mx-3">
+                            <div class="fw-semibold fs-4 ">{{customer.fullName}}</div>
+                            <a [routerLink]="['/users', customer.nationalId]"
+                                class="text-primary fw-semibold small fs-4">
+                                {{ '@' + customer.nationalId }}
+                            </a>
+                        </div>
+
+                    </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-8 d-flex align-items-stretch">
+        <div class="card w-100">
+            <div class="card-body p-4">
+                <h5 class="card-title fw-semibold mb-4">أحدث العقارات المضافة</h5>
+                <div class="table-responsive">
+                    <table class="table text-nowrap mb-0 align-middle">
+                        <thead class="text-dark fs-4">
+                            <tr>
+                                <th class="border-bottom-0">الموقع</th>
+                                <th class="border-bottom-0">الحالة</th>
+                                <th class="border-bottom-0">فئة</th>
+                                <th class="border-bottom-0">السعر</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(prop of latestPropertiesList ; track prop.propertyId;let i = $index){
+                            <tr>
+
+                                <td class="border-bottom-0">{{prop.location}}</td>
+                                <td class="border-bottom-0">
+                                    <span class="badge rounded-3" [ngClass]="{
+                                                    'bg-success': prop.propertyStatus === 'Available',
+                                                    'bg-danger': prop.propertyStatus === 'Sold',
+                                                    'bg-warning': prop.propertyStatus === 'Rented'}">
+                                        {{ prop.propertyStatus }}
+                                    </span>
+                                </td>
+
+                                <td class="border-bottom-0">{{prop.categoryName}}</td>
+                                <td class="border-bottom-0">{{prop.price}}</td>
+                            </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

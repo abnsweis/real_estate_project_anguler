@@ -1,0 +1,103 @@
+<aside class="left-sidebar" dir="rtl">
+    <div>
+        <!-- شعار -->
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+            <a href="./index.html" class="text-nowrap logo-img">
+                <img src="../../../../assets/dashboard/images/logos/dark-logo.svg" width="180" alt="الشعار" />
+            </a>
+            <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                <i class="ti ti-x fs-8" (click)="closeSidebar()"></i>
+            </div>
+        </div>
+
+        <!-- قائمة جانبية -->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+            <ul id="sidebarnav">
+
+                <li class="nav-small-cap"><span class="hide-menu">الرئيسية</span></li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="./dashboard.html">
+                        <i class="ti ti-layout-dashboard"></i><span class="hide-menu">لوحة التحكم</span>
+                    </a>
+                </li>
+
+                <li class="nav-small-cap"><span class="hide-menu">العناصر الأساسية</span></li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" [routerLink]="['manamge-properties']" routerLinkActive="router-link-active">
+                        <i class="ti ti-building"></i><span class="hide-menu">العقارات</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="./owners.html">
+                        <i class="ti ti-user-cog"></i><span class="hide-menu">المُلاك</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="./clients.html">
+                        <i class="ti ti-users"></i><span class="hide-menu">العملاء</span>
+                    </a>
+                </li>
+
+                <li class="nav-small-cap"><span class="hide-menu">المعاملات</span></li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="./transactions.html">
+                        <i class="ti ti-cash"></i><span class="hide-menu">المعاملات (بيع/إيجار)</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="./payments.html">
+                        <i class="ti ti-credit-card"></i><span class="hide-menu">وسائل الدفع</span>
+                    </a>
+                </li>
+
+                <li class="nav-small-cap"><span class="hide-menu">إدارة النظام</span></li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="./users.html">
+                        <i class="ti ti-shield-lock"></i><span class="hide-menu">المستخدمون</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="./categories.html">
+                        <i class="ti ti-tags"></i><span class="hide-menu">الفئات</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="./locations.html">
+                        <i class="ti ti-map"></i><span class="hide-menu">المدن والمناطق</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="./ratings.html">
+                        <i class="ti ti-star"></i><span class="hide-menu">التقييمات</span>
+                    </a>
+                </li>
+
+                <li class="nav-small-cap"><span class="hide-menu">أخرى</span></li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="./reports.html">
+                        <i class="ti ti-chart-pie"></i><span class="hide-menu">الإحصائيات والتقارير</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="./settings.html">
+                        <i class="ti ti-settings"></i><span class="hide-menu">الإعدادات</span>
+                    </a>
+                </li>
+
+                <li class="nav-small-cap"><span class="hide-menu">المصادقة</span></li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="./login.html">
+                        <i class="ti ti-login"></i><span class="hide-menu">تسجيل الدخول</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="./register.html">
+                        <i class="ti ti-user-plus"></i><span class="hide-menu">إنشاء حساب</span>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+</aside>
