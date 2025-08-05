@@ -6,6 +6,8 @@ import { authGuard } from '../core/guards/auth-guard-guard';
 import { DashboardLanding } from './components/dashboard-landing/dashboard-landing';
 import { DashboardProperties } from './components/dashboard-properties/dashboard-properties';
 import { AddProperty } from './components/dashboard-properties/add-property/add-property';
+import { UpdateProperty } from './components/dashboard-properties/update-property/update-property';
+import { PropertyDetails } from './components/dashboard-properties/property-details/property-details';
 
 const routes: Routes = [
 
@@ -16,6 +18,9 @@ const routes: Routes = [
       { path: '', component: DashboardLanding, canActivate: [authGuard] },
       { path: 'manage-properties', component: DashboardProperties, canActivate: [authGuard] },
       { path: 'manage-properties/add-property', component: AddProperty, canActivate: [authGuard] },
+      { path: 'manage-properties/edite/:propertyId', component: UpdateProperty, canActivate: [authGuard] },
+      { path: 'manage-properties/details/:propertyId', component: PropertyDetails, canActivate: [authGuard] },
+
     ]
   }
 

@@ -1,0 +1,165 @@
+<div class="property-details py-5 mt-6">
+    <div class="container">
+        <div class="card-item text-center bg-white rounded-4 shadow py-4 px-5 animate-up">
+            <div class="row">
+                <div class="col-12 col-md-8 p-0 text-end">
+                    <h3 class="text-end">فيلا فاخرة للبيع في الرياض</h3>
+
+                    <div class="text-end d-flex justify-content-start align-items-center gap-2 mt-3">
+                        <h6 class="fs-1 mb-0">المالك :</h6>
+                        <p class="fs-1 mb-0">أحمد محمد</p>
+                    </div>
+
+                    <div class="text-end d-flex justify-content-start align-items-start gap-2 mt-3">
+                        <h6 class="fs-1 mb-0">الرقم العقاري :</h6>
+                        <p class="fs-1 mb-0 lh-1">PR-2023-4567</p>
+                    </div>
+
+                    <div class="text-end d-flex justify-content-start align-items-start gap-2 mt-3">
+                        <h6 class="fs-1 mb-0">السعر :</h6>
+                        <p class="fs-1 mb-0 lh-1 text-currency fw-bold">2,500,000 ر.س</p>
+                    </div>
+
+                    <div
+                        class="text-end d-flex flex-column flex-md-row justify-content-start align-items-start gap-2 mt-3">
+                        <h6 class="fs-1 mb-0">الموقع :</h6>
+                        <p class="fs-1 mb-0 lh-1">الرياض / حي السفارات</p>
+                    </div>
+
+                    <div class="text-end d-flex justify-content-start align-items-start gap-2 mt-3">
+                        <h6 class="fs-1 mb-0">المساحة :</h6>
+                        <p class="fs-1 mb-0 lh-1">450 م²</p>
+                    </div>
+
+                    <div class="text-end d-flex justify-content-start align-items-start gap-2 mt-3">
+                        <h6 class="fs-1 mb-0">الصنف :</h6>
+                        <p class="fs-1 mb-0 lh-1">فيلا</p>
+                    </div>
+
+                    <div
+                        class="text-end d-flex flex-column flex-md-row justify-content-start align-items-start gap-2 mt-3">
+                        <h6 class="fs-1 mb-0">الوصف :</h6>
+                        <p class="fs-1 mb-0 lh-lg">
+                            فيلا فاخرة للبيع في حي السفارات، مساحة 450 متر مربع، تتكون من 5 غرف نوم، 4 حمامات، صالة
+                            كبيرة، مطبخ مجهز، حديقة خاصة، مواقف سيارات، نظام أمني متكامل، موقع مميز قريب من الخدمات.
+                        </p>
+                    </div>
+
+                    <div class="text-end d-flex justify-content-start align-items-start gap-2 my-3">
+                        <h6 class="fs-1 mb-0">التقييم :</h6>
+                        <p-rating [readonly]="true" [cancel]="false" class="text-warning"></p-rating>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4 p-0 rounded-4">
+                    <div class="img-box rounded-4 overflow-hidden">
+                        <p-galleria [value]="images" [responsiveOptions]="responsiveOptions"
+                            [containerStyle]="{ 'max-width': '100%' }" [circular]="true" [showItemNavigators]="true"
+                            [showThumbnails]="false" [showIndicators]="true">
+                            <ng-template pTemplate="item" let-item>
+                                <img [src]="item.previewImageSrc" [alt]="item.alt"
+                                    style="width: 100%; height: 200px; object-fit: cover;" />
+                            </ng-template>
+                        </p-galleria>
+                    </div>
+
+                    <p-button label="عرض الصور" icon="pi pi-images"
+                        class="p-button-rounded p-button-primary mt-3 w-100"></p-button>
+
+                    <p-button label="عرض الفيديو" icon="pi pi-video"
+                        class="p-button-rounded p-button-primary mt-3 w-100"></p-button>
+
+                    <p-button label="إضافة تقييم" icon="pi pi-star"
+                        class="p-button-rounded p-button-primary mt-3 w-100"></p-button>
+                </div>
+
+                <div class="col-12 p-0 text-end">
+                    <div class="text-end d-flex justify-content-end align-items-center gap-2 mt-3">
+                        <p-button icon="pi pi-heart"
+                            styleClass="p-button-rounded p-button-text p-button-plain"></p-button>
+                        <p-button icon="pi pi-share-alt"
+                            styleClass="p-button-rounded p-button-text p-button-plain"></p-button>
+                    </div>
+                </div>
+
+                <div class="col-12 p-0 text-end mt-3">
+                    <div class="row d-flex">
+                        <div class="comments-section col-sm-7 d-flex flex-column gap-3">
+                            <p-card header="التعليقات">
+                                <div class="comment-item mb-3 p-3 border-round" *ngFor="let comment of comments">
+                                    <div class="flex justify-content-between align-items-center mb-2">
+                                        <div class="flex align-items-center">
+                                            <p-avatar
+                                                image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+                                                shape="circle" size="large"></p-avatar>
+                                            <span class="font-bold ml-2">{{comment.user}}</span>
+                                        </div>
+                                        <span class="text-sm text-500">{{comment.date}}</span>
+                                    </div>
+                                    <p>{{comment.text}}</p>
+                                    <div class="flex justify-content-end gap-2">
+                                        <p-button icon="pi pi-pencil" styleClass="p-button-text p-button-sm"></p-button>
+                                        <p-button icon="pi pi-trash"
+                                            styleClass="p-button-text p-button-sm p-button-danger"></p-button>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-column gap-3 mt-4">
+                                    <textarea pInputTextarea rows="3" placeholder="أضف تعليقك..."
+                                        class="w-full"></textarea>
+                                    <p-button label="نشر التعليق" icon="pi pi-send" class="p-button-sm"></p-button>
+                                </div>
+                            </p-card>
+                        </div>
+
+                        <div class="rating-section col-md-5 d-flex flex-column">
+                            <p-card header="التقييمات">
+                                <div class="rating-item mb-3" *ngFor="let rating of ratings">
+                                    <div class="flex justify-content-between align-items-center mb-1">
+                                        <span class="font-bold">{{rating.user}}</span>
+                                        <p-rating [(ngModel)]="rating.value" [readonly]="true" [cancel]="false"
+                                            class="text-warning"></p-rating>
+                                    </div>
+                                    <p class="text-sm m-0">{{rating.comment}}</p>
+                                    <p-divider></p-divider>
+                                </div>
+                            </p-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rating Dialog -->
+<p-dialog header="إضافة تقييم" [(visible)]="displayRatingDialog" [style]="{width: '450px'}" [modal]="true">
+    <div class="p-fluid">
+        <div class="field">
+            <label for="rating">التقييم</label>
+            <p-rating [(ngModel)]="newRating.value" [cancel]="false"></p-rating>
+        </div>
+
+        <div class="field">
+            <label for="comment">تعليقك</label>
+            <textarea id="comment" pInputTextarea [(ngModel)]="newRating.comment" rows="3"></textarea>
+        </div>
+    </div>
+
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-times" label="إلغاء" (click)="displayRatingDialog = false"
+            styleClass="p-button-text"></p-button>
+        <p-button icon="pi pi-check" label="حفظ" (click)="saveRating()" styleClass="p-button-primary"></p-button>
+    </ng-template>
+</p-dialog>
+
+<!-- Image Gallery Dialog -->
+<p-dialog header="معرض الصور" [(visible)]="displayGalleryDialog" [style]="{width: '80vw'}" [modal]="true"
+    [maximizable]="true">
+    <p-galleria [value]="images" [responsiveOptions]="responsiveOptions" [containerStyle]="{ 'max-width': '100%' }"
+        [numVisible]="5" [circular]="true" [fullScreen]="true" [showItemNavigators]="true" [showThumbnails]="false">
+        <ng-template pTemplate="item" let-item>
+            <img [src]="item.previewImageSrc" [alt]="item.alt" style="width: 100%;" />
+        </ng-template>
+    </p-galleria>
+</p-dialog>

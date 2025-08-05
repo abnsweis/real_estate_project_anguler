@@ -1,0 +1,110 @@
+.admin-property-details {
+  background: white;
+  border-radius: 1rem;
+  position: relative;
+  color: #1f2937;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+.admin-property-details .shadow-lg {
+  box-shadow: 0 20px 40px -10px rgba(31, 41, 55, 0.15),
+    0 8px 24px -4px rgba(31, 41, 55, 0.08);
+}
+
+.admin-property-details .header .title h2 {
+  color: #111827;
+}
+
+.admin-property-details .header .actions button {
+  margin-left: 0.5rem;
+}
+
+.admin-property-details .info-card,
+.admin-property-details .rating-card,
+.admin-property-details .status-box,
+.admin-property-details .share-box {
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-property-details .info-card:hover,
+.admin-property-details .rating-card:hover,
+.admin-property-details .status-box:hover,
+.admin-property-details .share-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 25px 50px -12px rgba(31, 41, 55, 0.2);
+}
+
+.admin-property-details .field-group {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.admin-property-details .field-group .field label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  color: #6b7280;
+  letter-spacing: 0.5px;
+}
+
+.admin-property-details .field-group .field div {
+  font-size: 0.9rem;
+}
+
+.admin-property-details .field-group .field .description {
+  max-height: 140px;
+  overflow: auto;
+  line-height: 1.3;
+}
+
+.admin-property-details .media-box .main-img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  box-shadow: 0 15px 30px -5px rgba(31, 41, 55, 0.2);
+}
+
+.admin-property-details .status-badge {
+  display: inline-block;
+  padding: 0.4rem 0.75rem;
+  background: #eef2f7;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #374151;
+  letter-spacing: 0.5px;
+}
+
+.admin-property-details .custom-dialog .p-dialog-content {
+  padding: 1rem;
+  border-radius: 0.75rem;
+}
+
+.admin-property-details .btn-primary {
+  background: linear-gradient(135deg, #6366f1, #a78bfa);
+  border: none;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
+}
+
+.admin-property-details .btn-secondary {
+  background: #f3f4f6;
+  border: none;
+  color: #374151;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+}

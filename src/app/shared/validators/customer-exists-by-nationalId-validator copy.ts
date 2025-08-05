@@ -7,7 +7,6 @@ import { CustomersService } from "../../core/services/customers.service";
 export function customerExistsByNationalIdValidator(currentNationalId: string, customersService: CustomersService): AsyncValidatorFn {
 
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
-        console.log(control);
         if (!control.value) {
             return of(null);
         }

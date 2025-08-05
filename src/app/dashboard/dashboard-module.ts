@@ -35,8 +35,11 @@ import { CardModule } from 'primeng/card';
 import { FileUpload } from 'primeng/fileupload';
 import { TextareaModule } from 'primeng/textarea';
 import { MessageModule } from 'primeng/message';
-
-
+import { UpdateProperty } from './components/dashboard-properties/update-property/update-property';
+import { AddUpdateProperty } from './components/dashboard-properties/add-update-property/add-update-property';
+import { TopSection } from './components/dashboard-properties/add-update-property/top-section/top-section';
+import { PropertyDetails } from './components/dashboard-properties/property-details/property-details';
+import { Rating } from 'primeng/rating';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,11 @@ import { MessageModule } from 'primeng/message';
     DashboardProperties,
     PropertyiesList,
     Filtering,
-    AddProperty
+    AddProperty,
+    TopSection,
+    UpdateProperty,
+    AddUpdateProperty,
+    PropertyDetails,
   ],
   imports: [
     CommonModule,
@@ -61,6 +68,7 @@ import { MessageModule } from 'primeng/message';
     ReactiveFormsModule,
     FormsModule,
     ConfirmDialog,
+    Rating,
     Select,
     InputTextModule,
     FloatLabel,

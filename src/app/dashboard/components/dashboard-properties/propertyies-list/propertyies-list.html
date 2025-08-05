@@ -1,6 +1,13 @@
 <p-confirmdialog />
 <p-message severity="success" [life]="3000" text="تم اضافة العقار بنجاح" [closable]="false"
-    *ngIf="successfullyAddedProperty"></p-message>
+    *ngIf="successfullyAddedProperty">
+</p-message>
+
+<p-message severity="success" [life]="3000" text="تم تحديث العقار بنجاح" [closable]="false"
+    *ngIf="successfullyUpdateProperty">
+</p-message>
+
+
 <p-table [value]="filteredProperties" [paginator]="true" [rows]="pageSize" [totalRecords]="totalRecords" [lazy]="true"
     (onLazyLoad)="loadProperties($event)" [loading]="loading" [responsiveLayout]="'scroll'" [rowHover]="true"
     [tableStyle]="{ 'min-width': '60rem' }" styleClass="p-datatable-striped" class="properties">
@@ -24,7 +31,7 @@
     <ng-template pTemplate="body" let-property>
         <tr>
             <td>{{ property.title }}</td>
-            <td>{{property.location}}-{{property.address}}</td>
+            <td>{{property.location}}</td>
             <td>
                 <!-- <span class="badge" [ngClass]="{
                     'bg-green-100 text-green-800': property.propertyStatus == 'متاح',
@@ -50,8 +57,15 @@
             <td>{{ property.ownerNationalId }}</td>
             <p-button icon=" pi pi-trash" (click)="confirmDelete($event,property.propertyId)" severity="danger"
                 [rounded]="true" [text]="true" />
-            <p-button icon="pi pi-pencil" severity="success" [rounded]="true" [text]="true" />
-            <p-button icon="pi pi-info-circle" severity="info" [rounded]="true" [text]="true" />
+
+            <a pButton icon="pi pi-pencil" severity="success" [rounded]="true" [text]="true"
+                [routerLink]="['edite', property.propertyId]">
+            </a>
+
+            <a pButton icon="pi pi-info-circle" severity="info" [rounded]="true" [text]="true"
+                [routerLink]="['details', property.propertyId]">
+            </a>
+
         </tr>
     </ng-template>
 

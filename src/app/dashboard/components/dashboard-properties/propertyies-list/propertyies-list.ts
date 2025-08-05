@@ -4,7 +4,8 @@ import { ConfirmationService, LazyLoadEvent } from 'primeng/api';
 import { IProperty } from '../../../../core/models/Interfaces/Iproperty.interface';
 import { PropertiesService } from '../../../../core/services/propertys.service';
 import { TableColumn } from '../../../../core/models/classes/auth/tableColumn';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { enMode } from '../../../../shared/enums/en-mode';
 
 @Component({
   selector: 'app-propertyies-list',
@@ -22,21 +23,25 @@ export class PropertyiesList implements OnInit {
   loading = false;
   pageSize = 20;
   successfullyAddedProperty: boolean = false;
+  successfullyUpdateProperty: boolean = false;
   @Input() filterData!: { filter: string, value: string };
 
 
-  constructor(private ps: PropertiesService, private route: Router, private confirmationService: ConfirmationService,
+  constructor(private ps: PropertiesService,
+    private route: Router,
+    private activatedRoute: ActivatedRoute,
+    private confirmationService: ConfirmationService,
     private toastrService: ToastrService) { }
 
   ngOnInit(): void {
     this.loading = true;
     this.onSuccessfullyAddedProperty();
+    this.onSuccessfullyUpdateProperty();
   }
   filter(event: { filter: string, value: string }) {
     const filterKey = event.filter;
     const filterValue = event.value.toLowerCase();
-    console.log(filterKey)
-    console.log(filterValue)
+
 
     this.filteredProperties = this.properties.filter(p => {
       const propertyValue = (p[filterKey as keyof IProperty] || '').toString().toLowerCase();
@@ -65,7 +70,6 @@ export class PropertyiesList implements OnInit {
       accept: () => {
         this.ps.deleteProperty(propertyId).subscribe({
           next: (res) => {
-            console.log(res);
             if (res.status == 204) {
               this.toastrService.success('تم حذف العقار بنجاح');
               this.loadProperties({ first: 0, rows: this.pageSize })
@@ -90,7 +94,6 @@ export class PropertyiesList implements OnInit {
         this.properties = res.items;
         this.totalRecords = res.totalCount;
         this.filteredProperties = this.properties
-        console.log(this.filteredProperties.length);
         this.loading = false;
       },
       error: (err) => {
@@ -102,18 +105,27 @@ export class PropertyiesList implements OnInit {
     console.log('عرض التفاصيل:', property);
   }
 
-  editProperty(property: IProperty) {
-    console.log('تعديل العقار:', property);
-  }
+
 
 
   onSuccessfullyAddedProperty() {
-    console.clear();
+
     this.route.routerState.root.queryParams.subscribe(params => {
       if (params['added'] === 'true') {
         this.successfullyAddedProperty = true;
-        
+
       }
     })
   }
+
+  onSuccessfullyUpdateProperty() {
+
+    this.activatedRoute.queryParamMap.subscribe(params => {
+      if (params.keys.includes('updated')) {
+        this.successfullyUpdateProperty = true;
+      }
+    });
+  }
+
+
 }

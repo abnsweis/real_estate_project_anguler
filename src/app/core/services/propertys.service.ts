@@ -20,6 +20,10 @@ export class PropertiesService {
     return this._httpclient.post<any>(`${this.baseUrl}/api/Properties`, propertyData);
   }
 
+  updateProperty(propertyId: string, propertyData: FormData): Observable<HttpResponse<any>> {
+    return this._httpclient.put<any>(`${this.baseUrl}/api/Properties/Update/${propertyId}`, propertyData);
+  }
+
   getPropertiesPage(pageNumber: number, pageSize: number): Observable<PaginationResponse<IProperty>> {
     return this._httpclient.get<PaginationResponse<IProperty>>(`${this.baseUrl}/api/Properties?PageSize=${pageSize}&PageNumber=${pageNumber}`);
   }

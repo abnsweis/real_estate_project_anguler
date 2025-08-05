@@ -1,0 +1,47 @@
+<div class="customer-header-container">
+    <p-card class="modern-card" [style]="{'border-radius': '10px'}">
+        <div class="customer-profile-grid">
+            <!-- صورة العميل ومعلوماته -->
+            <div class="profile-section">
+                <div class="avatar-wrapper">
+                    <ng-container *ngIf="ownerInfo?.imageURL; else defaultAvatar">
+                        <img [src]="ownerInfo?.imageURL" class="profile-avatar" alt="صورة العميل">
+                    </ng-container>
+                    <ng-template #defaultAvatar>
+                        <div class="default-avatar">
+                            <i class="pi pi-user"></i>
+                        </div>
+                    </ng-template>
+
+                </div>
+
+                <div class="profile-info">
+                    <h4 class="section-title">معلومات المالك</h4>
+
+                    <div class="info-grid">
+                        <div class="info-item fs-4">
+                            <span class="info-label fs-5">الاسم:</span>
+                            <span class="info-value fs-5">{{ownerInfo?.fullName || 'غير محدد'}}</span>
+                        </div>
+
+                        <div class="info-item ">
+                            <span class="info-label fs-5">الهاتف:</span>
+                            <span class="info-value fs-5">{{ownerInfo?.phoneNumber || 'غير محدد'}}</span>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-label fs-5">العقارات:</span>
+                            <span class="info-value fs-5">{{propertiesCount || 0}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- أزرار الإجراءات -->
+            <div class="action-buttons">
+                <button pButton type="button" icon="pi pi-plus" label="إضافة عميل" class="p-button-primary"></button>
+                <button pButton type="button" icon="pi pi-tags" label="إضافة فئة" class="p-button"></button>
+            </div>
+        </div>
+    </p-card>
+</div>

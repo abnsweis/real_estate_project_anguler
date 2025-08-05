@@ -20,4 +20,10 @@ export class CustomersService {
       catchError(() => of(false))
     );
   }
+
+  getCustomerByNationalId(nationalId: string): Observable<ICustomer | null> {
+    return this._httpClient.get<ICustomer>(`${this.baseUrl}/api/Customers/NationalId/${nationalId}`).pipe(
+      catchError(() => of(null))
+    );
+  }
 }
