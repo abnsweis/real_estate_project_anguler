@@ -20,7 +20,7 @@ import { DashboardLanding } from './components/dashboard-landing/dashboard-landi
 import { RouterModule } from '@angular/router';
 import { DashboardProperties } from './components/dashboard-properties/dashboard-properties';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialog } from 'primeng/confirmdialog';
 import { PropertyiesList } from './components/dashboard-properties/propertyies-list/propertyies-list';
@@ -28,6 +28,15 @@ import { Filtering } from './components/dashboard-properties/filtering/filtering
 import { Select } from 'primeng/select';
 import { InputTextModule } from 'primeng/inputtext';
 import { FloatLabel } from 'primeng/floatlabel';
+import { AddProperty } from './components/dashboard-properties/add-property/add-property';
+import { InputNumber } from 'primeng/inputnumber';
+import { Fluid } from 'primeng/fluid';
+import { CardModule } from 'primeng/card';
+import { FileUpload } from 'primeng/fileupload';
+import { TextareaModule } from 'primeng/textarea';
+import { MessageModule } from 'primeng/message';
+
+
 
 @NgModule({
   declarations: [
@@ -41,13 +50,15 @@ import { FloatLabel } from 'primeng/floatlabel';
     DashboardLanding,
     DashboardProperties,
     PropertyiesList,
-    Filtering
+    Filtering,
+    AddProperty
   ],
   imports: [
     CommonModule,
     RouterModule,
     TableModule,
     DashboardRoutingModule,
+    ReactiveFormsModule,
     FormsModule,
     ConfirmDialog,
     Select,
@@ -55,6 +66,12 @@ import { FloatLabel } from 'primeng/floatlabel';
     FloatLabel,
     InputIcon,
     IconField,
+    InputNumber,
+    Fluid,
+    CardModule,
+    TextareaModule,
+    MessageModule,
+    FileUpload,
     DrawerModule, ButtonModule, RippleModule, AvatarModule, StyleClassModule
   ]
 })

@@ -1,3 +1,4 @@
-<app-filtering [PROPERTY_HEADERS_FILTER]="PROPERTY_HEADERS" (filterEvent)="onFilterEvent($event)"></app-filtering>
+<app-filtering [PROPERTY_HEADERS_FILTER]="PROPERTY_HEADERS" [propertyiesCount]="propertyiesCount"
+    (filterEvent)="onFilterEvent($event)"></app-filtering>
 <app-propertyies-list #listComponent [PROPERTY_HEADERS]="PROPERTY_HEADERS"
     [filterData]="filterEventData"></app-propertyies-list>>

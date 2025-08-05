@@ -15,6 +15,11 @@ export class PropertiesService {
   constructor(private _httpclient: HttpClient) { }
 
 
+
+  addNewProperty(propertyData: FormData): Observable<any> {
+    return this._httpclient.post<any>(`${this.baseUrl}/api/Properties`, propertyData);
+  }
+
   getPropertiesPage(pageNumber: number, pageSize: number): Observable<PaginationResponse<IProperty>> {
     return this._httpclient.get<PaginationResponse<IProperty>>(`${this.baseUrl}/api/Properties?PageSize=${pageSize}&PageNumber=${pageNumber}`);
   }
@@ -25,6 +30,9 @@ export class PropertiesService {
   }
   getFeaturedProperties(): Observable<IProperty[]> {
     return this._httpclient.get<IProperty[]>(`${this.baseUrl}/api/Properties/featured`);
+  }
+  getlatestProperties(): Observable<IProperty[]> {
+    return this._httpclient.get<IProperty[]>(`${this.baseUrl}/api/Properties/latest`);
   }
 
   getPropertyById(propertyId: string): Observable<IProperty> {

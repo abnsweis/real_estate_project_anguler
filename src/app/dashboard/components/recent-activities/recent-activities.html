@@ -45,14 +45,19 @@
                             @for(prop of latestPropertiesList ; track prop.propertyId;let i = $index){
                             <tr>
 
-                                <td class="border-bottom-0">{{prop.location}}</td>
+                                <td class="border-bottom-0">{{prop.location}}-{{prop.address}} </td>
                                 <td class="border-bottom-0">
-                                    <span class="badge rounded-3" [ngClass]="{
-                                                    'bg-success': prop.propertyStatus === 'Available',
-                                                    'bg-danger': prop.propertyStatus === 'Sold',
-                                                    'bg-warning': prop.propertyStatus === 'Rented'}">
-                                        {{ prop.propertyStatus }}
-                                    </span>
+                                    @if(prop.propertyStatus == 'Available'){
+                                    <span class="badge rounded-3 " [ngClass]="{'bg-success': true}">متاح</span>
+                                    }
+                                    @else if(prop.propertyStatus == 'Sold'){
+                                    <span class="badge rounded-3 " [ngClass]="{'bg-danger': true}">مباع</span>
+
+                                    }
+                                    @else{
+                                    <span class="badge rounded-3 " [ngClass]="{'bg-warning': true}">مؤجر</span>
+
+                                    }
                                 </td>
 
                                 <td class="border-bottom-0">{{prop.categoryName}}</td>

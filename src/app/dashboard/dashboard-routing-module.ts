@@ -5,6 +5,7 @@ import { DashboardLayout } from './layout/dashboard-layout/dashboard-layout';
 import { authGuard } from '../core/guards/auth-guard-guard';
 import { DashboardLanding } from './components/dashboard-landing/dashboard-landing';
 import { DashboardProperties } from './components/dashboard-properties/dashboard-properties';
+import { AddProperty } from './components/dashboard-properties/add-property/add-property';
 
 const routes: Routes = [
 
@@ -13,7 +14,8 @@ const routes: Routes = [
     children: [
 
       { path: '', component: DashboardLanding, canActivate: [authGuard] },
-      { path: 'manamge-properties', component: DashboardProperties, canActivate: [authGuard] },
+      { path: 'manage-properties', component: DashboardProperties, canActivate: [authGuard] },
+      { path: 'manage-properties/add-property', component: AddProperty, canActivate: [authGuard] },
     ]
   }
 

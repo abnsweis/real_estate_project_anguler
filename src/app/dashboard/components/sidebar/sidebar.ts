@@ -15,4 +15,9 @@ export class Sidebar {
   closeSidebar() {
     this.closedSidenar.emit();
   }
+  isPropertyDropdownOpen: boolean = false;
+
+  togglePropertyDropdown() {
+    this.isPropertyDropdownOpen = !this.isPropertyDropdownOpen;
+  }
 }

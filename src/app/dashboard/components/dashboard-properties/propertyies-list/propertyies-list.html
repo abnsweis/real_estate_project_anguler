@@ -1,6 +1,7 @@
 <p-confirmdialog />
-
-<p-table [value]="properties" [paginator]="true" [rows]="pageSize" [totalRecords]="totalRecords" [lazy]="true"
+<p-message severity="success" [life]="3000" text="تم اضافة العقار بنجاح" [closable]="false"
+    *ngIf="successfullyAddedProperty"></p-message>
+<p-table [value]="filteredProperties" [paginator]="true" [rows]="pageSize" [totalRecords]="totalRecords" [lazy]="true"
     (onLazyLoad)="loadProperties($event)" [loading]="loading" [responsiveLayout]="'scroll'" [rowHover]="true"
     [tableStyle]="{ 'min-width': '60rem' }" styleClass="p-datatable-striped" class="properties">
 
@@ -22,8 +23,8 @@
 
     <ng-template pTemplate="body" let-property>
         <tr>
-            <td>{{ property.propertyNumber }}</td>
-            <td>{{ property.address }}</td>
+            <td>{{ property.title }}</td>
+            <td>{{property.location}}-{{property.address}}</td>
             <td>
                 <!-- <span class="badge" [ngClass]="{
                     'bg-green-100 text-green-800': property.propertyStatus == 'متاح',

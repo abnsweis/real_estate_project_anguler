@@ -28,7 +28,7 @@ export class RecentActivities implements OnInit {
 
   private loadRecentActivities(): void {
     forkJoin({
-      properties: this.propertiesService.getFeaturedProperties(),
+      properties: this.propertiesService.getlatestProperties(),
       customers: this.customersService.getLatestCustomers()
     }).subscribe({
       next: (res) => {

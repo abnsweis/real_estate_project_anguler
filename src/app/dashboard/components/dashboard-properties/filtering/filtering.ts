@@ -9,6 +9,7 @@ import { TableColumn } from '../../../../core/models/classes/auth/tableColumn';
 })
 export class Filtering implements OnInit {
   searchValue: string = '';
+  @Input() propertyiesCount: number = 0;
   @Input() PROPERTY_HEADERS_FILTER: TableColumn[] = [];
 
   dropdownOptions: any[] = [];
@@ -26,5 +27,6 @@ export class Filtering implements OnInit {
   }
   Changed() {
     this.filterEvent.emit({ filter: this.selectedFilter, value: this.searchValue })
+
   }
 } 

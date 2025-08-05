@@ -1,0 +1,191 @@
+<!-- <h5 class="card-title fw-semibold mb-4">إضافة عقار جديد</h5>
+<div class="card">
+    <div class="card-body">
+        <form>
+
+            <div class="row">
+                <div class="mb-3 col-6">
+                    <label for="propertyNumber" class="form-label">رقم العقار</label>
+                    <input type="number" class="form-control" id="propertyNumber" placeholder="أدخل رقم العقار">
+                </div> 
+
+                <div class="mb-3 col-6">
+                    <label for="title" class="form-label">عنوان العقار</label>
+                    <input type="text" class="form-control" id="title" placeholder="أدخل عنوان العقار">
+                </div>
+
+                <div class="mb-3 col-6">
+                    <label for="ownerId" class="form-label">المالك</label>
+
+                    <input type="text" class="form-control" id="ownerId" placeholder="أدخل الرقم الوطني المالك">
+                </div>
+
+                <div class="mb-3 col-6">
+                    <label for="categoryId" class="form-label">التصنيف</label>
+                    <input type="text" class="form-control" id="categoryId" placeholder="أدخل التصنيف">
+                </div>
+
+                <div class="mb-3 col-6">
+                    <label for="price" class="form-label">السعر</label>
+                    <input type="number" class="form-control" id="price" placeholder="أدخل السعر">
+                </div>
+
+                <div class="mb-3 col-6">
+                    <label for="area" class="form-label">المساحة (م²)</label>
+                    <input type="number" class="form-control" id="area" placeholder="أدخل المساحة">
+                </div>
+
+                <div class="mb-3 col-6">
+                    <label for="address" class="form-label">العنوان الكامل</label>
+                    <input type="text" class="form-control" id="address" placeholder="أدخل العنوان">
+                </div>
+
+                <div class="mb-3 col-6">
+                    <label for="propertyStatus" class="form-label">الحالة</label>
+                    <select class="form-select" id="propertyStatus">
+                        <option selected disabled>اختر الحالة</option>
+                        <option value="available">متاح</option>
+                        <option value="sold">مباع</option>
+                        <option value="rented">مؤجر</option>
+                    </select>
+                </div>
+
+                <div class="mb-3 col-6">
+                    <label for="videoUrl" class="form-label">رابط الفيديو (اختياري)</label>
+                    <input type="url" class="form-control" id="videoUrl" placeholder="رابط الفيديو">
+                </div>
+
+                <div class="mb-3 col-12">
+                    <label for="description" class="form-label">الوصف</label>
+                    <textarea class="form-control" id="description" rows="3" placeholder="أدخل وصف العقار"></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success">إضافة العقار</button>
+
+        </form>
+    </div>
+</div> -->
+
+
+
+<p-card header="إضافة عقار جديد" class="mb-4">
+    <form class="row g-3" [formGroup]="addPropertyForm" (ngSubmit)="onSubmit()">
+        @if (addPropertyForm.get('ownerNationalId')?.hasError('existsCustomer') &&
+        addPropertyForm.get('ownerNationalId')?.dirty) {
+        <p-message severity="error" icon="pi pi-times-circle" text="الرقم الوطني غير مسجل في النظام"
+            [closable]="false"></p-message>
+        }
+        @if (hasValue('title')) {
+        <p-message severity="error" icon="pi pi-times-circle" text="عنوان العقار مطلوب" [closable]="false"></p-message>
+        }
+
+
+        @if (addPropertyForm.get('ownerNationalId')?.hasError('required') &&
+        addPropertyForm.get('ownerNationalId')?.touched) {
+        <p-message severity="error" icon="pi pi-times-circle" text="الرقم الوطني للمالك مطلوب"
+            [closable]="false"></p-message>
+        }
+        @if (hasValue('categoryId')) {
+        <p-message severity="error" icon="pi pi-times-circle" text="الصنف مطلوب" [closable]="false"></p-message>
+        }
+        @if (hasValue('price')) {
+        <p-message severity="error" icon="pi pi-times-circle" text="السعر مطلوب" [closable]="false"></p-message>
+        }
+        @if (hasValue('area')) {
+        <p-message severity="error" icon="pi pi-times-circle" text="المساحة مطلوبة" [closable]="false"></p-message>
+        }
+        @if (hasValue('location')) {
+        <p-message severity="error" icon="pi pi-times-circle" text="الموقع العام مطلوب" [closable]="false"></p-message>
+        }
+        @if (hasValue('address')) {
+        <p-message severity="error" icon="pi pi-times-circle" text="العنوان مطلوب" [closable]="false"></p-message>
+        }
+        <p-message severity="error" icon="pi pi-times-circle" [life]="3000" text="حدث خطأ ما يرجى المحاولة مرة اخرى"
+            [closable]="false"></p-message>
+
+
+
+
+        <div class="col-md-6">
+            <label for="title" class="form-label">اسم العقار</label>
+            <input id="title" type="text" formControlName="title" pInputText class="w-100 p-2"
+                placeholder="أدخل عنوان العقار" />
+
+        </div>
+
+        <div class="col-md-6">
+            <label for="ownerNationalId" class="form-label">المالك</label>
+            <input id="ownerNationalId" type="text" formControlName="ownerNationalId" pInputText class="w-100 p-2"
+                placeholder="أدخل الرقم الوطني المالك" />
+
+
+
+        </div>
+
+        <div class="col-md-6">
+            <label for="categoryId" class="form-label">الصنف</label>
+            <p-select [options]="categories" placeholder="اختر التصنيف" formControlName="categoryId"
+                class="w-100"></p-select>
+
+        </div>
+
+        <div class="col-md-6">
+            <label for="price" class="form-label">السعر</label>
+            <p-inputNumber inputId="price" formControlName="price" class="w-100" inputStyleClass="p-2"></p-inputNumber>
+
+        </div>
+
+        <div class="col-md-6">
+            <label for="area" class="form-label">المساحة (م²)</label>
+            <p-inputNumber inputId="area" formControlName="area" class="w-100" inputStyleClass="p-2"></p-inputNumber>
+
+        </div>
+
+        <div class="col-md-6">
+            <label for="location" class="form-label">الموقع العام</label>
+            <input id="location" type="text" formControlName="location" pInputText class="w-100 p-2"
+                placeholder="الموقع العام" />
+
+        </div>
+
+        <div class="col-md-6">
+            <label for="address" class="form-label">العنوان</label>
+            <input id="address" type="text" formControlName="address" pInputText class="w-100 p-2"
+                placeholder="العنوان" />
+
+        </div>
+
+        <div class="col-12">
+            <label for="description" class="form-label">الوصف</label>
+            <textarea id="description" formControlName="description" rows="3" pInputTextarea class="w-100 p-2"
+                placeholder="أدخل وصف العقار"></textarea>
+        </div>
+
+        <div class="col-md-6">
+            <div>
+                <label for="imageUpload" class="form-label fw-semibold mb-2">رفع صور العقار</label>
+                <p-message severity="error" text="يجب ارفاق صورة واحدة على الأقل" [closable]="false"
+                    *ngIf="!imageUpload?.files?.length"></p-message>
+            </div>
+
+            <p-fileUpload #imageUpload name="images" accept="image/*" [maxFileSize]="5000000" mode="advanced"
+                [auto]="false" chooseLabel="اختر صور" uploadLabel="رفع الصور" cancelLabel="إلغاء" [multiple]="true"
+                styleClass="custom-fileupload" (onSelect)="onImagesSelected($event)">
+            </p-fileUpload>
+
+        </div>
+
+        <div class="col-md-6">
+            <label for="videoUpload" class="form-label fw-semibold mb-2">(اختياري) رفع فيديو للعقار</label>
+            <p-fileUpload #videoUpload name="video" accept="video/*" [maxFileSize]="5000000" mode="advanced"
+                [auto]="false" chooseLabel="اختر فيديو" uploadLabel="رفع الفيديو" cancelLabel="إلغاء" [multiple]="false"
+                styleClass="custom-fileupload">
+            </p-fileUpload>
+        </div>
+
+        <div class="col-6 mx-auto my-5">
+            <button pButton type="submit" label="إضافة العقار" class="p-button-success w-100"></button>
+        </div>
+    </form>
+</p-card>

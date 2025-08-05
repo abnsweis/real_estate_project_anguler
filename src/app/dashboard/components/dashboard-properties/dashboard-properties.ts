@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { PropertiesService } from '../../../core/services/propertys.service';
 import { IProperty } from '../../../core/models/Interfaces/Iproperty.interface';
 import {
@@ -16,7 +16,12 @@ import { PropertyiesList } from './propertyies-list/propertyies-list';
   templateUrl: './dashboard-properties.html',
   styleUrl: './dashboard-properties.css',
 })
-export class DashboardProperties implements OnInit {
+export class DashboardProperties implements AfterViewInit {
+  ngAfterViewInit(): void {
+    this.propertyiesCount = this.listComponent.filteredProperties.length;
+
+  }
+
   PROPERTY_HEADERS: TableColumn[] = [
     { field: 'propertyNumber', header: 'رقم العقار' },
     { field: 'address', header: 'العنوان' },
@@ -27,11 +32,14 @@ export class DashboardProperties implements OnInit {
     { field: 'ownerNationalId', header: 'الرقم الوطني' },
   ];
   filterEventData = { filter: '', value: '' };
+  propertyiesCount: number = 0;
   @ViewChild('listComponent') listComponent!: PropertyiesList;
 
   onFilterEvent(event: { filter: string; value: string }) {
     this.listComponent.filter(event);
+    this.propertyiesCount = this.listComponent.filteredProperties.length;
+
   }
 
-  ngOnInit(): void { }
+
 }

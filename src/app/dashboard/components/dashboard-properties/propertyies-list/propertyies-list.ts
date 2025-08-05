@@ -4,6 +4,7 @@ import { ConfirmationService, LazyLoadEvent } from 'primeng/api';
 import { IProperty } from '../../../../core/models/Interfaces/Iproperty.interface';
 import { PropertiesService } from '../../../../core/services/propertys.service';
 import { TableColumn } from '../../../../core/models/classes/auth/tableColumn';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-propertyies-list',
@@ -20,21 +21,24 @@ export class PropertyiesList implements OnInit {
   totalRecords = 0;
   loading = false;
   pageSize = 20;
+  successfullyAddedProperty: boolean = false;
   @Input() filterData!: { filter: string, value: string };
 
 
-  constructor(private ps: PropertiesService, private confirmationService: ConfirmationService,
+  constructor(private ps: PropertiesService, private route: Router, private confirmationService: ConfirmationService,
     private toastrService: ToastrService) { }
 
   ngOnInit(): void {
     this.loading = true;
-
+    this.onSuccessfullyAddedProperty();
   }
   filter(event: { filter: string, value: string }) {
     const filterKey = event.filter;
     const filterValue = event.value.toLowerCase();
+    console.log(filterKey)
+    console.log(filterValue)
 
-    this.properties = this.filteredProperties.filter(p => {
+    this.filteredProperties = this.properties.filter(p => {
       const propertyValue = (p[filterKey as keyof IProperty] || '').toString().toLowerCase();
       return propertyValue.includes(filterValue);
     });
@@ -86,6 +90,7 @@ export class PropertyiesList implements OnInit {
         this.properties = res.items;
         this.totalRecords = res.totalCount;
         this.filteredProperties = this.properties
+        console.log(this.filteredProperties.length);
         this.loading = false;
       },
       error: (err) => {
@@ -102,5 +107,13 @@ export class PropertyiesList implements OnInit {
   }
 
 
-
+  onSuccessfullyAddedProperty() {
+    console.clear();
+    this.route.routerState.root.queryParams.subscribe(params => {
+      if (params['added'] === 'true') {
+        this.successfullyAddedProperty = true;
+        
+      }
+    })
+  }
 }

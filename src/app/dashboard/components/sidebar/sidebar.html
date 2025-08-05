@@ -15,18 +15,35 @@
             <ul id="sidebarnav">
 
                 <li class="nav-small-cap"><span class="hide-menu">الرئيسية</span></li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="./dashboard.html">
+                <li class="sidebar-item" routerLinkActive="router-link-active"
+                    [routerLinkActiveOptions]="{ exact: true }">
+                    <a class="sidebar-link" [routerLink]="['/dashboard']">
                         <i class="ti ti-layout-dashboard"></i><span class="hide-menu">لوحة التحكم</span>
                     </a>
                 </li>
 
                 <li class="nav-small-cap"><span class="hide-menu">العناصر الأساسية</span></li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" [routerLink]="['manamge-properties']" routerLinkActive="router-link-active">
-                        <i class="ti ti-building"></i><span class="hide-menu">العقارات</span>
+                <li class="sidebar-item" [ngClass]="{ 'active': isPropertyDropdownOpen }">
+                    <a class="sidebar-link" href="javascript:void(0);" (click)="togglePropertyDropdown()">
+                        <i class="ti ti-building"></i><span class="hide-menu">إدارة العقارات</span>
+                        <i class="ti ti-chevron-down ms-auto"></i>
                     </a>
+                    <ul *ngIf="isPropertyDropdownOpen" class="sidebar-submenu p-0">
+                        <li routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="sidebar-link" [routerLink]="['manage-properties']">
+                                <i class="ti ti-list-details"></i><span class="hide-menu">قائمة العقارات</span>
+                            </a>
+                        </li>
+
+                        <li routerLinkActive="router-link-active">
+                            <a class="sidebar-link" [routerLink]="['manage-properties/add-property']">
+                                <i class="ti ti-plus"></i><span class="hide-menu">إضافة عقار جديد</span>
+                            </a>
+                        </li>
+
+                    </ul>
                 </li>
+
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="./owners.html">
                         <i class="ti ti-user-cog"></i><span class="hide-menu">المُلاك</span>
