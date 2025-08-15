@@ -17,7 +17,7 @@ export class CategoriesFilter {
   categories$!: Observable<PaginationResponse<ICategory>>;
   constructor(private _categoriesService: CategoriesService) {
 
-    this.categories$ = this._categoriesService.getCategories(1, 10); // Default to page 1 and page size 10
+    this.categories$ = this._categoriesService.getCategories();
 
   }
 

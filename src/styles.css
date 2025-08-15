@@ -79,3 +79,18 @@ button.p-confirmdialog-reject-button span {
 .p-button {
   background-color: var(--bs-primary) !important;
 }
+.operations-btn {
+  clear: left;
+  background-color: transparent !important;
+}
+.custom-btn {
+  background: transparent !important;
+}
+.p-tab-active {
+  color: var(--bs-primary) !important;
+}
+
+
+.disabled{
+  
+}

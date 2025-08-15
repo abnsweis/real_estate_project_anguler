@@ -1,0 +1,13 @@
+/* بطاقات الإحصائيات */
+.stat-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.stat-card:hover {
+  transform: translateY(-4px);
+}
+.stat-card .icon {
+  font-size: 1.8rem;
+}
+.stat-card h6 {
+  font-size: 0.95rem;
+}

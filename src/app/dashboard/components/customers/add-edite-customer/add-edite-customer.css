@@ -1,0 +1,14 @@
+/* общие стили */
+/* .card {
+  width: 80%;
+  max-width: 600px;
+} */
+
+.customerImage,
+.cover-image img {
+  object-fit: cover;
+}
+
+.card {
+  padding-bottom: 30px;
+}

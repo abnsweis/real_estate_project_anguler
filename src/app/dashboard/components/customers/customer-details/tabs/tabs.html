@@ -1,0 +1,130 @@
+<p-tabs [lazy]="true" (valueChange)="onTabChange($event)" value="0" scrollable class="bg-white customer-tabs px-3">
+    <p-tablist class="tablist">
+        <p-tab value="0"><i class="fas fa-id-card me-2"></i> المعلومات الشخصية</p-tab>
+        <p-tab value="1"><i class="fas fa-building me-2"></i> العقارات</p-tab>
+        <p-tab value="2"><i class="fas fa-history me-2"></i> التعاملات</p-tab>
+        <p-tab value="3"><i class="fas fa-file-invoice-dollar me-2"></i> الفواتير</p-tab>
+        <p-tab value="4"><i class="fas fa-sticky-note me-2"></i> الملاحظات</p-tab>
+        <p-tab value="5"><i class="fas fa-phone me-2"></i> التواصل</p-tab>
+    </p-tablist>
+
+    <p-tabpanels class="tabpanels">
+        <!-- المعلومات الشخصية -->
+        <p-tabpanel value="0">
+            <ul class="info-list list-unstyled">
+                <li><i class="fas fa-envelope text-primary"></i> <strong>غير متوفر بعد ( قريباً ) أن شاء
+                        الله</strong></li>
+                <li><i class="fas fa-phone text-primary"></i> {{customer?.phoneNumber}}</li>
+                <li><i class="fas fa-map-marker-alt text-primary"></i><strong>غير متوفر بعد ( قريباً ) أن شاء
+                        الله</strong></li>
+                <li><i class="fas fa-birthday-cake text-primary"></i> {{formatedDateOfBirth}}</li>
+                <li><i class="fas fa-id-badge text-primary"></i> رقم العميل: <strong>غير متوفر بعد ( قريباً ) أن شاء
+                        الله</strong></li>
+                <li><i class="fas fa-calendar text-primary"></i> تاريخ الإنضمام:
+                    <strong>{{formatedJoiningDate}}</strong>
+                </li>
+            </ul>
+        </p-tabpanel>
+
+        <!-- العقارات -->
+        <p-tabpanel value="1">
+            <h6 class="fw-semibold text-dark">العقارات المرتبطة</h6>
+
+            <!-- حالة التحميل -->
+            <div *ngIf="properties.length === 0" class="text-muted mt-2">
+                لا يوجد عقارات مرتبطة
+            </div>
+
+            <!-- عرض القائمة -->
+            <ul class="list-unstyled mt-2" *ngIf="properties.length > 0">
+                <li *ngFor="let property of properties" class="py-1">
+                    <i class="fas fa-check text-success me-2"></i>
+                    {{ property.title }} – {{ property.location }} – <span
+                        class=" badge rounded-3  bg-{{(property.propertyStatus | propertyStatusAr).color}}">
+                        {{ (property.propertyStatus | propertyStatusAr).text }}
+                    </span>
+
+                </li>
+            </ul>
+        </p-tabpanel>
+
+
+        <p-tabpanel value="2">
+            <h4 class="section-title">
+                سجل التعاملات
+                <span class="badge bg-primary fs-6 ms-2">{{ transactions.length }}</span>
+            </h4>
+            @if (transactions.length > 0) {
+            <div class="transactions-grid">
+                @for ( tx of transactions; track $index ) {
+                <div class="transaction-card">
+
+                    <div class="card-header">
+                        <span class="transaction-type bg-{{(tx.transactionType | transactionTypeAr).color}}">
+                            {{ (tx.transactionType | transactionTypeAr).text }}</span>
+                        <span class="transaction-date text-primary">{{ tx.transactionDate ?
+                            (tx.transactionDate | date:'MM/dd/yyyy') : 'غير محدد' }}</span>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="detail-item">
+                            <i class="fas fa-tag icon"></i>
+                            <span>رقم العقار:</span>
+                            <strong>{{ tx.propertyNumber || 'لا يوجد' }}</strong>
+                        </div>
+
+                        <div class="detail-item">
+                            <i class="fas fa-money-bill-wave icon"></i>
+                            <span>المبلغ:</span>
+                            <strong>{{ tx.amount !== undefined ? (tx.amount | currency:'USD':'symbol':'1.0-0') :
+                                'غير متوفر' }}</strong>
+                        </div>
+
+                        <div class="detail-item notes">
+                            <i class="fas fa-sticky-note icon"></i>
+                            <span>ملاحظات:</span>
+                            <em>{{ tx.notes || 'لا توجد' }}</em>
+                        </div>
+                    </div>
+
+                </div>
+                }
+            </div>
+            }@else{
+            <p class="no-transactions">لا توجد تعاملات حتى الآن</p>
+            }
+
+
+        </p-tabpanel>
+
+
+        <p-tabpanel value="3">
+            <h6 class="fw-semibold text-dark">الفواتير</h6>
+            <h3 class="text-center  " style="color: red;">قريباً أن شاء الله</h3>
+        </p-tabpanel>
+
+        <!-- الملاحظات -->
+        <p-tabpanel value="4">
+            <h3 class="text-center  " style="color: red;">قريباً أن شاء الله</h3>
+            <textarea class="form-control disabled  shadow-none" rows="4"
+                placeholder="أدخل ملاحظات عن العميل"></textarea>
+            <button class="btn btn-sm  disabled btn-primary mt-2"><i class="fas fa-save me-1"></i> حفظ
+                الملاحظة</button>
+        </p-tabpanel>
+
+        <!-- التواصل -->
+        <p-tabpanel value="5">
+            <div class="d-flex flex-wrap gap-2">
+                <button class="btn btn-success px-4">
+                    <i class="fab fa-whatsapp me-2"></i> واتساب
+                </button>
+                <button class="btn btn-outline-primary px-4">
+                    <i class="fas fa-envelope me-2"></i> بريد إلكتروني
+                </button>
+                <button class="btn btn-outline-secondary px-4">
+                    <i class="fas fa-phone-alt me-2"></i> اتصال مباشر
+                </button>
+            </div>
+        </p-tabpanel>
+    </p-tabpanels>
+</p-tabs>

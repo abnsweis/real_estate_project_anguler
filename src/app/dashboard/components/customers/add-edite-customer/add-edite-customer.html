@@ -1,0 +1,97 @@
+<div class="card rounded-4 shadow-sm border-0 bg-white overflow-hidden mb-5  ">
+
+    <div class="position-relative">
+
+        <div class="cover-image bg-light d-flex align-items-center justify-content-center" style="height: 180px;">
+
+            <img src="https://picsum.photos/1280/300" class="w-100 h-100">
+        </div>
+
+        <div class="profile-image position-absolute" style="bottom: -50px; right: 20px;">
+            <div class="rounded-circle border border-3 d-flex justify-content-center align-items-center border-white overflow-hidden position-relative"
+                style="width: 150px; height: 150px;">
+
+                <img alt="customerImage" [src]="customerPreviewImage"
+                    style="width: 100%; height: 100%; object-fit: cover;">
+
+
+            </div>
+            <label
+                class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center position-absolute"
+                style="bottom: 0; right: 0; width: 40px; height: 40px; cursor: pointer; border: 2px solid white;"
+                (click)="customerImageUpload.choose()">
+                <i class="pi pi-camera fs-6"></i>
+            </label>
+
+            <p-fileUpload #customerImageUpload [style]="{'display': 'none'}"
+                (onSelect)="oncustomerImageSelected($event)" name="customerImage" accept="image/*"
+                [maxFileSize]="5000000" mode="advanced" [auto]="false">
+            </p-fileUpload>
+
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <h1>{{formTitle}} </h1>
+    </div>
+    <div class="p-4 ">
+        <form class="row g-3" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            @for (error of formErrors ; track $index) {
+            <p-message severity="error" icon="pi pi-times-circle" text="{{error}}" [closable]="false" [life]="6000"
+                variant="outlined"></p-message>
+            }
+
+
+            <div class="col-md-6">
+                <label for="fullName" class="form-label">الاسم الكامل</label>
+                <input id="fullName" formControlName="fullName" type="text" class="w-100 p-2" pInputText
+                    placeholder="أدخل الاسم الكامل" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="nationalId" class="form-label">الرقم الوطني</label>
+                <input id="nationalId" formControlName="nationalId" type="text" class="w-100 p-2" pInputText
+                    placeholder="أدخل الرقم الوطني" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="phoneNumber" class="form-label">رقم الهاتف</label>
+                <input id="phoneNumber" formControlName="phoneNumber" type="text" class="w-100 p-2" pInputText
+                    placeholder="أدخل رقم الهاتف" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="dateOfBirth" class="form-label">تاريخ الميلاد</label>
+
+                <p-floatlabel>
+                    <p-datepicker formControlName="dateOfBirth" inputId="dateOfBirth" class="w-100 p-0" showIcon
+                        iconDisplay="input" placeholder="تاريخ الميلاد" />
+                </p-floatlabel>
+            </div>
+
+            <div class="col-md-6">
+                <label for="gender" class="form-label">الجنس</label>
+                <p-select id="gender" formControlName="gender" [options]="getGenderOptions()" placeholder="اختر الجنس"
+                    class="w-100"></p-select>
+            </div>
+
+            <div class="col-md-6">
+                <label for="customerType" class="form-label">نوع العميل</label>
+                <p-select id="customerType" [disabled]="mode == enMode.Update" [options]="getCustomerTypeOptions()"
+                    optionLabel="label" optionValue="value" placeholder="اختر نوع العميل"
+                    (onChange)="onCustomerTypeSelected($event)" class="w-100" formControlName="customerType">
+                </p-select>
+            </div>
+
+
+            <div class="col-12 mx-auto my-4">
+                <div class="w-50 m-auto">
+                    <button pButton type="submit" [disabled]="disabledSubmit" class="p-button-success fs-5s w-100">
+                        {{submitButtonText}}</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

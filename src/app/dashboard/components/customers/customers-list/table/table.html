@@ -1,0 +1,66 @@
+<section class="card rounded-4 shadow-sm border-0 bg-white mb-5 p-0">
+    <!-- رأس القسم -->
+    <header class="d-flex gap-2 align-items-center mb-4">
+        <h1 class="h5 fw-semibold text-dark m-0">قائمة العملاء</h1>
+    </header>
+
+    <!-- جدول العملاء -->
+    <div class="table-responsive">
+        <p-table [value]="filteredCustomers" [paginator]=" filteredCustomers.length != 0" [rows]="pageSize"
+            [totalRecords]="totalRecords" [lazy]="true" (onLazyLoad)="loadCustomers($event)" [loading]="loading"
+            [rowHover]="true" [tableStyle]="{ 'min-width': '100%' }"
+            styleClass="p-datatable-sm rounded-3 overflow-hidden shadow-none bg-white" responsiveLayout="scroll">
+
+            <!-- رأس الجدول -->
+            <ng-template pTemplate="header">
+                <tr class="bg-light text-muted">
+                    <th class="px-4 py-3 fw-semibold text-nowrap">الاسم الكامل</th>
+                    <th class="px-4 py-3 fw-semibold text-nowrap">الرقم الوطني</th>
+                    <th class="px-4 py-3 fw-semibold text-nowrap">رقم الهاتف</th>
+                    <th class="px-4 py-3 fw-semibold text-nowrap">تاريخ الميلاد</th>
+                    <th class="px-4 py-3 fw-semibold text-nowrap">الجنس</th>
+                    <th class="px-4 py-3 fw-semibold text-nowrap">نوع العميل</th>
+                    <th class="px-4 py-3 fw-semibold text-center" style="width: 180px;">الإجراءات</th>
+                </tr>
+            </ng-template>
+
+            <!-- بيانات الجدول -->
+            <ng-template pTemplate="body" let-customer>
+                <tr [class.text-muted]="customer.isDeleted" [class.opacity-75]="customer.isDeleted">
+                    <td class="px-4 py-3 fw-medium">{{ customer.fullName }}</td>
+                    <td class="px-4 py-3">{{ customer.nationalId }}</td>
+                    <td class="px-4 py-3 text-primary">{{ customer.phoneNumber }}</td>
+                    <td class="px-4 py-3">{{ customer.dateOfBirth | date: 'dd/MM/yyyy' }}</td>
+                    <td class="px-4 py-3">{{ getGenderAr(customer.gender) }}</td>
+                    <td class="px-4 py-3">
+                        <span class="badge bg-secondary bg-opacity-10 text-secondary px-3 py-1 rounded-pill">
+                            {{ handelCustomerTypeName(customer.customerType) }}
+                        </span>
+                    </td>
+                    <td class="px-4 py-3 text-center">
+                        <div class="d-flex justify-content-center gap-2">
+                            <a [routerLink]="['edit', customer.customerId]"
+                                class="btn text-success btn-sm rounded-circle" title="تعديل">
+                                <i class="pi pi-pencil"></i>
+                            </a>
+                            <a [routerLink]="['details', customer.customerId]"
+                                class="btn text-info btn-sm rounded-circle" title="عرض التفاصيل">
+                                <i class="pi pi-info-circle"></i>
+                            </a>
+                            <button (click)="confirmDelete($event, customer.customerId)"
+                                class="btn text-danger btn-sm rounded-circle" title="حذف العميل">
+                                <i class="pi pi-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+
+
+        </p-table>
+
+        <div *ngIf="!filteredCustomers || filteredCustomers.length === 0" class="text-center py-4">
+            <h3 class="text-muted mb-0">لا يوجد عملاء مسجلين بعد</h3>
+        </div>
+    </div>
+</section>

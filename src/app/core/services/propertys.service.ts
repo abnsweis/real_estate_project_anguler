@@ -28,7 +28,10 @@ export class PropertiesService {
     return this._httpclient.get<PaginationResponse<IProperty>>(`${this.baseUrl}/api/Properties?PageSize=${pageSize}&PageNumber=${pageNumber}`);
   }
 
-
+  getPropertiesByOwnerId(ownerId: string): Observable<PaginationResponse<IProperty>> {
+    return this._httpclient.get<PaginationResponse<IProperty>>(`${this.baseUrl}/api/Properties/Owner/Id/${ownerId}?PageSize=10000&PageNumber=1`);
+    // return this._httpclient.get<PaginationResponse<IProperty>>(`http://localhost:5193/api/Properties/Owner/Id/1bf7d859-ee8e-4786-9019-1bbe6a60f194?PageSize=10000&PageNumber=1`);
+  }
   getPropertiesByCategory(categoryId: string, pageNumber: number, pageSize: number): Observable<PaginationResponse<IProperty>> {
     return this._httpclient.get<PaginationResponse<IProperty>>(`${this.baseUrl}/api/Properties/Category/${categoryId}?PageSize=${pageSize}&PageNumber=${pageNumber}`);
   }
@@ -40,12 +43,7 @@ export class PropertiesService {
   }
 
   getPropertyById(propertyId: string): Observable<IProperty> {
-    return this._httpclient.get<IProperty>(`${this.baseUrl}/api/Properties/Id/${propertyId}`)
-      .pipe(
-        catchError((err: HttpErrorResponse) => {
-          return throwError(() => err);
-        })
-      );
+    return this._httpclient.get<IProperty>(`${this.baseUrl}/api/Properties/Id/${propertyId}`);
   }
 
   deleteProperty(propertyId: string): Observable<HttpResponse<any>> {

@@ -5,6 +5,9 @@ export interface ICustomer {
     phoneNumber: string;
     dateOfBirth: string;
     gender: 'Male' | 'Female';
-    customerType: 'Buyer' | 'Seller' | 'Lessee' | 'Lessor';
+    customerType: number;
     imageURL: string;
+    propertiesCount: string;
+    contractsCount: string;
+    joiningDate: string;
 }

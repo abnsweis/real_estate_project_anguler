@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { LoadingService } from '../../../core/services/loading.service';
+import { LoadingService } from '../../core/services/loading.service';
 
 @Component({
   selector: 'app-loading',
-  imports: [CommonModule],
   templateUrl: './loading.html',
-  styleUrl: './loading.css'
+  styleUrl: './loading.css',
+  standalone: false
 })
 export class Loading {
 

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PaginationResponse } from '../models/Interfaces/IpaginationResponse.interface';
@@ -12,7 +12,22 @@ export class CategoriesService {
   private baseUrl = environment.apiBaseUrl;
   constructor(private _httpClient: HttpClient) { }
 
-  getCategories(page: number, pageSize: number): Observable<PaginationResponse<ICategory>> {
-    return this._httpClient.get<PaginationResponse<ICategory>>(`${this.baseUrl}/api/Categories?PageSize=11&PageNumber=1`);
+  getCategories(): Observable<PaginationResponse<ICategory>> {
+    return this._httpClient.get<PaginationResponse<ICategory>>(`${this.baseUrl}/api/Categories`);
+  }
+  addNewCategory(categoryName: string): Observable<any> {
+    return this._httpClient.post<any>(`${this.baseUrl}/api/Categories`, {
+      categoryName: categoryName
+    });
+  }
+
+  updateCategory(categoryId: string, categoryName: string): Observable<HttpResponse<any>> {
+    return this._httpClient.put<any>(`${this.baseUrl}/api/Categories/${categoryId}`, {
+      categoryName: categoryName
+    });
+  }
+
+  deleteCategory(categoryId: string) {
+    return this._httpClient.delete(`${this.baseUrl}/api/Categories/${categoryId}`);
   }
 }

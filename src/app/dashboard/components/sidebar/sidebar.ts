@@ -16,8 +16,12 @@ export class Sidebar {
     this.closedSidenar.emit();
   }
   isPropertyDropdownOpen: boolean = false;
+  isCustomersDropdownOpen: boolean = false;
 
   togglePropertyDropdown() {
     this.isPropertyDropdownOpen = !this.isPropertyDropdownOpen;
+  }
+  toggleCustomersDropdown() {
+    this.isCustomersDropdownOpen = !this.isCustomersDropdownOpen;
   }
 }

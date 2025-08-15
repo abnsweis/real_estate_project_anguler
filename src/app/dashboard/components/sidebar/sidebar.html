@@ -18,42 +18,70 @@
                 <li class="sidebar-item" routerLinkActive="router-link-active"
                     [routerLinkActiveOptions]="{ exact: true }">
                     <a class="sidebar-link" [routerLink]="['/dashboard']">
-                        <i class="ti ti-layout-dashboard"></i><span class="hide-menu">لوحة التحكم</span>
+                        <i class="ti ti-layout-dashboard text-us-primary"></i><span class="hide-menu">لوحة التحكم</span>
                     </a>
                 </li>
 
                 <li class="nav-small-cap"><span class="hide-menu">العناصر الأساسية</span></li>
                 <li class="sidebar-item" [ngClass]="{ 'active': isPropertyDropdownOpen }">
                     <a class="sidebar-link" href="javascript:void(0);" (click)="togglePropertyDropdown()">
-                        <i class="ti ti-building"></i><span class="hide-menu">إدارة العقارات</span>
+                        <i class="ti ti-home-2 text-us-primary"></i>
+                        <span class="hide-menu">إدارة العقارات</span>
                         <i class="ti ti-chevron-down ms-auto"></i>
                     </a>
                     <ul *ngIf="isPropertyDropdownOpen" class="sidebar-submenu p-0">
                         <li routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }">
                             <a class="sidebar-link" [routerLink]="['manage-properties']">
-                                <i class="ti ti-list-details"></i><span class="hide-menu">قائمة العقارات</span>
+                                <i class="ti ti-building-estate text-us-success"></i>
+                                <span class="hide-menu">قائمة العقارات</span>
                             </a>
                         </li>
 
                         <li routerLinkActive="router-link-active">
                             <a class="sidebar-link" [routerLink]="['manage-properties/add-property']">
-                                <i class="ti ti-plus"></i><span class="hide-menu">إضافة عقار جديد</span>
+                                <i class="ti ti-home-plus text-us-success"></i>
+                                <span class="hide-menu">إضافة عقار جديد</span>
                             </a>
                         </li>
-
                     </ul>
                 </li>
 
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="./clients.html">
-                        <i class="ti ti-users"></i><span class="hide-menu">العملاء</span>
+                <li class="sidebar-item" [ngClass]="{ 'active': isCustomersDropdownOpen }">
+                    <a class="sidebar-link" href="javascript:void(0);" (click)="toggleCustomersDropdown()">
+                        <i class="ti ti-users text-us-primary"></i>
+                        <span class="hide-menu">إدارة العملاء</span>
+                        <i class="ti ti-chevron-down ms-auto"></i>
                     </a>
+                    <ul *ngIf="isCustomersDropdownOpen" class="sidebar-submenu p-0">
+                        <li class="sidebar-item" routerLinkActive="router-link-active"
+                            [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="sidebar-link" [routerLink]="['customers']">
+                                <i class="ti ti-list-details text-us-primary"></i>
+                                <span class="hide-menu">قائمة العملاء</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" routerLinkActive="router-link-active"
+                            [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="sidebar-link" [routerLink]="['customers/add']">
+                                <i class="ti ti-user-plus text-us-primary"></i>
+                                <span class="hide-menu">إضافة عميل جديد</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+
 
                 <li class="nav-small-cap"><span class="hide-menu">المعاملات</span></li>
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="./transactions.html">
-                        <i class="ti ti-cash"></i><span class="hide-menu">المعاملات (بيع/إيجار)</span>
+                        <i class="ti ti-cash text-us-success"></i>
+                        <span class="hide-menu" style="white-space: nowrap;">
+                            المعاملات (
+                            <span class="text-us-success" style="display: inline; white-space: nowrap;">بيع</span> /
+                            <span class="text-danger  " style="display: inline; white-space: nowrap;">إيجار</span>
+                            )
+                        </span>
+
                     </a>
                 </li>
 
@@ -70,7 +98,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./categories.html">
+                    <a class="sidebar-link" [routerLink]="['categories']">
                         <i class="ti ti-tags"></i><span class="hide-menu">الفئات</span>
                     </a>
                 </li>

@@ -1,0 +1,26 @@
+<div class="customers-container">
+
+    <!-- رسائل النجاح -->
+    <div class="position-fixed top-0 end-0 m-4" style="z-index: 1050;">
+        <p-message severity="success" [life]="3000" [closable]="true" *ngIf="successfullyAddedCustomer"
+            text="تم إضافة العميل بنجاح 🎉">
+        </p-message>
+
+        <p-message severity="success" [life]="3000" [closable]="true" *ngIf="successfullyUpdateCustomer"
+            text="تم تحديث بيانات العميل بنجاح ✅">
+        </p-message>
+
+        <p-message severity="success" [life]="3000" [closable]="true" *ngIf="successfullyDeleteCustomer"
+            text="تم  حذف العميل بنجاح ✅">
+        </p-message>
+    </div>
+
+    <!-- جدول العملاء -->
+    <app-customers-table #Table [CUSTOMER_HEADERS]="CUSTOMER_HEADERS" (countChanged)="updateCount($event)"
+        (onDeletedCustomer)="onDeleteCustome()">
+    </app-customers-table>
+
+</div>
+
+
+<p-confirmdialog />

@@ -16,10 +16,11 @@ import { PropertyiesList } from './propertyies-list/propertyies-list';
   templateUrl: './dashboard-properties.html',
   styleUrl: './dashboard-properties.css',
 })
-export class DashboardProperties implements AfterViewInit {
-  ngAfterViewInit(): void {
-    this.propertyiesCount = this.listComponent.filteredProperties.length;
+export class DashboardProperties {
+  @ViewChild('listComponent') listComponent!: PropertyiesList;
 
+  updateCount(count: any) {
+    this.propertyiesCount = count;
   }
 
   PROPERTY_HEADERS: TableColumn[] = [
@@ -33,7 +34,7 @@ export class DashboardProperties implements AfterViewInit {
   ];
   filterEventData = { filter: '', value: '' };
   propertyiesCount: number = 0;
-  @ViewChild('listComponent') listComponent!: PropertyiesList;
+
 
   onFilterEvent(event: { filter: string; value: string }) {
     this.listComponent.filter(event);

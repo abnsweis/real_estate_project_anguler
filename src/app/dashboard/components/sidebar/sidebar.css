@@ -1,0 +1,28 @@
+/* الألوان العامة - يمكن استخدامها في أي مكان */
+.text-us-primary {
+  color: #3b82f6;
+} /* أزرق */
+.text-us-secondary {
+  color: #6b7280;
+} /* رمادي */
+.text-us-success {
+  color: #31d607;
+} /* أخضر نباتي */
+.text-us-warning {
+  color: #ea580c;
+} /* برتقالي */
+.text-us-info {
+  color: #7c3aed;
+} /* بنفسجي */
+
+/* حجم وتأثير عام للأيقونات */
+.sidebar-icon {
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+/* تأثير عند التحويم على الرابط */
+.sidebar-link:hover .sidebar-icon {
+  transform: scale(1.1);
+  opacity: 0.9;
+}

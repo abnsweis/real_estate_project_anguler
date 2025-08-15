@@ -40,6 +40,31 @@ import { AddUpdateProperty } from './components/dashboard-properties/add-update-
 import { TopSection } from './components/dashboard-properties/add-update-property/top-section/top-section';
 import { PropertyDetails } from './components/dashboard-properties/property-details/property-details';
 import { Rating } from 'primeng/rating';
+import { SharedModule } from '../shared/shared-module';
+import { Customers } from './components/customers/customers';
+import { CustomersList } from './components/customers/customers-list/customers-list';
+import { CustomersTable } from './components/customers/customers-list/table/table';
+import { FilteringSection } from './components/customers/filtering-section/filtering-section';
+import { InputGroupModule } from 'primeng/inputgroup';
+import { TooltipModule } from 'primeng/tooltip';
+import { AddNewCustomer } from './components/customers/add-new-customer/add-new-customer';
+import { AddEditeCustomer } from './components/customers/add-edite-customer/add-edite-customer';
+import { DatePickerModule } from 'primeng/datepicker';
+import { EditeCustomer } from './components/customers/edite-customer/edite-customer';
+import { CustomerDetails } from './components/customers/customer-details/customer-details';
+import { TabsModule } from 'primeng/tabs';
+import { PropertyStatusArPipe } from '../core/pipes/property-status-ar-pipe';
+import { TransactionTypeArPipe } from '../core/pipes/transaction-type-ar-pipe';
+import { CoverAndProfilePicture } from './components/customers/customer-details/cover-and-profile-picture/cover-and-profile-picture';
+import { CustomerStats } from './components/customers/customer-details/customer-stats/customer-stats';
+import { Tabs } from './components/customers/customer-details/tabs/tabs';
+import { Categories } from './components/categories/categories';
+import { CategoriesList } from './components/categories/categories-list/categories-list';
+import { CategoriesTable } from './components/categories/categories-list/table/table';
+import { CategoriesInfo } from './components/categories/categories-info/categories-info';
+import { Dialog } from 'primeng/dialog';
+
+
 
 @NgModule({
   declarations: [
@@ -58,7 +83,22 @@ import { Rating } from 'primeng/rating';
     TopSection,
     UpdateProperty,
     AddUpdateProperty,
+    CategoriesTable,
     PropertyDetails,
+    Customers,
+    CustomersList,
+    CustomersTable,
+    FilteringSection,
+    AddNewCustomer,
+    AddEditeCustomer,
+    EditeCustomer,
+    CustomerDetails,
+    CoverAndProfilePicture,
+    CustomerStats,
+    Tabs,
+    Categories,
+    CategoriesList,
+    CategoriesInfo,
   ],
   imports: [
     CommonModule,
@@ -80,6 +120,15 @@ import { Rating } from 'primeng/rating';
     TextareaModule,
     MessageModule,
     FileUpload,
+    DatePickerModule,
+    SharedModule,
+    TooltipModule,
+    InputGroupModule,
+    TabsModule,
+    PropertyStatusArPipe,
+    TransactionTypeArPipe,
+
+    Dialog,
     DrawerModule, ButtonModule, RippleModule, AvatarModule, StyleClassModule
   ]
 })

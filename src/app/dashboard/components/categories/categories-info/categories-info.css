@@ -1,0 +1,3 @@
+::ng-deep .p-dialog button.p-dialog-close-button {
+  background-color: transparent !important;
+}

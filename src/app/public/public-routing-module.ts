@@ -26,7 +26,7 @@ const routes: Routes = [
       { path: 'home', component: Home, canActivate: [authGuard] },
       { path: 'services', component: ServicesPage, canActivate: [authGuard] },
       { path: 'about-us', component: AboutUs, canActivate: [authGuard] },
-      { path: 'properties', component: Properties, canActivate: [authGuard] },
+      { component: Properties, canActivate: [authGuard], path: 'properties' },
       { path: 'properties/:propertyId', component: PropertyDetails },
       { path: 'favorite', component: Favorite, canActivate: [authGuard] },
       { path: 'my', component: Profile, canActivate: [authGuard] },

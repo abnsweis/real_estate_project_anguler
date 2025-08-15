@@ -115,9 +115,10 @@
 
         <div class="col-md-6">
             <label for="videoUpload" class="form-label fw-semibold mb-2">(اختياري) رفع فيديو للعقار</label>
+
             <p-fileUpload #videoUpload name="video" accept="video/*" [maxFileSize]="5000000" mode="advanced"
-                [auto]="false" [showCancelButton]="false" [showUploadButton]="false" chooseLabel="اختر فيديو"
-                uploadLabel="رفع الفيديو" cancelLabel="إلغاء" [multiple]="false" styleClass="custom-fileupload">
+                [auto]="false" chooseLabel="اختر فيديو" uploadLabel="رفع الفيديو" [showCancelButton]="false"
+                [showUploadButton]="false" styleClass="custom-fileupload" (onSelect)="onVideoSelected($event)">
             </p-fileUpload>
         </div>
 

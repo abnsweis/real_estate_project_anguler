@@ -1,0 +1,14 @@
+<div class="customer-profile-card rounded-4 shadow-sm border-0 bg-white   mb-5">
+    @if (customer) {
+    <app-cover-and-profile-picture [customerImage]="customer?.imageURL ?? ''"></app-cover-and-profile-picture>
+    <!-- العنوان -->
+    <div class="text-end mt-5 me-5 pe-5 pt-3">
+        <h1 class="h4 fw-bold text-dark">{{customer?.fullName}}</h1>
+    </div>
+
+    <app-customer-stats [customer]="customer"></app-customer-stats>
+
+    <app-tabs [customer]="customer" [customerId]="customerId" [formatedDateOfBirth]="formatedDateOfBirth"
+        [formatedJoiningDate]="formatedJoiningDate"></app-tabs>
+    }
+</div>

@@ -1,0 +1,153 @@
+/* الخط العام */
+body {
+  background: #f8f9fa;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  direction: rtl;
+  margin: 0;
+  padding: 40px 15px;
+  color: #555;
+}
+
+/* الصور */
+.object-fit-cover {
+  object-fit: cover !important;
+}
+
+/* بطاقة العميل */
+.customer-profile-card {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #fff;
+  overflow: hidden;
+}
+
+/* الغلاف */
+.cover-image img {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+/* الصورة الشخصية */
+.profile-image {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.profile-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* العنوان */
+.customer-profile-card h1 {
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+  font-size: 1.5rem;
+}
+
+/* قائمة المعلومات */
+.info-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px dashed #eee;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+.info-list li:hover {
+  color: #007bff;
+}
+.info-list li i {
+  width: 24px;
+  font-size: 1rem;
+}
+
+/* متجاوب */
+@media (max-width: 768px) {
+  .profile-image {
+    bottom: -40px;
+    right: 15px;
+    width: 120px;
+    height: 120px;
+  }
+  .profile-image .rounded-circle {
+    width: 120px;
+    height: 120px;
+  }
+  .customer-profile-card h1 {
+    font-size: 1.3rem;
+    padding-right: 10px;
+  }
+  .tablist {
+    flex-wrap: wrap;
+  }
+  p-tab {
+    font-size: 0.9rem;
+    padding: 10px 14px;
+  }
+}
+.stat-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.section-title {
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  border-left: 5px solid #3498db;
+  border-right: 5px solid #3498db;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.icon {
+  color: #3498db;
+  font-size: 1.2rem;
+  min-width: 24px;
+}
+
+.no-transactions {
+  text-align: center;
+  color: #bdc3c7;
+  font-size: 1.1rem;
+  margin-top: 3rem;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .transactions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .transaction-card {
+    padding: 1rem;
+  }
+
+  .detail-item span {
+    min-width: 80px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Responsive: لما الشاشة صغيرة (أقل من 768px) */
+@media (max-width: 768px) {
+  .transactions-grid {
+    flex-direction: column;
+    gap: 1.3rem;
+  }
+
+  .transaction-card {
+    flex: 1 1 auto; /* الكارد ياخد كل العرض */
+    max-width: 100%;
+  }
+}

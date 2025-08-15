@@ -32,37 +32,19 @@
         <tr>
             <td>{{ property.title }}</td>
             <td>{{property.location}}</td>
-            <td>
-                <!-- <span class="badge" [ngClass]="{
-                    'bg-green-100 text-green-800': property.propertyStatus == 'متاح',
-                    'bg-red-100 text-red-800': property.propertyStatus == 'مباع',
-                    'bg-yellow-100 text-yellow-800': property.propertyStatus == 'موأجر'
-                }">
-                </span> -->
-                @if(property.propertyStatus == 'Available'){
-                <span class="badge rounded-3 " [ngClass]="{'bg-success': true}">متاح</span>
-                }
-                @else if(property.propertyStatus == 'Sold'){
-                <span class="badge rounded-3 " [ngClass]="{'bg-danger': true}">مباع</span>
-
-                }
-                @else{
-                <span class="badge rounded-3 " [ngClass]="{'bg-warning': true}">مؤجر</span>
-
-                }
-            </td>
+            <td class=" badge rounded-3 p-2  bg-{{(property.propertyStatus | propertyStatusAr).color}}">{{
+                (property.propertyStatus | propertyStatusAr).text }}</td>
             <td>{{ property.area }} م²</td>
             <td>{{ property.price | number:'1.0-0' }} $</td>
             <td>{{ property.ownerFullName }}</td>
             <td>{{ property.ownerNationalId }}</td>
-            <p-button icon=" pi pi-trash" (click)="confirmDelete($event,property.propertyId)" severity="danger"
-                [rounded]="true" [text]="true" />
-
-            <a pButton icon="pi pi-pencil" severity="success" [rounded]="true" [text]="true"
-                [routerLink]="['edite', property.propertyId]">
+            <p-button styleClass="custom-btn" icon="pi pi-trash" (click)="confirmDelete($event, property.propertyId)"
+                severity="danger" [rounded]="true" [text]="true" />
+            <a pButton icon="pi pi-pencil" severity="success" class="operations-btn" [rounded]="true" [text]="true"
+                [routerLink]="['edit', property.propertyId]">
             </a>
 
-            <a pButton icon="pi pi-info-circle" severity="info" [rounded]="true" [text]="true"
+            <a pButton icon="pi pi-info-circle" class="operations-btn" severity="info" [rounded]="true" [text]="true"
                 [routerLink]="['details', property.propertyId]">
             </a>
 

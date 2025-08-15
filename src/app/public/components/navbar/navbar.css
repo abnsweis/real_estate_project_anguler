@@ -1,3 +1,39 @@
 nav {
   background-color: white;
 }
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+.mobile-bottom-nav a {
+  flex: 1;
+  text-align: center;
+  color: #666;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.mobile-bottom-nav a i {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+.mobile-bottom-nav a.active {
+  color: #4a4aff;
+  font-weight: bold;
+}
+
+.mobile-bottom-nav a.active i {
+  color: #4a4aff;
+}

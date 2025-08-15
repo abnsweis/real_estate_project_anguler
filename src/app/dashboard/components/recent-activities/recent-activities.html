@@ -14,7 +14,7 @@
                         </div>
                         <div class="mx-3">
                             <div class="fw-semibold fs-4 ">{{customer.fullName}}</div>
-                            <a [routerLink]="['/users', customer.nationalId]"
+                            <a [routerLink]="['customers/details', customer.customerId]"
                                 class="text-primary fw-semibold small fs-4">
                                 {{ '@' + customer.nationalId }}
                             </a>

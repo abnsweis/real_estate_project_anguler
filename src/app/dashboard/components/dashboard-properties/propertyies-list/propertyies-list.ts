@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmationService, LazyLoadEvent } from 'primeng/api';
 import { IProperty } from '../../../../core/models/Interfaces/Iproperty.interface';
@@ -22,9 +22,10 @@ export class PropertyiesList implements OnInit {
   totalRecords = 0;
   loading = false;
   pageSize = 20;
+  Count = 0;
+  @Output() countChanged = new EventEmitter<number>();
   successfullyAddedProperty: boolean = false;
   successfullyUpdateProperty: boolean = false;
-  @Input() filterData!: { filter: string, value: string };
 
 
   constructor(private ps: PropertiesService,
@@ -47,6 +48,9 @@ export class PropertyiesList implements OnInit {
       const propertyValue = (p[filterKey as keyof IProperty] || '').toString().toLowerCase();
       return propertyValue.includes(filterValue);
     });
+
+    this.Count = this.filteredProperties.length;
+    this.countChanged.emit(this.Count);
   }
 
   confirmDelete(event: Event, propertyId: string) {
@@ -91,19 +95,20 @@ export class PropertyiesList implements OnInit {
     // API Call
     this.ps.getPropertiesPage(pageNumber, pageSize).subscribe({
       next: (res) => {
+        console.log(res);
         this.properties = res.items;
         this.totalRecords = res.totalCount;
         this.filteredProperties = this.properties
         this.loading = false;
+        this.Count = res.totalCount;
+        this.countChanged.emit(this.Count);
       },
       error: (err) => {
         this.loading = false;
       },
     });
   }
-  viewDetails(property: IProperty) {
-    console.log('عرض التفاصيل:', property);
-  }
+
 
 
 

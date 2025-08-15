@@ -11,6 +11,7 @@ import { enMode } from '../../../../shared/enums/en-mode';
 import { IProperty } from '../../../../core/models/Interfaces/Iproperty.interface';
 import { ToastrService } from 'ngx-toastr';
 import { FileRemoveEvent } from 'primeng/fileupload';
+import { th } from 'date-fns/locale';
 
 @Component({
   selector: 'app-add-update-property',
@@ -119,14 +120,14 @@ export class AddUpdateProperty implements OnInit {
 
   createUpdateForm() {
 
+
     // If property is provided, set the propertyId and patch the form with existing values
     this.propertyId = this.property?.propertyId || '';
-
     // Initialize the form with controls and their validators
     this.form = this.fb.group({
       title: [this.property?.title || '', Validators.required],
       ownerNationalId: [this.property?.ownerNationalId || '', [Validators.required], [customerExistsByNationalIdValidator('', this.customersService)]],
-      categoryId: [`${this.selectedCategory}`, Validators.required],
+      categoryId: [this.selectedCategory, Validators.required],
       price: [this.property?.price || null, Validators.required],
       area: [this.property?.area || null, Validators.required],
       location: [this.property?.location || '', Validators.required],
@@ -138,10 +139,6 @@ export class AddUpdateProperty implements OnInit {
 
 
   }
-
-
-
-
 
 
   // Method to handle file selection for images
@@ -208,7 +205,7 @@ export class AddUpdateProperty implements OnInit {
   // Method to load categories from the service
   loadCategoryies() {
     // Call the service to get categories and map them to the required format
-    this.categoriesService.getCategories(1, Number.MAX_VALUE).subscribe({
+    this.categoriesService.getCategories().subscribe({
       // Handle the response and map categories to the required format
       next: (res) => {
         // Map the categories to the format required by the dropdown
@@ -216,9 +213,20 @@ export class AddUpdateProperty implements OnInit {
           label: category.categoryName,
           value: category.categoryId
         }));
+        if (this.mode == enMode.Update) {
 
-        // Set the first category as the selected category
-        this.selectedCategory = this.categories[0]?.value;
+          const found = this.categories.find(c => c.value == this.property?.categoryId);
+          this.selectedCategory = found ? found.value : null;
+          if (this.form) {
+            this.form.patchValue({ categoryId: this.selectedCategory });
+          }
+        }
+        else {
+          // Set the first category as the selected category
+          this.selectedCategory = this.categories[0]?.value;
+
+        }
+
 
         // Patch the form with the selected category
         if (this.form) {
@@ -379,7 +387,6 @@ export class AddUpdateProperty implements OnInit {
   onValidOwnerNationalId(value: string): void {
     this.ownerNationalId = value;
   }
-
 
 
 

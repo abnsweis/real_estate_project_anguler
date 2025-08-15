@@ -1,4 +1,10 @@
-<app-filtering [PROPERTY_HEADERS_FILTER]="PROPERTY_HEADERS" [propertyiesCount]="propertyiesCount"
-    (filterEvent)="onFilterEvent($event)"></app-filtering>
-<app-propertyies-list #listComponent [PROPERTY_HEADERS]="PROPERTY_HEADERS"
-    [filterData]="filterEventData"></app-propertyies-list>>
+<app-filtering 
+[ITEMS_FILTER]="PROPERTY_HEADERS" 
+[CountLable]="'العقارات'" 
+(filterEvent)="onFilterEvent($event)"
+[Count]="propertyiesCount"></app-filtering>
+<app-propertyies-list 
+#listComponent 
+[PROPERTY_HEADERS]="PROPERTY_HEADERS"
+    (countChanged)="updateCount($event)">
+</app-propertyies-list>>

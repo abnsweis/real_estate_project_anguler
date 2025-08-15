@@ -1,0 +1,114 @@
+/* قائمة المعلومات */
+.info-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px dashed #eee;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+.info-list li:hover {
+  color: #007bff;
+}
+.info-list li i {
+  width: 24px;
+  font-size: 1rem;
+}
+.customer-tabs {
+  --tab-border: 2px solid #dee2e6;
+  --tab-active-bg: #007bff;
+  --tab-active-color: #fff;
+  --tab-hover-bg: #f1f1f1;
+}
+
+.tablist {
+  display: flex;
+  gap: 2px;
+  border-bottom: var(--tab-border);
+  background: #fff;
+  padding: 0 20px;
+}
+p-tab {
+  padding: 12px 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px 8px 0 0;
+  color: #555;
+  background-color: #fafafa;
+}
+p-tab:hover {
+  background: var(--tab-hover-bg);
+}
+p-tab[aria-selected="true"] {
+  background: var(--tab-active-bg);
+  color: var(--tab-active-color) !important;
+  font-weight: 600;
+}
+
+.tabpanels {
+  padding: 20px;
+  background: #fff;
+}
+.transaction-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.3rem 1.5rem;
+  margin-top: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  color: #34495e;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.transaction-type {
+  background: #3498db;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-transform: capitalize;
+  box-shadow: 0 2px 6px rgba(52, 152, 219, 0.6);
+}
+
+.transaction-date {
+  font-size: 0.9rem;
+  color: #95a5a6;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #2c3e50;
+  font-size: 1rem;
+}
+
+.detail-item span {
+  min-width: 100px;
+  font-weight: 600;
+  color: #7f8c8d;
+}
+
+.detail-item strong {
+  color: #34495e;
+}
+
+.detail-item.notes em {
+  font-style: normal;
+  color: #7f8c8d;
+  font-size: 0.95rem;
+}

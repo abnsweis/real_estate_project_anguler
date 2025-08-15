@@ -1,0 +1,36 @@
+<section class="app-filtering-section card p-5 rounded-4 shadow-sm border-0 bg-white  ">
+    <!-- العنوان وعدد العملاء -->
+    <div class="d-flex justify-content-between gap-3 f align-items-center flex-wrap mb-4">
+        <div class="d-flex align-items-center gap-3">
+            <i class="pi pi-users fs-8 text-primary"></i>
+            <h3 class="fw-bold m-0 text-dark">
+                إدارة العملاء <span class="badge bg-primary fs-6 ms-2">{{ Count }}</span>
+            </h3>
+        </div>
+
+
+
+        <a [routerLink]="['add']" class="p-button-primary px-4 py-2 fw-semibold rounded-3"
+            routerLinkActive="router-link-active" pButton>
+            <i class=" pi pi-plus"></i>
+            <span pButtonLabel>إضافة عميل</span>
+        </a>
+    </div>
+
+    <!-- الفلاتر -->
+    <div class="row gy-3 gx-4">
+        <!-- مربع البحث -->
+        <div class="col-md-6 col-lg-6">
+            <label class="form-label text-muted fw-semibold mb-1">أدخل اسم العميل أو الرقم الوطني</label>
+            <p-inputGroup>
+
+                <input type="text" pInputText [(ngModel)]="searchText" (input)="onSearchChanged()"
+                    placeholder="ابحث عن عميل..." class="form-control" />
+                <button pButton label="بحث" icon="pi pi-search"
+                    class="p-button-primary px-4 py-2 fw-semibold rounded-4 mx-2   " (click)="onSearchClicked()">
+                </button>
+            </p-inputGroup>
+        </div>
+
+    </div>
+</section>

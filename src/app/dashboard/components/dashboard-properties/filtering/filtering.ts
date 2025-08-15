@@ -9,8 +9,9 @@ import { TableColumn } from '../../../../core/models/classes/auth/tableColumn';
 })
 export class Filtering implements OnInit {
   searchValue: string = '';
-  @Input() propertyiesCount: number = 0;
-  @Input() PROPERTY_HEADERS_FILTER: TableColumn[] = [];
+  @Input() Count: number = 0;
+  @Input() CountLable: string = '';
+  @Input() ITEMS_FILTER: TableColumn[] = [];
 
   dropdownOptions: any[] = [];
   selectedFilter!: string;
@@ -19,8 +20,8 @@ export class Filtering implements OnInit {
 
   ngOnInit(): void {
     this.searchValue = '';
-    this.selectedFilter = this.PROPERTY_HEADERS_FILTER[0].field;
-    this.dropdownOptions = this.PROPERTY_HEADERS_FILTER.map(col => ({
+    this.selectedFilter = this.ITEMS_FILTER[0].field;
+    this.dropdownOptions = this.ITEMS_FILTER.map(col => ({
       label: col.header,
       value: col.field
     }));
@@ -28,5 +29,10 @@ export class Filtering implements OnInit {
   Changed() {
     this.filterEvent.emit({ filter: this.selectedFilter, value: this.searchValue })
 
+  }
+
+  selectedFilterChanged() {
+    this.searchValue = '';
+    this.filterEvent.emit({ filter: this.selectedFilter, value: this.searchValue })
   }
 } 

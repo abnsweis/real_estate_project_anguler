@@ -10,7 +10,6 @@ import { Hero } from './components/home/hero/hero';
 import { ServicesSection } from './components/home/services-section/services-section';
 import { FeaturedProperties } from './components/home/featured-properties/featured-properties';
 import { PropertyCard } from './components/home/featured-properties/property-card/property-card';
-import { Star } from '../shared/star/star';
 import { Testimonials } from './components/home/testimonials/testimonials';
 import { TestimonialCard } from './components/home/testimonials/testimonial-card/testimonial-card';
 import { Properties } from './components/properties/properties';
@@ -41,6 +40,8 @@ import { Rating } from 'primeng/rating';
 import { ServicesPage } from './components/services-page/services-page';
 import { CardModule } from 'primeng/card';
 import { AboutUs } from './components/about-us/about-us';
+import { SharedModule } from '../shared/shared-module';
+
 
 @NgModule({
   declarations: [
@@ -52,7 +53,6 @@ import { AboutUs } from './components/about-us/about-us';
     ServicesSection,
     FeaturedProperties,
     PropertyCard,
-    Star,
     Testimonials,
     TestimonialCard,
     Properties,
@@ -81,6 +81,7 @@ import { AboutUs } from './components/about-us/about-us';
     DatePickerModule,
     Image,
     Select,
+    SharedModule,
     ConvertSpaceToDashPipe,
     FloatLabelModule, InputTextModule, FormsModule,
     Rating,
