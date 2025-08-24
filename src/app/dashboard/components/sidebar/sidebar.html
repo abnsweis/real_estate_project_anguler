@@ -72,17 +72,40 @@
 
 
                 <li class="nav-small-cap"><span class="hide-menu">المعاملات</span></li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="./transactions.html">
-                        <i class="ti ti-cash text-us-success"></i>
-                        <span class="hide-menu" style="white-space: nowrap;">
+
+                <li class="sidebar-item" [ngClass]="{ 'active': isTransactionsDropdownOpen }">
+                    <a class="sidebar-link" href="javascript:void(0);" (click)="toggleTransactionsDropdown()">
+                        <i class="ti ti-exchange text-us-primary"></i>
+                        <span class="hide-menu">
                             المعاملات (
                             <span class="text-us-success" style="display: inline; white-space: nowrap;">بيع</span> /
-                            <span class="text-danger  " style="display: inline; white-space: nowrap;">إيجار</span>
+                            <span class="text-danger" style="display: inline; white-space: nowrap;">إيجار</span>
                             )
                         </span>
-
+                        <i class="ti ti-chevron-down ms-auto"></i>
                     </a>
+                    <ul *ngIf="isTransactionsDropdownOpen" class="sidebar-submenu p-0">
+                        <li class="sidebar-item" routerLinkActive="router-link-active"
+                            [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="sidebar-link" [routerLink]="['transactions/sales']">
+                                <i class="ti ti-shopping-cart text-us-success"></i>
+                                <span class="hide-menu">قائمة المبيعات</span>
+                            </a>
+                        </li>
+                        <li routerLinkActive="router-link-active">
+                            <a class="sidebar-link" [routerLink]="['transactions/sales/add']">
+                                <i class="ti ti-home-plus text-us-success"></i>
+                                <span class="hide-menu">إضافة بيع جديد</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item" routerLinkActive="router-link-active"
+                            [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="sidebar-link" [routerLink]="['rentals']">
+                                <i class="ti ti-key text-us-warning"></i>
+                                <span class="hide-menu">قائمة الإيجارات</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="sidebar-item">

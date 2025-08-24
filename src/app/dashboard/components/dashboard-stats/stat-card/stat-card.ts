@@ -7,8 +7,9 @@ import { Component, Input } from '@angular/core';
   styleUrl: './stat-card.css'
 })
 export class StatCard {
-  @Input() title!: string;
-  @Input() value!: string;
-  @Input() color: string = 'text-primary';
-  @Input() description: string = '';
+  @Input() title!: string | null;
+  @Input() value!: string | null;
+  @Input() color: string | null = 'text-primary';
+  @Input() description: string | null = '';
+
 }

@@ -13,7 +13,7 @@
   --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;
   --bs-pink: #d63384;
-  --bs-red: #FA896B;
+  --bs-red: #fd2525;
   --bs-orange: #fd7e14;
   --bs-yellow: #FFAE1F;
   --bs-green: #13DEB9;
@@ -37,7 +37,7 @@
   --bs-success: #13DEB9;
   --bs-info: #539BFF;
   --bs-warning: #FFAE1F;
-  --bs-danger: #FA896B;
+  --bs-danger: #fd2525;
   --bs-light: #F6F9FC;
   --bs-dark: #2A3547;
   --bs-muted: #5A6A85;
@@ -3261,8 +3261,8 @@ textarea.form-control-lg {
 
 .btn-danger {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #FA896B;
-  --bs-btn-border-color: #FA896B;
+  --bs-btn-bg: #fd2525;
+  --bs-btn-border-color: #fd2525;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: rgb(212.5, 116.45, 90.95);
   --bs-btn-hover-border-color: rgb(200, 109.6, 85.6);
@@ -3272,8 +3272,8 @@ textarea.form-control-lg {
   --bs-btn-active-border-color: rgb(187.5, 102.75, 80.25);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #FA896B;
-  --bs-btn-disabled-border-color: #FA896B;
+  --bs-btn-disabled-bg: #fd2525;
+  --bs-btn-disabled-border-color: #fd2525;
 }
 
 .btn-light {
@@ -3583,19 +3583,19 @@ textarea.form-control-lg {
 }
 
 .btn-outline-danger {
-  --bs-btn-color: #FA896B;
-  --bs-btn-border-color: #FA896B;
+  --bs-btn-color: #fd2525;
+  --bs-btn-border-color: #fd2525;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #FA896B;
-  --bs-btn-hover-border-color: #FA896B;
+  --bs-btn-hover-bg: #fd2525;
+  --bs-btn-hover-border-color: #fd2525;
   --bs-btn-focus-shadow-rgb: 250, 137, 107;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #FA896B;
-  --bs-btn-active-border-color: #FA896B;
+  --bs-btn-active-bg: #fd2525;
+  --bs-btn-active-border-color: #fd2525;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #FA896B;
+  --bs-btn-disabled-color: #fd2525;
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #FA896B;
+  --bs-btn-disabled-border-color: #fd2525;
   --bs-gradient: none;
 }
 
@@ -7741,7 +7741,7 @@ textarea.form-control-lg {
 }
 
 .link-danger {
-  color: #FA896B !important;
+  color: #fd2525 !important;
 }
 .link-danger:hover, .link-danger:focus {
   color: rgb(200, 109.6, 85.6) !important;

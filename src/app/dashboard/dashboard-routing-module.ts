@@ -14,6 +14,9 @@ import { AddNewCustomer } from './components/customers/add-new-customer/add-new-
 import { EditeCustomer } from './components/customers/edite-customer/edite-customer';
 import { CustomerDetails } from './components/customers/customer-details/customer-details';
 import { Categories } from './components/categories/categories';
+import { Sales } from './components/transactions/sales/sales';
+import { SaleDetails } from './components/transactions/sales/sale-details/sale-details';
+import { AddSale } from './components/transactions/sales/add-sale/add-sale';
 
 const routes: Routes = [
 
@@ -31,7 +34,9 @@ const routes: Routes = [
       { path: 'customers/edit/:customerId', component: EditeCustomer, canActivate: [authGuard] },
       { path: 'customers/details/:customerId', component: CustomerDetails, canActivate: [authGuard] },
       { path: 'categories', component: Categories, canActivate: [authGuard] },
-
+      { path: 'transactions/sales', component: Sales, canActivate: [authGuard] },
+      { path: 'transactions/sales/details/:saleId', component: SaleDetails, canActivate: [authGuard] },
+      { path: 'transactions/sales/add', component: AddSale, canActivate: [authGuard] },
     ]
   }
 

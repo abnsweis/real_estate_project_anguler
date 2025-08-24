@@ -34,12 +34,10 @@ export class CustomersService {
     );
   }
 
-  getCustomerByNationalId(nationalId: string): Observable<ICustomer | null> {
-    return this._httpClient.get<ICustomer>(`${this.baseUrl}/api/Customers/NationalId/${nationalId}`).pipe(
-      catchError(() => of(null))
-    );
+  getCustomerByNationalId(nationalId: string): Observable<ICustomer> {
+    return this._httpClient.get<ICustomer>(`${this.baseUrl}/api/Customers/NationalId/${nationalId}`)
   }
-  getCustomerByCustomerId(customerId: string): Observable<ICustomer | null> {
+  getCustomerByCustomerId(customerId: string): Observable<ICustomer> {
     return this._httpClient.get<ICustomer>(`${this.baseUrl}/api/Customers/${customerId}`);
   }
 

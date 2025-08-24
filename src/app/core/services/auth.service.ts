@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
-import { catchError, Observable, of, tap } from 'rxjs';
+import { catchError, from, Observable, of, switchMap, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Login } from '../../public/auth/login/login';
 import { LoginInfo } from '../../public/auth/login/LoginInfo';
 import { IUser } from '../models/Interfaces/IUser.interfsce';
+import { Auth, getRedirectResult, GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut } from '@angular/fire/auth';
+import { th } from 'date-fns/locale';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private auth: Auth) {
 
   }
 
@@ -23,8 +25,11 @@ export class AuthService {
   }
   logout(): Observable<void> {
     localStorage.removeItem('token');
-    return this.httpClient.post<void>(`${this.baseUrl}/api/Account/logout`, null);
+    return from(signOut(this.auth)).pipe(
+      switchMap(() => this.httpClient.post<void>(`${this.baseUrl}/api/Account/logout`, null))
+    );
   }
+
   register(formData: FormData): Observable<any> {
 
     return this.httpClient.post<any>(`${this.baseUrl}/api/Account/register`, formData);
@@ -33,6 +38,26 @@ export class AuthService {
     return !!localStorage.getItem('token');
   }
 
+
+  loginWithGoogle(): void {
+    const provider = new GoogleAuthProvider();
+    signInWithRedirect(this.auth, provider);
+  }
+
+  // بعد العودة من Google
+  checkRedirectResult() {
+    getRedirectResult(this.auth)
+      .then((result) => {
+        if (result) {
+          console.log('User:', result.user);
+          alert('Login successful');
+        }
+      })
+      .catch((error) => {
+        console.error('Redirect login error:', error);
+        alert('Login failed');
+      });
+  }
 
   getToken(): string {
     return localStorage.getItem('token') ?? '';

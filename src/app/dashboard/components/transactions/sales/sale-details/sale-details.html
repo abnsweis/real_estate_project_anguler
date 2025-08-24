@@ -1,0 +1,172 @@
+<div class="sale-details">
+    <!-- العنوان العام -->
+    <header class="page-header">
+        <div>
+            <h1>تفاصيل عملية البيع</h1>
+            <p class="muted">عرض شامل لمعلومات المشتري والبائع والعقار والبيع</p>
+        </div>
+        <div class="badge status sold">
+            Sold
+        </div>
+    </header>
+
+    <!-- بطاقة الأطراف: البائع والمشتري -->
+    <section class="card parties">
+        <h2 class="card-title">الأطراف</h2>
+
+        <div class="party-grid">
+            @if (seller != null && buyer != null) {
+
+            <app-short-customer-info [customer]="seller ?? null" [title]="'ألبائع'"
+                [class]="'seller'"></app-short-customer-info>
+            <app-short-customer-info [customer]="buyer ?? null" [title]="'المشتري'"
+                [class]="'buyer'"></app-short-customer-info>
+            }
+        </div>
+    </section>
+
+    <!-- بطاقة معلومات العقار -->
+    <section class="card property">
+        <h2 class="card-title">معلومات العقار</h2>
+
+        <div class="property-grid">
+
+
+            <div class="property-meta">
+                <div class="meta-row">
+                    <div class="meta-item">
+                        <h4 class="label">العنوان : </h4>
+                        <p class="value">{{property?.title}}</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4 class="label">الرقم : </h4>
+                        <p class="value">{{property?.propertyNumber}}</p>
+                    </div>
+                </div>
+
+                <div class="meta-row">
+                    <div class="meta-item">
+                        <h4 class="label">التصنيف : </h4>
+                        <div class="value">{{property?.categoryName}}</div>
+                    </div>
+                    <div class="meta-item">
+                        <h4 class="label">المساحة : </h4>
+                        <div class="value">{{property?.area}} م²</div>
+                    </div>
+                </div>
+
+                <div class="meta-row">
+                    <div class="meta-item">
+                        <h4 class="label">الموقع : </h4>
+                        <p class="value">{{property?.location}}</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4 class="label">العنوان : </h4>
+                        <p class="value truncate">{{property?.address}}</p>
+                    </div>
+                </div>
+
+                <div class="owner">
+                    <div class="owner-title">بيانات المالك</div>
+                    <div class="owner-grid">
+                        <div>
+                            <h5 class="label">الاسم : </h5>
+                            <p class="value">{{property?.ownerFullName}}</p>
+                        </div>
+                        <div>
+                            <h5 class="label">الرقم الوطني :</h5>
+                            <p class="value">{{property?.ownerNationalId}}</p>
+                        </div>
+                    </div>
+
+
+                    <div class="desc">
+                        <p class="label ">الوصف </p>
+                    </div>
+                    <p class="value">{{property?.description}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بطاقة تفاصيل البيع -->
+    <section class="card sale">
+        <h2 class="card-title">تفاصيل البيع</h2>
+
+        <div class="kpis ">
+            <div class="kpi price">
+                <div class="kpi-label">السعر</div>
+                <p class="kpi-value">{{sale?.price | currency }}</p>
+            </div>
+            <div class="kpi date">
+                <div class="kpi-label">تاريخ البيع</div>
+                <p class="kpi-value">{{sale?.saleDate}}</p>
+            </div>
+            <div class="kpi property">
+                <div class="kpi-label">العقار</div>
+                <p class="kpi-value">{{sale?.propertyTitle}}</p>
+            </div>
+            <div class="kpi propertyNumber">
+                <div class="kpi-label">رقم العقار</div>
+                <p class="kpi-value">{{sale?.propertyNumber}}</p>
+            </div>
+        </div>
+
+        <div class="sale-extra">
+            <div class="meta-block">
+                <h4 class="label">ملاحظات العقد</h4>
+                <p class="value"> {{sale?.description}}</p>
+            </div>
+
+            <div class="contract">
+
+                <button class="btn btn-outline-primary rounded-pill my-3" (click)="downloadImage()">تنزيل صورة
+                    العقد</button>
+                <p-image [src]="sale?.contractImageUrl" alt="Image" width="250" />
+            </div>
+        </div>
+    </section>
+
+    <!-- معاملات الزبون -->
+    <section class="card tx ">
+        <div class="overlay disabled"><i class="fa fa-trash disabled-icon"></i>
+        </div>
+        <h2 class="card-title">معاملات الزبون</h2>
+        <div class="table-wrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>التاريخ</th>
+                        <th>النوع</th>
+                        <th>المبلغ</th>
+                        <th>رقم العقار</th>
+                        <th>ملاحظات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2025/08/10</td>
+                        <td>دفعة أولى</td>
+                        <td>50,000</td>
+                        <td>#1458</td>
+                        <td>تم الدفع نقداً</td>
+                    </tr>
+                    <tr>
+                        <td>2025/08/15</td>
+                        <td>دفعة ثانية</td>
+                        <td>100,000</td>
+                        <td>#1458</td>
+                        <td>تحويل بنكي</td>
+                    </tr>
+                    <tr>
+                        <td>2025/08/20</td>
+                        <td>الدفعة النهائية</td>
+                        <td>100,000</td>
+                        <td>#1458</td>
+                        <td>تم التسليم كاملاً</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>

@@ -62,9 +62,13 @@ import { Categories } from './components/categories/categories';
 import { CategoriesList } from './components/categories/categories-list/categories-list';
 import { CategoriesTable } from './components/categories/categories-list/table/table';
 import { CategoriesInfo } from './components/categories/categories-info/categories-info';
-import { Dialog } from 'primeng/dialog';
-
-
+import { Dialog, DialogModule } from 'primeng/dialog';
+import { Sales } from './components/transactions/sales/sales';
+import { SaleCards } from './components/transactions/sales/sale-cards/sale-cards';
+import { SaleDetails } from './components/transactions/sales/sale-details/sale-details';
+import { Image } from 'primeng/image';
+import { AddSale } from './components/transactions/sales/add-sale/add-sale';
+import { ShortCustomerInfo } from '../shared/short-customer-info/short-customer-info';
 
 @NgModule({
   declarations: [
@@ -99,6 +103,10 @@ import { Dialog } from 'primeng/dialog';
     Categories,
     CategoriesList,
     CategoriesInfo,
+    Sales,
+    SaleCards,
+    SaleDetails,
+    AddSale,
   ],
   imports: [
     CommonModule,
@@ -125,10 +133,12 @@ import { Dialog } from 'primeng/dialog';
     TooltipModule,
     InputGroupModule,
     TabsModule,
+    ShortCustomerInfo,
     PropertyStatusArPipe,
     TransactionTypeArPipe,
-
+    Image,
     Dialog,
+    DialogModule,
     DrawerModule, ButtonModule, RippleModule, AvatarModule, StyleClassModule
   ]
 })

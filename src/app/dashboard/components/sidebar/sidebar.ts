@@ -17,11 +17,16 @@ export class Sidebar {
   }
   isPropertyDropdownOpen: boolean = false;
   isCustomersDropdownOpen: boolean = false;
+  isTransactionsDropdownOpen: boolean = false;
 
   togglePropertyDropdown() {
     this.isPropertyDropdownOpen = !this.isPropertyDropdownOpen;
   }
   toggleCustomersDropdown() {
     this.isCustomersDropdownOpen = !this.isCustomersDropdownOpen;
+  }
+
+  toggleTransactionsDropdown() {
+    this.isTransactionsDropdownOpen = !this.isTransactionsDropdownOpen;
   }
 }

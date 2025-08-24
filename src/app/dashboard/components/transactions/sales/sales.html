@@ -1,0 +1,65 @@
+<app-sale-cards></app-sale-cards>
+<section class="card rounded-4 shadow-sm border-0 bg-white mb-5 mt-3 p-0">
+    <!-- رأس القسم -->
+    <header class="d-flex gap-2 align-items-center mb-4">
+        <h1 class="h5 fw-semibold text-dark m-0">قائمة المبيعات</h1>
+    </header>
+
+    <!-- جدول المبيعات -->
+    <div class="table-responsive">
+        <p-table [value]="filteredSales" [totalRecords]="totalRecords" [lazy]="true" (onLazyLoad)="loadSales($event)"
+            [loading]="loading" styleClass="p-datatable-sm rounded-3 overflow-hidden shadow-none bg-white"
+            responsiveLayout="scroll">
+
+            <!-- رأس الجدول -->
+            <ng-template pTemplate="header">
+                <tr class="bg-light text-muted bg-dangar">
+                    <th class="px-4 py-3 fw-semibold text-nowrap bg-transparint">البائع</th>
+                    <th class="px-4 py-3 fw-semibold text-nowrap">المشتري</th>
+                    <th class="px-4 py-3 fw-semibold text-nowrap">العقار</th>
+                    <th class="px-4 py-3 fw-semibold text-nowrap">رقم العقار</th>
+                    <th class="px-4 py-3 fw-semibold text-nowrap">الفئة</th>
+                    <th class="px-4 py-3 fw-semibold  ">السعر</th>
+                    <th class="px-4 py-3 fw-semibold text-nowrap">التاريخ</th>
+                    <th class="px-3 py-3 fw-semibold text-center">الإجراءات</th>
+                </tr>
+            </ng-template>
+
+            <!-- بيانات الجدول -->
+            <ng-template pTemplate="body" let-sale>
+                <tr>
+                    <td class="px-4 py-3 fw-medium">{{ sale.sellerName }}</td>
+                    <td class="px-4 py-3 fw-medium">{{ sale.buyerName }}</td>
+                    <td class="px-4 py-3">{{ sale.propertyTitle }}</td>
+                    <td class="px-3 py-3 text-center">
+                        <a class="btn btn-sm text-info me-2"
+                            [routerLink]="['/dashboard/manage-properties/details/', sale.propertyId]">
+                            {{ sale.propertyNumber }}
+                        </a>
+                    </td>
+                    <td class="px-4 py-3">
+                        <span class="badge bg-info text-white">{{ sale.propertyCatagory }}</span>
+                    </td>
+                    <td class="px-4 py-3 fw-semibold text-success">
+                        {{ sale.price | number:'1.0-0' }} $
+                    </td>
+                    <td class="px-4 py-3 text-muted">
+                        {{ sale.saleDate | date:'yyyy/MM/dd' }}
+                    </td>
+                    <td class="px-3 py-3 text-center">
+                        <a class="btn btn-sm text-info me-2" [routerLink]="['details', sale.saleId]">
+                            <i class="pi pi-info-circle"></i>
+                        </a>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+        <!-- رسالة في حال لا يوجد بيانات -->
+        <div *ngIf="!filteredSales || filteredSales.length === 0" class="text-center py-4">
+            <h3 class="text-muted mb-0">لا يوجد مبيعات</h3>
+        </div>
+    </div>
+</section>
+
+<p-confirmdialog />

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { CategoriesService } from '../../../../core/services/categories.service';
 import { CustomersService } from '../../../../core/services/customers.service';
 import { PropertiesService } from '../../../../core/services/propertys.service';
-import { customerExistsByNationalIdValidator } from '../../../../shared/validators/customer-exists-by-nationalId-validator copy';
+import { customerExistsByNationalIdValidator } from '../../../../shared/validators/customer-exists-by-nationalId-validator';
 import { debounceTime } from 'rxjs';
 import { ICategory } from '../../../../core/models/Interfaces/Icategory.inteface';
 import { enMode } from '../../../../shared/enums/en-mode';

@@ -49,4 +49,8 @@ export class Login {
   clearErrorMessage() {
     this.errorMessage = '';
   }
+
+  loginWithGoogle() {
+    this.authService.checkRedirectResult();
+  }
 }

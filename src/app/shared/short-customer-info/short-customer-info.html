@@ -1,0 +1,12 @@
+<article class="party {{class}}">
+    <div class="avatar" aria-hidden="true">أح</div>
+    <div class="party-info">
+        <div class="party-role">{{title}}</div>
+        <div class="party-name">{{customer?.fullName}}</div>
+        <div class="party-contact">
+
+            <a [routerLink]="[ '/dashboard/customers/details/', customer?.customerId]">عرض الملف
+                الشخصي</a>
+        </div>
+    </div>
+</article>

@@ -45,7 +45,9 @@ export class PropertiesService {
   getPropertyById(propertyId: string): Observable<IProperty> {
     return this._httpclient.get<IProperty>(`${this.baseUrl}/api/Properties/Id/${propertyId}`);
   }
-
+  getPropertyByPropertyNumber(propertyNumber: string): Observable<IProperty> {
+    return this._httpclient.get<IProperty>(`${this.baseUrl}/api/Properties/Number/${propertyNumber}`);
+  }
   deleteProperty(propertyId: string): Observable<HttpResponse<any>> {
     return this._httpclient.delete<any>(`${this.baseUrl}/api/Properties/Delete/Id/${propertyId}`, {
       observe: 'response'

@@ -1,3 +1,22 @@
+
+:host {
+  display: block;
+  color: #111827;
+  --card-bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --fill: #f3f4f6;
+  --accent: #375dfb; /* أزرق عصري */
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --radius: 16px;
+  --shadow-sm: 0 4px 6px -1px rgba(17, 24, 39, 0.1);
+  --shadow: 0 10px 25px -5px rgba(17, 24, 39, 0.1);
+  --shadow-lg: 0 20px 50px -10px rgba(17, 24, 39, 0.12);
+}
+
 @import "tailwindcss";
 .text-primary {
   color: var(--bs-primary);

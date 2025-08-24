@@ -1,0 +1,77 @@
+.party {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.party.seller {
+  border-left: 4px solid #e11d48;
+}
+
+.party.buyer {
+  border-left: 4px solid #16a34a;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #dbeafe, #f5d0fe);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #375dfb;
+  box-shadow: 0 4px 8px rgba(55, 93, 251, 0.15);
+}
+
+.party-role {
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+.seller .party-role {
+  color: var(--danger);
+}
+.buyer .party-role {
+  color: var(--success);
+}
+
+.party-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 2px;
+}
+
+.party-contact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  color: var(--accent);
+}
+
+.party-contact a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.party-contact a:hover {
+  text-decoration: underline;
+}

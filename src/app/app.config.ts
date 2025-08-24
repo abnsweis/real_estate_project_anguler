@@ -10,6 +10,8 @@ import { provideToastr } from 'ngx-toastr';
 import { loadingInterceptor } from './core/interceptors/loading-interceptor';
 import { errorInterceptor } from './core/interceptors/errorInterceptor';
 import { authInterceptor } from './core/interceptors/auth-interceptor';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -34,6 +36,16 @@ export const appConfig: ApplicationConfig = {
     }),
     ConfirmationService,
     MessageService,
-    provideToastr()
+    provideToastr(),
+    provideFirebaseApp(() => initializeApp({
+      apiKey: "AIzaSyBGPmgCIOmqJGKhPkCWePZJNPu578cctKU",
+      authDomain: "realestate-4a97f.firebaseapp.com",
+      projectId: "realestate-4a97f",
+      storageBucket: "realestate-4a97f.firebasestorage.app",
+      messagingSenderId: "629187277017",
+      appId: "1:629187277017:web:88133b4f92642ccacf4ec8",
+      measurementId: "G-S99CQVCY8P"
+    })),
+    provideAuth(() => getAuth())
   ]
 };

@@ -24,7 +24,6 @@ import { Image } from 'primeng/image';
 import { NotFound404 } from './components/not-found-404/not-found-404';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConvertSpaceToDashPipe } from "../core/pipes/convert-space-to-dash-pipe";
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
 import { CommentsSection } from './components/properties/property-details/comments-section/comments-section';
@@ -41,6 +40,7 @@ import { ServicesPage } from './components/services-page/services-page';
 import { CardModule } from 'primeng/card';
 import { AboutUs } from './components/about-us/about-us';
 import { SharedModule } from '../shared/shared-module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
